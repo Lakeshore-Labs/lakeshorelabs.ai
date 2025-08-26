@@ -1,26 +1,29 @@
-title: "Frequently Asked"
-subtitle: "Questions"
+title: "Straight Answers to"
+subtitle: "Real Questions"
 
 faqs:
   column1:
-    - question: "What types of companies do you typically work with?"
-      answer: "We work primarily with mid-market to enterprise companies across retail, logistics, healthcare, finance, and technology sectors. Our ideal clients have established operations looking to enhance efficiency through AI and automation rather than startups building from scratch."
+    - question: "How much does this actually cost?"
+      answer: "Projects start at $2,500/month. Most SMBs spend $3,500-7,500/month for full automation. You'll know exact costs after our free 15-minute audit. No hidden fees, no surprise charges."
     
-    - question: "How long does it typically take to see results from your services?"
-      answer: "Most clients see initial results within 30 days through our POC program. Full implementation typically takes 3-6 months depending on complexity, with incremental improvements visible throughout the process."
+    - question: "How fast can I see results?"
+      answer: "48 hours for a working demo. 7 days to go live with your first automation. Most clients save 20+ hours in the first week. If you don't see value in 7 days, you pay nothing."
     
-    - question: "Do you work with companies that have limited technical expertise in-house?"
-      answer: "Absolutely. We specialize in working with companies at all technical maturity levels. Our solutions are designed to be user-friendly and we provide comprehensive training and support. We handle all technical complexity so your team can focus on business outcomes."
+    - question: "Do I need technical staff to use this?"
+      answer: "No. We build it, set it up, and train your team. Everything works through simple interfaces your team already knows - email, spreadsheets, chat. If you can use Gmail, you can use our automations."
     
-    - question: "What's the difference between your consulting services and implementation services?"
-      answer: "Consulting services focus on strategy, assessment, and planning - helping you identify opportunities and develop your AI roadmap. Implementation services involve actually building and deploying solutions. Most clients start with a POC that combines both."
+    - question: "What if I'm too small for AI?"
+      answer: "If you have repetitive tasks that take more than 5 hours per week, you're ready. We work with businesses as small as 3 people. Start with one simple automation, prove the value, then expand."
   
   column2:
-    - question: "How do you ensure data security and compliance?"
-      answer: "Security is paramount in all our implementations. We follow enterprise security best practices, ensure compliance with industry regulations (GDPR, HIPAA, SOC 2), and can work within your existing security framework. All data remains within your infrastructure."
+    - question: "Can this work with my existing tools?"
+      answer: "Yes. We integrate with 1000+ apps including QuickBooks, Gmail, Slack, Shopify, Square, HubSpot, and more. If it has an API or spreadsheet export, we can automate it."
     
-    - question: "Can you integrate with our existing systems?"
-      answer: "Yes, seamless integration is a core strength. We work with all major enterprise systems including SAP, Oracle, Salesforce, Microsoft, and custom solutions. Our integration-first approach ensures AI enhances rather than disrupts your existing workflows."
+    - question: "What happens if something breaks?"
+      answer: "We monitor everything 24/7 and fix issues before you notice them. Response time under 2 hours during business hours. Plus, we build fallbacks so your business never stops if automation pauses."
     
-    - question: "What ROI can we expect from your AI solutions?"
-      answer: "While ROI varies by use case, our clients typically see 20-40% efficiency gains, 30-50% reduction in manual processing time, and 15-25% cost savings within the first year. We guarantee measurable ROI in our POC or you don't pay."
+    - question: "How do I know this will actually save money?"
+      answer: "Free audit shows exact ROI before you spend a penny. Most clients see 3-5x ROI in the first 3 months. We track and report savings monthly. If ROI drops below 2x, we fix it free or refund that month."
+    
+    - question: "Can I cancel anytime?"
+      answer: "Yes. Month-to-month contracts. Cancel anytime with 30 days notice. You keep all automations we've built. We'll even help transition to your team or another provider. No lock-in, ever."
