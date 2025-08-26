@@ -1,4 +1,9 @@
 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <title>Apify</title>
-  <path fill="#97E325" d="M8.4 6.4L12 0l3.6 6.4h-7.2zm7.2 4v7.2l6.4-3.6-6.4-3.6zm0 11.2L12 24l-3.6-6.4h7.2zm-11.2-4v-7.2L0 12l4.4 2.4z"/>
+  <!-- Green triangle (top left) -->
+  <path d="M5 5 L11 5 L8 11 Z" fill="#4CAF50" />
+  <!-- Blue triangle (top right) -->
+  <path d="M13 5 L19 5 L16 11 Z" fill="#2196F3" />
+  <!-- Orange triangle (bottom) -->
+  <path d="M7 13 L12 19 L17 13 Z" fill="#FF6F00" />
 </svg>

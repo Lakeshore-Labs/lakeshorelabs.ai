@@ -1,10 +1,26 @@
 {{ with .Site.Data.partners }}
 <section class="partners">
-    <h2>{{ .title }}</h2>
-    <div class="partners-list">
-        {{ range .partners }}
-        <div class="partner-logo">
-            <img src="{{ .logo }}" alt="{{ .name }}" />
+    <div class="container">
+        <div class="section-header">
+            <h2>{{ .title }}</h2>
+            <p class="subtitle">{{ .subtitle }}</p>
+            <p class="description">{{ .description }}</p>
+        </div>
+        
+        <div class="partners-list">
+            {{ range .companies }}
+            <div class="partner-logo">
+                <img src="{{ .logo }}" alt="{{ .name }}" />
+                {{ if .contribution }}
+                <span class="contribution">{{ .contribution }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+        
+        {{ if .callout }}
+        <div class="callout">
+            <p>{{ .callout }}</p>
         </div>
         {{ end }}
     </div>

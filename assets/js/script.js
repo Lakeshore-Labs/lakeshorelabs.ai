@@ -18,6 +18,156 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Use Cases Filtering and Animations
+document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const caseCards = document.querySelectorAll('.case-card');
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    // Filter functionality
+    if (filterBtns.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                
+                // Filter cards
+                caseCards.forEach(card => {
+                    const roi = parseInt(card.dataset.roi);
+                    const money = parseInt(card.dataset.money);
+                    const category = card.dataset.category;
+                    
+                    let show = false;
+                    
+                    switch(filter) {
+                        case 'all':
+                            show = true;
+                            break;
+                        case 'quick-roi':
+                            show = roi <= 14;
+                            break;
+                        case 'high-savings':
+                            show = money >= 10000;
+                            break;
+                        case 'time-savers':
+                            show = category === 'savings';
+                            break;
+                        case 'revenue-boosters':
+                            show = category === 'revenue';
+                            break;
+                        default:
+                            show = true;
+                    }
+                    
+                    if (show) {
+                        card.style.display = '';
+                        card.classList.remove('hidden');
+                        // Add entrance animation
+                        card.style.animation = 'fadeInUp 0.5s ease';
+                    } else {
+                        card.classList.add('hidden');
+                        setTimeout(() => {
+                            if (card.classList.contains('hidden')) {
+                                card.style.display = 'none';
+                            }
+                        }, 300);
+                    }
+                });
+            });
+        });
+    }
+    
+    // Animate statistics on scroll
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const animateValue = (element, start, end, duration) => {
+        const isPercentage = element.dataset.count.includes('%');
+        const isMoney = element.dataset.count.includes('.');
+        const cleanEnd = parseInt(element.dataset.count.replace(/[^0-9]/g, ''));
+        
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            
+            const current = Math.floor(progress * cleanEnd);
+            
+            if (isMoney) {
+                element.textContent = '$' + current.toLocaleString() + 'M';
+            } else if (isPercentage) {
+                element.textContent = current + '%';
+            } else {
+                element.textContent = current.toLocaleString();
+            }
+            
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                // Set final value
+                if (isMoney) {
+                    element.textContent = '$' + element.dataset.count.replace('$', '');
+                } else {
+                    element.textContent = element.dataset.count;
+                }
+            }
+        };
+        window.requestAnimationFrame(step);
+    };
+    
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                entry.target.classList.add('animated');
+                animateValue(entry.target, 0, 100, 2000);
+            }
+        });
+    }, observerOptions);
+    
+    statNumbers.forEach(num => {
+        statsObserver.observe(num);
+    });
+    
+    // Progress bar animations
+    const progressBars = document.querySelectorAll('.progress-fill');
+    const progressObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                entry.target.classList.add('animated');
+                const before = parseInt(entry.target.dataset.before);
+                const after = parseInt(entry.target.dataset.after);
+                const percentage = ((before - after) / before) * 100;
+                entry.target.style.width = percentage + '%';
+            }
+        });
+    }, observerOptions);
+    
+    progressBars.forEach(bar => {
+        progressObserver.observe(bar);
+    });
+});
+
+// Add fadeInUp animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(style);
+
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
