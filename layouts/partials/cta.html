@@ -18,4 +18,34 @@
         </div>
     </div>
 </section>
+{{ else }}
+<section id="contact" class="cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2>{{ T "cta_title" }}</h2>
+            <p>{{ T "cta_description" }}</p>
+            <a href="mailto:{{ .Site.Params.email }}" class="button">{{ T "cta_button" }}</a>
+            <div class="cta-features">
+                <div class="cta-feature">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>{{ T "cta_feature_1" }}</span>
+                </div>
+                <div class="cta-feature">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>{{ T "cta_feature_2" }}</span>
+                </div>
+                <div class="cta-feature">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>{{ T "cta_feature_3" }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {{ end }}

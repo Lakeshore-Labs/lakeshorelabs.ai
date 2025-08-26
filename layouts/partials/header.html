@@ -36,17 +36,75 @@
                 <span>{{ .Name }}</span>
             </a>
             {{ end }}
+            
+            <!-- Mobile-only theme toggle and language selector -->
+            <div class="mobile-only-controls">
+                <div class="mobile-divider"></div>
+                
+                <!-- Mobile Theme Toggle -->
+                <button class="nav-link mobile-theme-toggle" aria-label="Toggle theme">
+                    <i data-feather="sun" class="nav-icon theme-icon sun"></i>
+                    <i data-feather="moon" class="nav-icon theme-icon moon"></i>
+                    <span>Theme</span>
+                </button>
+                
+                <!-- Mobile Language Selector -->
+                <div class="mobile-language-section">
+                    <div class="nav-link mobile-language-header">
+                        <i data-feather="globe" class="nav-icon"></i>
+                        <span>{{ .Site.Language.LanguageName }}</span>
+                    </div>
+                    {{ range .Site.Languages }}
+                        {{ if ne $.Site.Language.Lang .Lang }}
+                            {{ $langUrl := "" }}
+                            {{ if eq .Lang "en" }}
+                                {{ $langUrl = "/" }}
+                            {{ else }}
+                                {{ $langUrl = printf "/%s/" .Lang }}
+                            {{ end }}
+                            <a href="{{ $langUrl }}" class="nav-link mobile-language-option">
+                                <span class="language-indent">{{ .LanguageName }}</span>
+                            </a>
+                        {{ end }}
+                    {{ end }}
+                </div>
+                
+                <div class="mobile-divider"></div>
+            </div>
+            
             <a href="mailto:{{ .Site.Params.email }}" class="nav-link mobile-contact">
                 <i data-feather="mail" class="nav-icon"></i>
-                <span>Contact Us</span>
+                <span>{{ T "contact_us" }}</span>
             </a>
         </div>
         <div class="nav-actions">
+            <div class="language-selector">
+                <button class="language-toggle" aria-label="Select language">
+                    <i data-feather="globe" class="language-icon"></i>
+                    <span class="current-language">{{ .Site.Language.LanguageName }}</span>
+                    <i data-feather="chevron-down" class="dropdown-icon"></i>
+                </button>
+                <div class="language-dropdown">
+                    {{ range .Site.Languages }}
+                        {{ if ne $.Site.Language.Lang .Lang }}
+                            {{ $langUrl := "" }}
+                            {{ if eq .Lang "en" }}
+                                {{ $langUrl = "/" }}
+                            {{ else }}
+                                {{ $langUrl = printf "/%s/" .Lang }}
+                            {{ end }}
+                            <a href="{{ $langUrl }}" class="language-option">
+                                {{ .LanguageName }}
+                            </a>
+                        {{ end }}
+                    {{ end }}
+                </div>
+            </div>
             <button class="theme-toggle" aria-label="Toggle theme">
                 <i data-feather="sun" class="theme-icon sun"></i>
                 <i data-feather="moon" class="theme-icon moon"></i>
             </button>
-            <a href="mailto:{{ .Site.Params.email }}" class="nav-button">Contact Us</a>
+            <a href="mailto:{{ .Site.Params.email }}" class="nav-button">{{ T "contact_us" }}</a>
         </div>
     </div>
 </nav>

@@ -1,0 +1,25 @@
+title: "Get Real Results Fast"
+subtitle: "Without the Complexity"
+subtitle2: ""
+description: "We keep it simple. Identify your biggest time-wasters. Build a solution that works. See results in days. Scale when you're ready."
+
+steps:
+  - id: "identification"
+    title: "Quick Audit"
+    number: "01"
+    description: "15-minute call to identify your biggest time-wasters and quick wins. We'll show you exactly what can be automated and how much you'll save. No consultants, no fluff."
+  
+  - id: "development"
+    title: "Build & Test"
+    number: "02"
+    description: "See a working demo in 48 hours. Test it with your real data. Make adjustments on the spot. Pay nothing until you see it working."
+  
+  - id: "implementation"
+    title: "Go Live"
+    number: "03"
+    description: "Launch in days, not months. We handle the setup, train your team, and ensure everything runs smoothly. No IT department required."
+  
+  - id: "validation"
+    title: "Measure & Optimize"
+    number: "04"
+    description: "Track time saved, costs cut, revenue gained. See your ROI in real numbers. Expand what works, adjust what doesn't. Simple monthly reports."

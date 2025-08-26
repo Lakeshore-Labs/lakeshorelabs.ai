@@ -1,21 +1,23 @@
 // Theme Toggle
 document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.querySelector('.theme-toggle');
+    const themeToggles = document.querySelectorAll('.theme-toggle, .mobile-theme-toggle');
     const root = document.documentElement;
     
     // Check for saved theme preference
     const savedTheme = localStorage.getItem('theme') || 'lavender';
     root.setAttribute('data-theme', savedTheme);
     
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = root.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'lavender' : 'dark';
-            
-            root.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-    }
+    themeToggles.forEach(toggle => {
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                const currentTheme = root.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'lavender' : 'dark';
+                
+                root.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+    });
 });
 
 // Use Cases Filtering and Animations

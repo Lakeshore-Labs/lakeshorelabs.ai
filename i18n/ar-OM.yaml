@@ -1,0 +1,68 @@
+# Common
+contact_us: "اتصل بنا"
+learn_more: "اعرف أكثر"
+get_started: "ابدأ الآن"
+
+# Navigation
+solutions: "الحلول"
+process: "العملية"
+use_cases: "حالات الاستخدام"
+faq: "الأسئلة الشائعة"
+blog: "المدونة"
+
+# Hero Section
+hero_title: "ذكاء اصطناعي يعمل بالفعل."
+hero_highlight: "نتائج في أيام، وليس شهور."
+hero_subtitle: "لا تحتاج ميزانية مؤسسة."
+hero_description: "خفض التكاليف بنسبة 30٪. وفر أكثر من 20 ساعة أسبوعيًا. ابدأ في 48 ساعة. نبني حلول ذكاء اصطناعي عملية تحل مشاكل حقيقية للشركات النامية. بدون تعقيدات، فقط نتائج."
+hero_cta: "شاهد ما هو ممكن"
+
+# CTA Section
+cta_title: "مستعد لأتمتة عملك؟"
+cta_description: "ابدأ صغيرًا. شاهد النتائج بسرعة. وسّع عندما تكون جاهزًا. احصل على خطة أتمتة مخصصة لاحتياجاتك المحددة وشاهد الحلول العاملة في 48 ساعة. ادفع فقط مقابل ما يحقق قيمة."
+cta_button: "ابدأ في 48 ساعة"
+cta_feature_1: "تدقيق أتمتة مجاني"
+cta_feature_2: "عرض توضيحي يعمل في 48 ساعة"
+cta_feature_3: "ادفع فقط مقابل النتائج"
+
+# Solutions Section
+solutions_title: "الأعمال النامية تحقق النتائج"
+solutions_subtitle: "مع الذكاء الاصطناعي العملي الذي يعمل."
+solutions_description: "توقف عن إضاعة الوقت في برامج المؤسسات المعقدة. احصل على أتمتة ذكاء اصطناعي مصممة لحجم فريقك وميزانيتك. شاهد نتائج حقيقية في أيام، وليس شهور."
+
+# Process Section
+process_title: "من المشكلة إلى الإنتاج في أيام"
+process_subtitle: "ليس شهور. ليس سنوات. أيام."
+
+# Use Cases Section
+use_cases_title: "نتائج حقيقية من أعمال حقيقية"
+use_cases_subtitle: "شاهد ما يمكن للذكاء الاصطناعي أن يفعله لك"
+
+# FAQ Section
+faq_title: "أسئلة شائعة"
+faq_subtitle: "إجابات مباشرة"
+
+# Footer
+footer_copyright: "© 2024 Lakeshore Labs. جميع الحقوق محفوظة."
+footer_contact: "اتصل"
+footer_privacy: "سياسة الخصوصية"
+footer_terms: "شروط الخدمة"
+
+# Blog
+blog_title: "رؤى وموارد"
+blog_read_more: "اقرأ المزيد"
+blog_published: "نشر في"
+blog_author: "بواسطة"
+blog_back: "العودة إلى المدونة"
+
+# Partners Section
+partners_title: "موثوق به من قبل الشركات النامية"
+
+# Tools Section
+tools_title: "ذكاء اصطناعي بمستوى المؤسسات."
+tools_subtitle: "بدون تكاليف المؤسسات."
+tools_description: "نستخدم أفضل أدوات الذكاء الاصطناعي لبناء حلول تعمل بالفعل. لا قيود من الموردين، لا أدوات مملوكة. فقط تقنية مثبتة تحقق النتائج."
+
+# Integrations Section
+integrations_title: "يتصل مع كل ما تستخدمه"
+integrations_description: "يعمل ذكاءنا الاصطناعي مع الأدوات التي لديك بالفعل. لا حاجة لاستبدال أنظمتك."

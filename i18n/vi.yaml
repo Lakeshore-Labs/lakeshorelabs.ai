@@ -1,0 +1,68 @@
+# Common
+contact_us: "Liên Hệ"
+learn_more: "Tìm Hiểu Thêm"
+get_started: "Bắt Đầu Ngay"
+
+# Navigation
+solutions: "Giải Pháp"
+process: "Quy Trình"
+use_cases: "Ứng Dụng"
+faq: "Câu Hỏi Thường Gặp"
+blog: "Blog"
+
+# Hero Section
+hero_title: "AI Thực Sự Hiệu Quả."
+hero_highlight: "Kết Quả Trong Vài Ngày, Không Phải Vài Tháng."
+hero_subtitle: "Không Cần Ngân Sách Doanh Nghiệp."
+hero_description: "Cắt giảm chi phí 30%. Tiết kiệm hơn 20 giờ mỗi tuần. Bắt đầu trong 48 giờ. Chúng tôi xây dựng các giải pháp AI thực tế giải quyết vấn đề thực sự cho các doanh nghiệp đang phát triển. Không rườm rà, chỉ có kết quả."
+hero_cta: "Xem Những Gì Có Thể"
+
+# CTA Section
+cta_title: "Sẵn Sàng Tự Động Hóa Doanh Nghiệp?"
+cta_description: "Bắt đầu nhỏ. Thấy kết quả nhanh. Mở rộng khi sẵn sàng. Nhận kế hoạch tự động hóa tùy chỉnh cho nhu cầu cụ thể của bạn và xem giải pháp hoạt động trong 48 giờ. Chỉ trả cho những gì mang lại giá trị."
+cta_button: "Bắt Đầu Trong 48 Giờ"
+cta_feature_1: "Kiểm Tra Tự Động Hóa Miễn Phí"
+cta_feature_2: "Demo Hoạt Động Trong 48 Giờ"
+cta_feature_3: "Chỉ Trả Cho Kết Quả"
+
+# Solutions Section
+solutions_title: "Doanh Nghiệp Phát Triển Đạt Kết Quả"
+solutions_subtitle: "Với AI Thực Tế Hiệu Quả."
+solutions_description: "Dừng lãng phí thời gian với phần mềm doanh nghiệp phức tạp. Nhận tự động hóa AI được xây dựng cho quy mô và ngân sách của đội ngũ bạn. Thấy kết quả thực trong vài ngày, không phải vài tháng."
+
+# Process Section
+process_title: "Từ Vấn Đề Đến Sản Xuất Trong Vài Ngày"
+process_subtitle: "Không Phải Vài Tháng. Không Phải Vài Năm. Vài Ngày."
+
+# Use Cases Section
+use_cases_title: "Kết Quả Thực Từ Doanh Nghiệp Thực"
+use_cases_subtitle: "Xem AI Có Thể Làm Gì Cho Bạn"
+
+# FAQ Section
+faq_title: "Câu Hỏi Phổ Biến"
+faq_subtitle: "Câu Trả Lời Thẳng Thắn"
+
+# Footer
+footer_copyright: "© 2024 Lakeshore Labs. Mọi quyền được bảo lưu."
+footer_contact: "Liên Hệ"
+footer_privacy: "Chính Sách Bảo Mật"
+footer_terms: "Điều Khoản Dịch Vụ"
+
+# Blog
+blog_title: "Thông Tin & Tài Nguyên"
+blog_read_more: "Đọc Thêm"
+blog_published: "Đăng ngày"
+blog_author: "Bởi"
+blog_back: "Quay lại Blog"
+
+# Partners Section
+partners_title: "Được Tin Dùng Bởi Các Công Ty Đang Phát Triển"
+
+# Tools Section
+tools_title: "AI Cấp Doanh Nghiệp."
+tools_subtitle: "Không Cần Chi Phí Doanh Nghiệp."
+tools_description: "Chúng tôi sử dụng các công cụ AI tốt nhất để xây dựng các giải pháp hoạt động. Không có khóa nhà cung cấp, không có công cụ độc quyền. Chỉ là công nghệ đã được chứng minh mang lại kết quả."
+
+# Integrations Section
+integrations_title: "Kết Nối Với Mọi Thứ Bạn Sử Dụng"
+integrations_description: "AI của chúng tôi hoạt động với các công cụ bạn đã có. Không cần thay thế hệ thống của bạn."

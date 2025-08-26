@@ -1,12 +1,48 @@
 baseURL = 'https://lakeshorelabs.ai/'
-languageCode = 'en-us'
 title = 'Lakeshore Labs'
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = false
+
+# Language configuration
+[languages]
+  [languages.en]
+    contentDir = 'content/en'
+    languageCode = 'en-US'
+    languageDirection = 'ltr'
+    languageName = 'English'
+    title = 'Lakeshore Labs'
+    weight = 1
+    [languages.en.params]
+      description = "Stop Experimenting. Start Scaling with Custom AI. Proven Solutions. Guaranteed ROI."
+      author = "Lakeshore Labs"
+      email = "hello@lakeshorelabs.ai"
+      
+  [languages.vi]
+    contentDir = 'content/vi'
+    languageCode = 'vi-VN'
+    languageDirection = 'ltr'
+    languageName = 'Tiếng Việt'
+    title = 'Lakeshore Labs'
+    weight = 2
+    [languages.vi.params]
+      description = "Ngừng Thử Nghiệm. Bắt Đầu Mở Rộng với AI Tùy Chỉnh. Giải Pháp Đã Được Kiểm Chứng. ROI Được Đảm Bảo."
+      author = "Lakeshore Labs"
+      email = "hello@lakeshorelabs.ai"
+      
+  [languages.ar-OM]
+    contentDir = 'content/ar-OM'
+    languageCode = 'ar-OM'
+    languageDirection = 'rtl'
+    languageName = 'العربية العُمانية'
+    title = 'Lakeshore Labs'
+    weight = 3
+    [languages.ar-OM.params]
+      description = "توقف عن التجريب. ابدأ بالتوسع مع الذكاء الاصطناعي المخصص. حلول مثبتة. عائد استثمار مضمون."
+      author = "Lakeshore Labs"
+      email = "hello@lakeshorelabs.ai"
 
 # SEO and metadata
 [params]
-  description = "Stop Experimenting. Start Scaling with Custom AI. Proven Solutions. Guaranteed ROI."
-  author = "Lakeshore Labs"
-  email = "hello@lakeshorelabs.ai"
   fingerprint = true  # Enable asset fingerprinting for better cache busting
 
 # Enable features
@@ -38,37 +74,98 @@ enableGitInfo = false
   disableSVG = false
   disableXML = false
 
-# Menu configuration
-[menus]
-  [[menus.main]]
-    identifier = "solutions"
-    name = "Solutions"
-    url = "#solutions"
-    weight = 10
+# Menu configuration for English
+[[languages.en.menus.main]]
+  identifier = "solutions"
+  name = "Solutions"
+  url = "#solutions"
+  weight = 10
 
-  [[menus.main]]
-    identifier = "process"
-    name = "Process"
-    url = "#process"
-    weight = 20
+[[languages.en.menus.main]]
+  identifier = "process"
+  name = "Process"
+  url = "#process"
+  weight = 20
 
-  [[menus.main]]
-    identifier = "use-cases"
-    name = "Use Cases"
-    url = "#use-cases"
-    weight = 30
+[[languages.en.menus.main]]
+  identifier = "use-cases"
+  name = "Use Cases"
+  url = "#use-cases"
+  weight = 30
 
-  [[menus.main]]
-    identifier = "faq"
-    name = "FAQ"
-    url = "#faq"
-    weight = 40
+[[languages.en.menus.main]]
+  identifier = "faq"
+  name = "FAQ"
+  url = "#faq"
+  weight = 40
 
-  [[menus.main]]
-    identifier = "blog"
-    name = "Blog"
-    url = "/posts/"
-    weight = 50
+[[languages.en.menus.main]]
+  identifier = "blog"
+  name = "Blog"
+  url = "/posts/"
+  weight = 50
+
+# Menu configuration for Vietnamese
+[[languages.vi.menus.main]]
+  identifier = "solutions"
+  name = "Giải Pháp"
+  url = "#solutions"
+  weight = 10
+
+[[languages.vi.menus.main]]
+  identifier = "process"
+  name = "Quy Trình"
+  url = "#process"
+  weight = 20
+
+[[languages.vi.menus.main]]
+  identifier = "use-cases"
+  name = "Ứng Dụng"
+  url = "#use-cases"
+  weight = 30
+
+[[languages.vi.menus.main]]
+  identifier = "faq"
+  name = "Câu Hỏi"
+  url = "#faq"
+  weight = 40
+
+[[languages.vi.menus.main]]
+  identifier = "blog"
+  name = "Blog"
+  url = "/posts/"
+  weight = 50
+
+# Menu configuration for Omani-Arabic
+[[languages.ar-OM.menus.main]]
+  identifier = "solutions"
+  name = "الحلول"
+  url = "#solutions"
+  weight = 10
+
+[[languages.ar-OM.menus.main]]
+  identifier = "process"
+  name = "العملية"
+  url = "#process"
+  weight = 20
+
+[[languages.ar-OM.menus.main]]
+  identifier = "use-cases"
+  name = "حالات الاستخدام"
+  url = "#use-cases"
+  weight = 30
+
+[[languages.ar-OM.menus.main]]
+  identifier = "faq"
+  name = "الأسئلة الشائعة"
+  url = "#faq"
+  weight = 40
+
+[[languages.ar-OM.menus.main]]
+  identifier = "blog"
+  name = "المدونة"
+  url = "/posts/"
+  weight = 50
 
 # Hugo version requirement
 [module]

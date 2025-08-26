@@ -5,6 +5,10 @@
             <h1>{{ .title | markdownify }}<br><span class="highlight">{{ .highlight }}</span><br>{{ .subtitle }}</h1>
             <p>{{ .description | markdownify }}</p>
             <a href="{{ .cta_link }}" class="button">{{ .cta_text }}</a>
+            {{ else }}
+            <h1>{{ T "hero_title" }}<br><span class="highlight">{{ T "hero_highlight" }}</span><br>{{ T "hero_subtitle" }}</h1>
+            <p>{{ T "hero_description" }}</p>
+            <a href="mailto:{{ .Site.Params.email }}" class="button">{{ T "hero_cta" }}</a>
             {{ end }}
         </div>
     </div>

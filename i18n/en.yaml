@@ -1,0 +1,68 @@
+# Common
+contact_us: "Contact Us"
+learn_more: "Learn More"
+get_started: "Get Started"
+
+# Navigation
+solutions: "Solutions"
+process: "Process"
+use_cases: "Use Cases"
+faq: "FAQ"
+blog: "Blog"
+
+# Hero Section
+hero_title: "AI That Actually Works."
+hero_highlight: "Results in Days, Not Months."
+hero_subtitle: "No Enterprise Budget Required."
+hero_description: "Cut costs by 30%. Save 20+ hours per week. Get started in 48 hours. We build practical AI solutions that solve real problems for growing businesses. No fluff, just results."
+hero_cta: "See What's Possible"
+
+# CTA Section
+cta_title: "Ready to Automate Your Business?"
+cta_description: "Start small. See results fast. Scale when ready. Get a custom automation plan for your specific needs and see working solutions in 48 hours. Pay only for what delivers value."
+cta_button: "Get Started in 48 Hours"
+cta_feature_1: "Free Automation Audit"
+cta_feature_2: "Working Demo in 48 Hours"
+cta_feature_3: "Pay Only for Results"
+
+# Solutions Section
+solutions_title: "Growing Businesses Get Results"
+solutions_subtitle: "With Practical AI That Works."
+solutions_description: "Stop wasting time on complex enterprise software. Get AI automation that's built for your team size and budget. See real results in days, not months."
+
+# Process Section
+process_title: "From Problem to Production in Days"
+process_subtitle: "Not Months. Not Years. Days."
+
+# Use Cases Section
+use_cases_title: "Real Results From Real Businesses"
+use_cases_subtitle: "See What AI Can Do For You"
+
+# FAQ Section
+faq_title: "Common Questions"
+faq_subtitle: "Straight Answers"
+
+# Footer
+footer_copyright: "© 2024 Lakeshore Labs. All rights reserved."
+footer_contact: "Contact"
+footer_privacy: "Privacy Policy"
+footer_terms: "Terms of Service"
+
+# Blog
+blog_title: "Insights & Resources"
+blog_read_more: "Read More"
+blog_published: "Published on"
+blog_author: "By"
+blog_back: "Back to Blog"
+
+# Partners Section
+partners_title: "Trusted by Growing Companies"
+
+# Tools Section
+tools_title: "Enterprise-Grade AI."
+tools_subtitle: "Without Enterprise Costs."
+tools_description: "We use the best AI tools to build solutions that actually work. No vendor lock-in, no proprietary tools. Just proven tech that delivers results."
+
+# Integrations Section
+integrations_title: "Connects With Everything You Use"
+integrations_description: "Our AI works with the tools you already have. No need to replace your systems."

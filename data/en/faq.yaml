@@ -1,0 +1,29 @@
+title: "Straight Answers to"
+subtitle: "Real Questions"
+
+faqs:
+  column1:
+    - question: "How much does this actually cost?"
+      answer: "Projects start at $2,500/month. Most SMBs spend $3,500-7,500/month for full automation. You'll know exact costs after our free 15-minute audit. No hidden fees, no surprise charges."
+    
+    - question: "How fast can I see results?"
+      answer: "48 hours for a working demo. 7 days to go live with your first automation. Most clients save 20+ hours in the first week. If you don't see value in 7 days, you pay nothing."
+    
+    - question: "Do I need technical staff to use this?"
+      answer: "No. We build it, set it up, and train your team. Everything works through simple interfaces your team already knows - email, spreadsheets, chat. If you can use Gmail, you can use our automations."
+    
+    - question: "What if I'm too small for AI?"
+      answer: "If you have repetitive tasks that take more than 5 hours per week, you're ready. We work with businesses as small as 3 people. Start with one simple automation, prove the value, then expand."
+  
+  column2:
+    - question: "Can this work with my existing tools?"
+      answer: "Yes. We integrate with 1000+ apps including QuickBooks, Gmail, Slack, Shopify, Square, HubSpot, and more. If it has an API or spreadsheet export, we can automate it."
+    
+    - question: "What happens if something breaks?"
+      answer: "We monitor everything 24/7 and fix issues before you notice them. Response time under 2 hours during business hours. Plus, we build fallbacks so your business never stops if automation pauses."
+    
+    - question: "How do I know this will actually save money?"
+      answer: "Free audit shows exact ROI before you spend a penny. Most clients see 3-5x ROI in the first 3 months. We track and report savings monthly. If ROI drops below 2x, we fix it free or refund that month."
+    
+    - question: "Can I cancel anytime?"
+      answer: "Yes. Month-to-month contracts. Cancel anytime with 30 days notice. You keep all automations we've built. We'll even help transition to your team or another provider. No lock-in, ever."
