@@ -277,7 +277,7 @@ body::before {
 .hero {
     position: relative;
     padding: 210px 0 120px;
-    overflow: hidden;
+    overflow: visible;
     min-height: 85vh;
     display: flex;
     align-items: center;
@@ -351,13 +351,13 @@ body::before {
 /* 3D Hero Graphics */
 .hero-graphic {
     position: absolute;
-    right: 10%;
-    top: 50%;
+    right: 5%;
+    top: 20%;
     transform: translateY(-50%);
-    width: 600px;
-    height: 600px;
-    z-index: 1;
-    opacity: 0.8;
+    width: 800px;
+    height: 800px;
+    z-index: 10;
+    opacity: 0.9;
     animation: slideInFromRight 1s cubic-bezier(0.4, 0.0, 0.2, 1) 0.8s;
     animation-fill-mode: both;
 }
@@ -367,94 +367,83 @@ body::before {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transform: perspective(1500px) rotateY(-10deg) rotateX(5deg);
+    transform: perspective(2000px) rotateY(-15deg) rotateX(10deg);
 }
 
 .bar {
     position: absolute;
-    border-radius: 20px;
+    border-radius: 30px;
     transform-style: preserve-3d;
+    transform-origin: center;
 }
 
 .bar-1 {
     width: 120px;
-    height: 400px;
+    height: 450px;
     background: var(--bar-gradient-1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
-    top: 100px;
-    right: 50px;
-    --bar-z: 50px;
-    --bar-rotate: 10deg;
-    transform: translateZ(50px) rotateY(10deg);
+    border-radius: 60px;
+    top: 50%;
+    left: 20%;
+    --bar-z: 100px;
+    --bar-rotate: -10deg;
+    --bar-tilt: -35deg;
+    transform: translateY(-50%) translateZ(100px) rotateY(-10deg) rotateZ(-35deg);
     box-shadow: 
-        0 20px 40px var(--accent-shadow),
-        -20px 0 40px rgba(0, 0, 0, 0.2);
+        0 30px 60px var(--accent-shadow),
+        -30px 0 60px rgba(0, 0, 0, 0.3);
     animation: 
         slideInFromRightBar 1.2s cubic-bezier(0.4, 0.0, 0.2, 1) 0.9s both,
-        rotateBar 20s linear 2.1s infinite;
+        rotateBar 25s linear 2.1s infinite;
 }
 
 .bar-2 {
-    width: 100px;
-    height: 320px;
+    width: 120px;
+    height: 500px;
     background: var(--bar-gradient-2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
-    top: 150px;
-    right: 180px;
-    --bar-z: 100px;
-    --bar-rotate: -15deg;
-    transform: translateZ(100px) rotateY(-15deg);
+    border-radius: 60px;
+    top: 50%;
+    left: 40%;
+    --bar-z: 200px;
+    --bar-rotate: 0deg;
+    --bar-tilt: 35deg;
+    transform: translateY(-50%) translateZ(200px) rotateY(0deg) rotateZ(35deg);
     box-shadow: 
-        0 20px 40px var(--accent-shadow),
-        -20px 0 40px rgba(0, 0, 0, 0.2);
+        0 40px 80px var(--accent-shadow),
+        -40px 0 80px rgba(0, 0, 0, 0.3);
     animation: 
         slideInFromRightBar 1.2s cubic-bezier(0.4, 0.0, 0.2, 1) 1.1s both,
-        rotateBar 25s linear 2.3s infinite reverse;
+        rotateBar 30s linear 2.3s infinite reverse;
 }
 
 .bar-3 {
-    width: 140px;
+    width: 120px;
     height: 450px;
     background: var(--bar-gradient-3);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
-    top: 50px;
-    right: 300px;
-    --bar-z: 150px;
-    --bar-rotate: 20deg;
-    transform: translateZ(150px) rotateY(20deg);
+    border-radius: 60px;
+    top: 50%;
+    left: 60%;
+    --bar-z: 100px;
+    --bar-rotate: 10deg;
+    --bar-tilt: -35deg;
+    transform: translateY(-50%) translateZ(100px) rotateY(10deg) rotateZ(-35deg);
     box-shadow: 
-        0 20px 40px var(--accent-shadow),
-        -20px 0 40px rgba(0, 0, 0, 0.2);
+        0 30px 60px var(--accent-shadow),
+        -30px 0 60px rgba(0, 0, 0, 0.3);
     animation: 
         slideInFromRightBar 1.2s cubic-bezier(0.4, 0.0, 0.2, 1) 1.3s both,
-        rotateBar 30s linear 2.5s infinite;
+        rotateBar 35s linear 2.5s infinite;
 }
 
-.bar-4 {
-    width: 80px;
-    height: 280px;
-    background: var(--bar-gradient-4);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    top: 200px;
-    right: 450px;
-    --bar-z: 80px;
-    --bar-rotate: -25deg;
-    transform: translateZ(80px) rotateY(-25deg);
-    box-shadow: 
-        0 20px 40px var(--accent-shadow),
-        -20px 0 40px rgba(0, 0, 0, 0.2);
-    animation: 
-        slideInFromRightBar 1.2s cubic-bezier(0.4, 0.0, 0.2, 1) 1.5s both,
-        rotateBar 22s linear 2.7s infinite reverse;
-}
+
 
 /* Animation Keyframes */
 @keyframes slideInFromLeft {
@@ -482,20 +471,20 @@ body::before {
 @keyframes slideInFromRightBar {
     0% {
         opacity: 0;
-        transform: translateX(300px) translateZ(var(--bar-z)) rotateY(calc(var(--bar-rotate) - 90deg));
+        transform: translateY(-50%) translateX(400px) translateZ(var(--bar-z)) rotateY(calc(var(--bar-rotate) - 180deg)) rotateZ(var(--bar-tilt));
     }
     100% {
         opacity: 1;
-        transform: translateX(0) translateZ(var(--bar-z)) rotateY(var(--bar-rotate));
+        transform: translateY(-50%) translateX(0) translateZ(var(--bar-z)) rotateY(var(--bar-rotate)) rotateZ(var(--bar-tilt));
     }
 }
 
 @keyframes rotateBar {
     0% {
-        transform: translateZ(var(--bar-z)) rotateY(var(--bar-rotate));
+        transform: translateY(-50%) translateZ(var(--bar-z)) rotateY(var(--bar-rotate)) rotateZ(var(--bar-tilt));
     }
     100% {
-        transform: translateZ(var(--bar-z)) rotateY(calc(var(--bar-rotate) + 360deg));
+        transform: translateY(-50%) translateZ(var(--bar-z)) rotateY(calc(var(--bar-rotate) + 360deg)) rotateZ(var(--bar-tilt));
     }
 }
 
@@ -503,8 +492,6 @@ body::before {
 .partners {
     padding: 120px 0;
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
 }
 
