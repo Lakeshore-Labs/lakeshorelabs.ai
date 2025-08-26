@@ -11,6 +11,53 @@
     {{ $blogScript = $blogScript | minify | fingerprint }}
 {{ end }}
 <script src="{{ $blogScript.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $blogScript.Data.Integrity }}"{{ end }}></script>
+
+<!-- Mermaid for blog posts -->
+<script src="/js/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({ 
+        startOnLoad: true,
+        theme: 'dark',
+        themeVariables: {
+            primaryColor: '#a891d1',
+            primaryTextColor: '#f1f1f1',
+            primaryBorderColor: '#7877c6',
+            lineColor: '#9381be',
+            secondaryColor: '#7877c6',
+            tertiaryColor: '#10101b',
+            background: 'rgba(16, 16, 27, 0.8)',
+            mainBkg: 'rgba(16, 16, 27, 0.8)',
+            secondBkg: 'rgba(120, 119, 198, 0.1)',
+            tertiaryBkg: 'rgba(168, 145, 209, 0.1)',
+            primaryBorderColor: 'rgba(168, 145, 209, 0.3)',
+            lineColor: 'rgba(168, 145, 209, 0.5)',
+            textColor: '#f1f1f1',
+            nodeTextColor: '#f1f1f1',
+            fontSize: '16px',
+            fontFamily: 'Inter, system-ui, sans-serif',
+            nodeBkg: 'rgba(120, 119, 198, 0.2)',
+            nodeBorder: 'rgba(168, 145, 209, 0.5)',
+            clusterBkg: 'rgba(147, 129, 190, 0.1)',
+            clusterBorder: 'rgba(168, 145, 209, 0.3)',
+            defaultLinkColor: 'rgba(168, 145, 209, 0.5)',
+            titleColor: '#f1f1f1',
+            edgeLabelBackground: 'rgba(16, 16, 27, 0.9)',
+            actorBkg: 'rgba(120, 119, 198, 0.2)',
+            actorBorder: 'rgba(168, 145, 209, 0.5)',
+            actorTextColor: '#f1f1f1',
+            actorLineColor: 'rgba(168, 145, 209, 0.5)',
+            signalColor: '#f1f1f1',
+            signalTextColor: '#f1f1f1',
+            labelBoxBkgColor: 'rgba(120, 119, 198, 0.2)',
+            labelBoxBorderColor: 'rgba(168, 145, 209, 0.5)',
+            labelTextColor: '#f1f1f1',
+            loopTextColor: '#f1f1f1',
+            activationBorderColor: 'rgba(168, 145, 209, 0.5)',
+            activationBkgColor: 'rgba(120, 119, 198, 0.2)',
+            sequenceNumberColor: '#f1f1f1'
+        }
+    });
+</script>
 {{ end }}
 
 <!-- Initialize Feather Icons -->
