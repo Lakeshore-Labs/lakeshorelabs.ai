@@ -224,21 +224,58 @@ tabs.forEach(tab => {
     });
 });
 
-// Process tabs functionality
-const processTabs = document.querySelectorAll('.process-tab');
-const processPanels = document.querySelectorAll('.process-panel');
-
-processTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        const targetProcess = tab.dataset.process;
+// Process timeline functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const timelineSteps = document.querySelectorAll('.timeline-step');
+    const timelineMarkers = document.querySelectorAll('.timeline-marker');
+    const processCards = document.querySelectorAll('.process-card');
+    const timelineFill = document.querySelector('.timeline-fill');
+    
+    function updateProcess(index) {
+        // Update timeline steps
+        timelineSteps.forEach((step, i) => {
+            step.classList.toggle('active', i === index);
+        });
         
-        // Remove active class from all tabs and panels
-        processTabs.forEach(t => t.classList.remove('active'));
-        processPanels.forEach(panel => panel.classList.remove('active'));
+        // Update process cards
+        processCards.forEach((card, i) => {
+            card.classList.toggle('active', i === index);
+        });
         
-        // Add active class to clicked tab and corresponding panel
-        tab.classList.add('active');
-        document.getElementById(targetProcess).classList.add('active');
+        // Update progress bar
+        if (timelineFill) {
+            const progressPercentage = (index / (timelineSteps.length - 1)) * 100;
+            timelineFill.style.width = `${progressPercentage}%`;
+        }
+    }
+    
+    // Handle timeline marker clicks
+    timelineMarkers.forEach((marker, index) => {
+        marker.addEventListener('click', () => {
+            updateProcess(index);
+        });
+    });
+    
+    // Handle timeline step clicks (for mobile)
+    timelineSteps.forEach((step, index) => {
+        step.addEventListener('click', () => {
+            updateProcess(index);
+        });
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (!document.querySelector('.process')) return;
+        
+        const activeIndex = Array.from(timelineSteps).findIndex(step => 
+            step.classList.contains('active')
+        );
+        
+        if (e.key === 'ArrowLeft' && activeIndex > 0) {
+            updateProcess(activeIndex - 1);
+        } else if (e.key === 'ArrowRight' && activeIndex < timelineSteps.length - 1) {
+            updateProcess(activeIndex + 1);
+        }
     });
 });
 
