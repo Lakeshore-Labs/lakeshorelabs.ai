@@ -20,8 +20,7 @@ When enterprises embark on AI transformation, the proof of concept (POC) phase i
 
 ## Key Components of an Effective AI POC
 
-<div class="mermaid-container">
-<div class="mermaid">
+```mermaid
 quadrantChart
     title Key Components of Effective AI POC
     x-axis Low Complexity --> High Complexity
@@ -34,8 +33,7 @@ quadrantChart
     Stakeholder Alignment: [0.7, 0.9]
     Data Strategy: [0.8, 0.6]
     Technical Architecture: [0.6, 0.5]
-</div>
-</div>
+```
 
 ### Essential Elements:
 
@@ -46,8 +44,7 @@ quadrantChart
 
 ## The 30-Day POC Framework
 
-<div class="mermaid-container">
-<div class="mermaid">
+```mermaid
 timeline
     title 30-Day AI POC Implementation Timeline
     
@@ -65,13 +62,11 @@ timeline
                         : User Acceptance
                         : Documentation
                         : Knowledge Transfer
-</div>
-</div>
+```
 
 ## The POC Journey: From Concept to Production
 
-<div class="mermaid-container">
-<div class="mermaid">
+```mermaid
 flowchart LR
     A[Business Problem] --> B{Feasibility Check}
     B -->|Yes| C[Define Success Metrics]
@@ -93,17 +88,11 @@ flowchart LR
     O -->|No| Q[Address Concerns]
     Q --> M
     P --> R[Scale to Production]
-    
-    style A fill:#a891d1,stroke:#7877c6,color:#fff
-    style P fill:#a891d1,stroke:#7877c6,color:#fff
-    style R fill:#6db33f,stroke:#5a9c35,color:#fff
-</div>
-</div>
+```
 
 ## Common Pitfalls and How to Avoid Them
 
-<div class="mermaid-container">
-<div class="mermaid">
+```mermaid
 mindmap
   root((POC Pitfalls))
     Scope Issues
@@ -122,36 +111,28 @@ mindmap
       Skill Gaps
       Communication Issues
       Resource Constraints
-</div>
-</div>
+```
 
 ## Measuring Success and ROI
 
-<div class="mermaid-container">
-<div class="mermaid">
-graph TD
+```mermaid
+flowchart TD
     A[POC Success Metrics] --> B[Business Metrics]
     A --> C[Technical Metrics]
     A --> D[User Metrics]
     
-    B --> B1[Cost Reduction]
-    B --> B2[Revenue Impact]
-    B --> B3[Process Efficiency]
+    B --> E[Cost Reduction]
+    B --> F[Revenue Impact]
+    B --> G[Process Efficiency]
     
-    C --> C1[Performance]
-    C --> C2[Scalability]
-    C --> C3[Reliability]
+    C --> H[Performance]
+    C --> I[Scalability]
+    C --> J[Reliability]
     
-    D --> D1[Adoption Rate]
-    D --> D2[User Satisfaction]
-    D --> D3[Time to Value]
-    
-    style A fill:#a891d1,stroke:#7877c6,color:#fff
-    style B fill:#7877c6,stroke:#5a6c8e,color:#fff
-    style C fill:#7877c6,stroke:#5a6c8e,color:#fff
-    style D fill:#7877c6,stroke:#5a6c8e,color:#fff
-</div>
-</div>
+    D --> K[Adoption Rate]
+    D --> L[User Satisfaction]
+    D --> M[Time to Value]
+```
 
 A successful POC demonstrates:
 - **Measurable improvement** in defined KPIs

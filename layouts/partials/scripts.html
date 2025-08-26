@@ -11,10 +11,12 @@
     {{ $blogScript = $blogScript | minify | fingerprint }}
 {{ end }}
 <script src="{{ $blogScript.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $blogScript.Data.Integrity }}"{{ end }}></script>
+{{ end }}
 
-<!-- Mermaid for blog posts -->
-<script src="/js/mermaid.min.js"></script>
-<script>
+<!-- Mermaid initialization if needed -->
+{{ if .Store.Get "hasMermaid" }}
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
     mermaid.initialize({ 
         startOnLoad: true,
         theme: 'dark',
@@ -57,7 +59,7 @@
             sequenceNumberColor: '#f1f1f1'
         }
     });
-</script>
+  </script>
 {{ end }}
 
 <!-- Initialize Feather Icons -->

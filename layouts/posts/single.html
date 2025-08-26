@@ -327,7 +327,7 @@
 }
 
 /* Mermaid Diagram Styles */
-.mermaid-container {
+.blog-content pre.mermaid {
     margin: 40px 0;
     padding: 32px;
     background: var(--glass-bg);
@@ -335,10 +335,14 @@
     border-radius: 20px;
     backdrop-filter: blur(20px);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
 }
 
-.mermaid-container::before {
+.blog-content pre.mermaid::before {
     content: '';
     position: absolute;
     top: 0;
@@ -350,33 +354,24 @@
         rgba(120, 119, 198, 0.05) 50%, 
         rgba(147, 129, 190, 0.05) 100%);
     pointer-events: none;
+    border-radius: 20px;
 }
 
-.mermaid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
+.blog-content pre.mermaid svg {
+    max-width: 100%;
+    height: auto;
     position: relative;
     z-index: 1;
 }
 
-.mermaid svg {
-    max-width: 100%;
-    height: auto;
-}
-
 /* Mermaid responsiveness */
 @media (max-width: 768px) {
-    .mermaid-container {
+    .blog-content pre.mermaid {
         padding: 20px;
         margin: 30px -20px;
         border-radius: 0;
         border-left: none;
         border-right: none;
-    }
-    
-    .mermaid {
         overflow-x: auto;
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
