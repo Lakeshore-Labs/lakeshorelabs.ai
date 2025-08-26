@@ -83,6 +83,17 @@ body::before {
     transition: background 0.3s ease;
 }
 
+/* Particles.js Container */
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
 .container {
     max-width: 1800px;
     margin: 0 auto;
@@ -287,6 +298,8 @@ body::before {
     color: #F1F1F1;
     margin-bottom: 48px;
     text-align: left;
+    animation: slideInFromLeft 1s cubic-bezier(0.4, 0.0, 0.2, 1) 0.3s;
+    animation-fill-mode: both;
 }
 
 .highlight {
@@ -303,6 +316,8 @@ body::before {
     opacity: 0.7;
     margin-bottom: 72px;
     text-align: left;
+    animation: slideInFromLeft 1s cubic-bezier(0.4, 0.0, 0.2, 1) 0.5s;
+    animation-fill-mode: both;
 }
 
 .button {
@@ -321,6 +336,11 @@ body::before {
     box-shadow: 0 12px 48px 0 var(--accent-shadow);
 }
 
+.hero .button {
+    animation: slideInFromLeft 1s cubic-bezier(0.4, 0.0, 0.2, 1) 0.7s;
+    animation-fill-mode: both;
+}
+
 .button:hover {
     background: var(--accent-gradient-solid);
     transform: translateY(-3px);
@@ -331,13 +351,15 @@ body::before {
 /* 3D Hero Graphics */
 .hero-graphic {
     position: absolute;
-    right: -100px;
+    right: 10%;
     top: 50%;
     transform: translateY(-50%);
     width: 600px;
     height: 600px;
     z-index: 1;
-    opacity: 0.6;
+    opacity: 0.8;
+    animation: slideInFromRight 1s cubic-bezier(0.4, 0.0, 0.2, 1) 0.8s;
+    animation-fill-mode: both;
 }
 
 .graphic-container {
@@ -345,7 +367,7 @@ body::before {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+    transform: perspective(1500px) rotateY(-10deg) rotateX(5deg);
 }
 
 .bar {
@@ -362,11 +384,16 @@ body::before {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     top: 100px;
-    right: 100px;
+    right: 50px;
+    --bar-z: 50px;
+    --bar-rotate: 10deg;
     transform: translateZ(50px) rotateY(10deg);
     box-shadow: 
         0 20px 40px var(--accent-shadow),
         -20px 0 40px rgba(0, 0, 0, 0.2);
+    animation: 
+        slideInFromRightBar 1.2s cubic-bezier(0.4, 0.0, 0.2, 1) 0.9s both,
+        rotateBar 20s linear 2.1s infinite;
 }
 
 .bar-2 {
@@ -377,11 +404,16 @@ body::before {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     top: 150px;
-    right: 250px;
-    transform: translateZ(100px) rotateY(5deg);
+    right: 180px;
+    --bar-z: 100px;
+    --bar-rotate: -15deg;
+    transform: translateZ(100px) rotateY(-15deg);
     box-shadow: 
         0 20px 40px var(--accent-shadow),
         -20px 0 40px rgba(0, 0, 0, 0.2);
+    animation: 
+        slideInFromRightBar 1.2s cubic-bezier(0.4, 0.0, 0.2, 1) 1.1s both,
+        rotateBar 25s linear 2.3s infinite reverse;
 }
 
 .bar-3 {
@@ -392,11 +424,16 @@ body::before {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     top: 50px;
-    right: 380px;
-    transform: translateZ(150px) rotateY(0deg);
+    right: 300px;
+    --bar-z: 150px;
+    --bar-rotate: 20deg;
+    transform: translateZ(150px) rotateY(20deg);
     box-shadow: 
         0 20px 40px var(--accent-shadow),
         -20px 0 40px rgba(0, 0, 0, 0.2);
+    animation: 
+        slideInFromRightBar 1.2s cubic-bezier(0.4, 0.0, 0.2, 1) 1.3s both,
+        rotateBar 30s linear 2.5s infinite;
 }
 
 .bar-4 {
@@ -407,19 +444,65 @@ body::before {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     top: 200px;
-    right: 500px;
-    transform: translateZ(80px) rotateY(-5deg);
+    right: 450px;
+    --bar-z: 80px;
+    --bar-rotate: -25deg;
+    transform: translateZ(80px) rotateY(-25deg);
     box-shadow: 
         0 20px 40px var(--accent-shadow),
         -20px 0 40px rgba(0, 0, 0, 0.2);
+    animation: 
+        slideInFromRightBar 1.2s cubic-bezier(0.4, 0.0, 0.2, 1) 1.5s both,
+        rotateBar 22s linear 2.7s infinite reverse;
+}
+
+/* Animation Keyframes */
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        opacity: 0.6;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRightBar {
+    0% {
+        opacity: 0;
+        transform: translateX(300px) translateZ(var(--bar-z)) rotateY(calc(var(--bar-rotate) - 90deg));
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) translateZ(var(--bar-z)) rotateY(var(--bar-rotate));
+    }
+}
+
+@keyframes rotateBar {
+    0% {
+        transform: translateZ(var(--bar-z)) rotateY(var(--bar-rotate));
+    }
+    100% {
+        transform: translateZ(var(--bar-z)) rotateY(calc(var(--bar-rotate) + 360deg));
+    }
 }
 
 /* Partners */
 .partners {
     padding: 120px 0;
     text-align: center;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
@@ -596,8 +679,6 @@ body::before {
 /* Process Section */
 .process {
     padding: 180px 0;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 .process-tabs {
@@ -723,8 +804,6 @@ body::before {
 /* FAQ Section */
 .faq {
     padding: 180px 0;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 .faq h2 {
@@ -863,8 +942,6 @@ body::before {
 /* Footer */
 .footer {
     padding: 72px 0 36px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
