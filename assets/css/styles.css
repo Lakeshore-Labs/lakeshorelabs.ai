@@ -229,6 +229,8 @@ body::before {
     width: 60px;
     height: 60px;
     flex-shrink: 0;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .nav-logo-text {
@@ -240,8 +242,68 @@ body::before {
     transition: opacity 0.3s, transform 0.3s;
 }
 
+/* Navbar logo parts with hover animations */
+.nav-logo-part-1 {
+    transform-origin: 165px 260px;
+    transform-style: preserve-3d;
+    transition: none;
+}
+
+.nav-logo-part-2 {
+    transform-origin: 277px 217px;
+    transform-style: preserve-3d;
+    transition: none;
+}
+
+.nav-logo-part-3 {
+    transform-origin: 137px 158px;
+    transform-style: preserve-3d;
+    transition: none;
+}
+
+/* Hover animations for navbar logo */
+.nav-logo:hover .nav-logo-part-1 {
+    animation: navRotateAxis1 2s linear infinite;
+}
+
+.nav-logo:hover .nav-logo-part-2 {
+    animation: navRotateAxis2 2.5s linear infinite;
+}
+
+.nav-logo:hover .nav-logo-part-3 {
+    animation: navRotateAxis3 3s linear infinite;
+}
+
+/* Navbar rotation animations - same axes as hero logo */
+@keyframes navRotateAxis1 {
+    0% {
+        transform: rotate3d(0, 1, 0, 0deg);
+    }
+    100% {
+        transform: rotate3d(0, 1, 0, 360deg);
+    }
+}
+
+@keyframes navRotateAxis2 {
+    0% {
+        transform: rotate3d(1, 1, 0, 0deg);
+    }
+    100% {
+        transform: rotate3d(1, 1, 0, 360deg);
+    }
+}
+
+@keyframes navRotateAxis3 {
+    0% {
+        transform: rotate3d(1, -1, 0, 0deg);
+    }
+    100% {
+        transform: rotate3d(1, -1, 0, 360deg);
+    }
+}
+
 .nav-logo:hover .nav-logo-svg {
-    opacity: 0.8;
+    opacity: 0.9;
     transform: scale(1.05);
 }
 
@@ -1285,6 +1347,13 @@ body::before {
     .nav-logo-svg {
         height: 45px;
         width: 45px;
+    }
+    
+    /* Mobile navbar logo parts */
+    .nav-logo-part-1,
+    .nav-logo-part-2,
+    .nav-logo-part-3 {
+        transform-origin: center;
     }
     
     .nav-logo-text {
