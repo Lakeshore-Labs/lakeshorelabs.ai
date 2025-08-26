@@ -58,6 +58,12 @@ enableGitInfo = false
     url = "#faq"
     weight = 40
 
+  [[menus.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/posts/"
+    weight = 50
+
 # Hugo version requirement
 [module]
   [module.hugoVersion]

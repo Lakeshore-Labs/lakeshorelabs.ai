@@ -4,6 +4,15 @@
 {{ end }}
 <script src="{{ $script.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $script.Data.Integrity }}"{{ end }}></script>
 
+<!-- Blog-specific JavaScript -->
+{{ if or (eq .Section "posts") (in .RelPermalink "/posts/") }}
+{{ $blogScript := resources.Get "js/blog.js" }}
+{{ if hugo.IsProduction }}
+    {{ $blogScript = $blogScript | minify | fingerprint }}
+{{ end }}
+<script src="{{ $blogScript.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $blogScript.Data.Integrity }}"{{ end }}></script>
+{{ end }}
+
 <!-- Initialize Feather Icons -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {

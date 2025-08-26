@@ -1,0 +1,429 @@
+{{ define "main" }}
+<div class="blog-post-wrapper">
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <div class="blog-hero-layout">
+                <div class="blog-hero-content">
+                    {{ with .Params.categories }}{{ $category := index . 0 }}
+                    <div class="category-badge" data-category="{{ $category | lower }}">{{ $category }}</div>
+                    {{ end }}
+                
+                <h1 class="blog-title">{{ .Title }}</h1>
+                
+                {{ if or (not .Date.IsZero) .Params.author .Params.tags }}
+                <div class="blog-meta">
+                    {{ if not .Date.IsZero }}
+                    <time class="blog-date">{{ .Date.Format "January 2, 2006" }}</time>
+                    {{ end }}
+                    
+                    {{ with .Params.author }}
+                    <span class="blog-author">{{ . }}</span>
+                    {{ end }}
+                    
+                    {{ if .ReadingTime }}
+                    <span class="blog-reading-time">{{ .ReadingTime }} min read</span>
+                    {{ end }}
+                </div>
+                {{ end }}
+                
+                {{ with .Params.summary }}
+                <div class="blog-summary">{{ . | markdownify }}</div>
+                {{ end }}
+                
+                {{ with .Params.tags }}
+                <div class="blog-tags">
+                    {{ range . }}
+                    <span class="blog-tag">{{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ end }}
+                </div>
+                
+                {{ with .Params.featured_image }}
+                <div class="blog-hero-image">
+                    <img src="{{ . }}" alt="{{ $.Title }}" />
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <article class="blog-article">
+        <div class="container">
+            <div class="blog-content">
+                {{ .Content }}
+            </div>
+        </div>
+    </article>
+</div>
+
+<!-- Scroll Progress Indicator -->
+<div class="scroll-progress">
+    <div class="scroll-progress-bar"></div>
+</div>
+
+<style>
+/* Blog Post Wrapper - Continuous Gradient */
+.blog-post-wrapper {
+    position: relative;
+    min-height: 100vh;
+    background: 
+        radial-gradient(ellipse at 30% 10%, rgba(168, 145, 209, 0.15) 0%, transparent 35%),
+        radial-gradient(ellipse at 70% 40%, rgba(120, 119, 198, 0.12) 0%, transparent 40%),
+        radial-gradient(ellipse at 20% 70%, rgba(147, 129, 190, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 90%, rgba(168, 145, 209, 0.06) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(16, 16, 27, 0) 0%, rgba(16, 16, 27, 0.02) 40%, rgba(16, 16, 27, 0.04) 100%);
+}
+
+/* Blog Hero Section */
+.blog-hero {
+    position: relative;
+    padding: 180px 0 80px;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.blog-hero-layout {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.blog-hero-content {
+    position: relative;
+}
+
+.blog-hero-image {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.blog-hero-image:hover {
+    transform: translateY(-8px) rotate(1deg);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+}
+
+.blog-hero-image img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: all 0.4s ease;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    margin-bottom: 24px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.category-badge[data-category="ai implementation"] {
+    background: linear-gradient(135deg, rgba(168, 145, 209, 0.3), rgba(120, 119, 198, 0.3));
+    border-color: rgba(168, 145, 209, 0.5);
+}
+
+.category-badge[data-category="business strategy"] {
+    background: linear-gradient(135deg, rgba(255, 107, 74, 0.3), rgba(255, 142, 83, 0.3));
+    border-color: rgba(255, 107, 74, 0.5);
+}
+
+.blog-title {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 32px;
+    background: var(--highlight-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: left;
+}
+
+.blog-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    font-size: 16px;
+    opacity: 0.8;
+    flex-wrap: wrap;
+}
+
+.blog-date, .blog-author, .blog-reading-time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.blog-author::before {
+    content: "👤";
+    font-size: 14px;
+}
+
+.blog-reading-time::before {
+    content: "📖";
+    font-size: 14px;
+}
+
+.blog-summary {
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    backdrop-filter: blur(15px);
+}
+
+.blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.blog-tag {
+    padding: 8px 16px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.blog-tag:hover {
+    background: var(--accent-gradient);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(168, 145, 209, 0.3);
+}
+
+/* Blog Content */
+.blog-article {
+    padding: 40px 0 120px;
+    position: relative;
+}
+
+.blog-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.blog-content h2 {
+    font-size: 36px;
+    margin: 60px 0 24px;
+    background: var(--highlight-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.blog-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+}
+
+.blog-content h3 {
+    font-size: 24px;
+    margin: 40px 0 20px;
+    background: var(--highlight-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.blog-content p {
+    margin-bottom: 24px;
+    color: rgba(241, 241, 241, 0.9);
+}
+
+.blog-content strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.blog-content ul, .blog-content ol {
+    margin: 24px 0;
+    padding-left: 24px;
+}
+
+.blog-content li {
+    margin-bottom: 12px;
+    color: rgba(241, 241, 241, 0.9);
+}
+
+.blog-content blockquote {
+    margin: 40px 0;
+    padding: 24px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 12px;
+    backdrop-filter: blur(15px);
+    font-style: italic;
+    position: relative;
+}
+
+.blog-content blockquote::before {
+    content: '"';
+    font-size: 60px;
+    color: var(--accent-color);
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    line-height: 1;
+    opacity: 0.5;
+}
+
+.blog-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    margin: 32px 0;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.blog-content img:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Scroll Progress */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 9999;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    background: var(--accent-gradient);
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+    .blog-hero-layout {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+    
+    .blog-hero-image {
+        order: -1;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .blog-title {
+        text-align: center;
+    }
+    
+    .blog-meta {
+        justify-content: center;
+    }
+    
+    .blog-tags {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-hero {
+        padding: 140px 0 40px;
+        min-height: auto;
+    }
+    
+    .blog-hero-layout {
+        gap: 40px;
+    }
+    
+    .blog-hero-image {
+        max-width: 100%;
+    }
+    
+    .blog-hero-image img {
+        height: 200px;
+    }
+    
+    .blog-meta {
+        gap: 16px;
+        font-size: 14px;
+    }
+    
+    .blog-summary {
+        font-size: 16px;
+        padding: 16px;
+    }
+    
+    .blog-content {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+    
+    .blog-content h2 {
+        font-size: 28px;
+        margin: 40px 0 20px;
+    }
+    
+    .blog-article {
+        padding: 30px 0 80px;
+    }
+}
+</style>
+{{ end }}
