@@ -37,6 +37,9 @@
 <!-- Local Fonts -->
 <link rel="stylesheet" href="/css/fonts.css">
 
+<!-- Feather Icons (Local) -->
+<script src="/js/feather.min.js"></script>
+
 {{ $styles := resources.Get "css/styles.css" }}
 {{ if hugo.IsProduction }}
     {{ $styles = $styles | minify | fingerprint }}

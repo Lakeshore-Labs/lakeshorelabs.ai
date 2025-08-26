@@ -3,3 +3,10 @@
     {{ $script = $script | minify | fingerprint }}
 {{ end }}
 <script src="{{ $script.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $script.Data.Integrity }}"{{ end }}></script>
+
+<!-- Initialize Feather Icons -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        feather.replace();
+    });
+</script>
