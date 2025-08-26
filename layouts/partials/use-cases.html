@@ -23,18 +23,15 @@
                  data-money="{{ replace (replace (or .money_saved .money_gained) "$" "") "," "" }}"
                  data-category="{{ if .money_gained }}revenue{{ else }}savings{{ end }}">
                 
-                <!-- Card Header with Icon -->
-                <div class="card-header" style="background: linear-gradient(135deg, {{ .color }}20, {{ .color }}10);">
-                    <div class="icon-wrapper" style="background: {{ .color }};">
-                        <span class="case-icon">{{ if eq .icon "restaurant" }}🍽️{{ else if eq .icon "shopping-cart" }}🛒{{ else if eq .icon "megaphone" }}📣{{ else if eq .icon "tooth" }}🦷{{ else if eq .icon "home" }}🏠{{ else if eq .icon "store" }}🏪{{ else if eq .icon "scale" }}⚖️{{ else if eq .icon "hard-hat" }}👷{{ else if eq .icon "calculator" }}🧮{{ else if eq .icon "dumbbell" }}💪{{ else if eq .icon "shield" }}🛡️{{ else if eq .icon "building" }}🏢{{ else }}📊{{ end }}</span>
-                    </div>
-                    <span class="badge" style="background: {{ .color }};">{{ .badge }}</span>
+                <!-- Card Header -->
+                <div class="card-header">
+                    <span class="case-type">{{ .badge }}</span>
                 </div>
 
-                <!-- Business Type & Problem -->
+                <!-- Card Content -->
                 <div class="card-content">
-                    <h3>{{ .business_type }}</h3>
-                    <p class="problem">{{ .problem }}</p>
+                    <h3 class="case-title">{{ .business_type }}</h3>
+                    <p class="case-challenge">{{ .problem }}</p>
                     
                     <!-- Metrics Display -->
                     <div class="metrics">
@@ -115,9 +112,7 @@
 
                     <!-- Solution & Impact -->
                     <div class="solution-section">
-                        <div class="solution-name">
-                            <span class="solution-label">Solution:</span> {{ .solution }}
-                        </div>
+                        <div class="solution-name">{{ .solution }}</div>
                         
                         <div class="impact">
                             <div class="money-impact {{ if .money_gained }}gains{{ end }}">
@@ -164,9 +159,9 @@
             </div>
             
             <div class="stats-footer">
-                <span>⚡ Fastest ROI: <strong>{{ .fastest_roi }}</strong></span>
+                <span>Fastest ROI: <strong>{{ .fastest_roi }}</strong></span>
                 <span class="separator">•</span>
-                <span>🚀 Average Setup: <strong>{{ .implementation_time }}</strong></span>
+                <span>Average Setup: <strong>{{ .implementation_time }}</strong></span>
             </div>
         </div>
         {{ end }}
