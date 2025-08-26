@@ -1,6 +1,6 @@
 # Lakeshore Labs
 
-Modern Hugo-based website for Lakeshore Labs, featuring AI and automation solutions for enterprises.
+Modern Hugo-based website for lakeshorelabs.ai
 
 ## Quick Start
 
