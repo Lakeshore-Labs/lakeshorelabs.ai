@@ -340,6 +340,13 @@
     justify-content: center;
     align-items: center;
     min-height: 200px;
+    cursor: zoom-in;
+    transition: all 0.3s ease;
+}
+
+.blog-content pre.mermaid:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 32px rgba(168, 145, 209, 0.2);
 }
 
 .blog-content pre.mermaid::before {
@@ -355,6 +362,28 @@
         rgba(147, 129, 190, 0.05) 100%);
     pointer-events: none;
     border-radius: 20px;
+}
+
+/* Click to expand indicator */
+.blog-content pre.mermaid::after {
+    content: '🔍 Click to expand';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    background: var(--accent-gradient);
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.blog-content pre.mermaid:hover::after {
+    opacity: 0.9;
 }
 
 .blog-content pre.mermaid svg {

@@ -13,10 +13,17 @@
 <script src="{{ $blogScript.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $blogScript.Data.Integrity }}"{{ end }}></script>
 {{ end }}
 
+<!-- GLightbox for blog posts -->
+{{ if or (eq .Section "posts") (in .RelPermalink "/posts/") }}
+<script src="/js/glightbox.min.js"></script>
+{{ end }}
+
 <!-- Mermaid initialization if needed -->
 {{ if .Store.Get "hasMermaid" }}
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    
+    // Initialize Mermaid
     mermaid.initialize({ 
         startOnLoad: true,
         theme: 'dark',
@@ -58,6 +65,68 @@
             activationBkgColor: 'rgba(120, 119, 198, 0.2)',
             sequenceNumberColor: '#f1f1f1'
         }
+    });
+    
+    // After Mermaid renders, make diagrams clickable
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            const diagrams = document.querySelectorAll('pre.mermaid');
+            const lightboxItems = [];
+            
+            diagrams.forEach((diagram, index) => {
+                // Add click cursor
+                diagram.style.cursor = 'zoom-in';
+                
+                // Create a full-size version for the lightbox
+                const svgElement = diagram.querySelector('svg');
+                if (svgElement) {
+                    // Clone the SVG for the lightbox
+                    const svgClone = svgElement.cloneNode(true);
+                    svgClone.style.maxWidth = '90vw';
+                    svgClone.style.maxHeight = '90vh';
+                    svgClone.style.width = 'auto';
+                    svgClone.style.height = 'auto';
+                    
+                    // Get diagram title from nearby heading
+                    const prevElement = diagram.parentElement.previousElementSibling;
+                    const title = prevElement && prevElement.tagName.match(/^H[1-6]$/) 
+                        ? prevElement.textContent 
+                        : 'Diagram ' + (index + 1);
+                    
+                    // Create lightbox item
+                    lightboxItems.push({
+                        content: svgClone.outerHTML,
+                        type: 'inline',
+                        width: '90vw',
+                        height: '90vh'
+                    });
+                    
+                    // Add click handler
+                    diagram.addEventListener('click', () => {
+                        const lightbox = GLightbox({
+                            elements: [lightboxItems[index]],
+                            closeButton: true,
+                            closeOnOutsideClick: true,
+                            cssEfects: {
+                                fadeIn: true,
+                                fadeOut: true
+                            }
+                        });
+                        lightbox.open();
+                    });
+                    
+                    // Add hover effect
+                    diagram.addEventListener('mouseenter', () => {
+                        diagram.style.transform = 'scale(1.02)';
+                        diagram.style.transition = 'transform 0.3s ease';
+                    });
+                    
+                    diagram.addEventListener('mouseleave', () => {
+                        diagram.style.transform = 'scale(1)';
+                    });
+                }
+            });
+        }, 1000); // Wait for Mermaid to render
     });
   </script>
 {{ end }}

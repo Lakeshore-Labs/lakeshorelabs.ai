@@ -37,6 +37,11 @@
 <!-- Local Fonts -->
 <link rel="stylesheet" href="/css/fonts.css">
 
+<!-- GLightbox for diagram viewing -->
+{{ if or (eq .Section "posts") (in .RelPermalink "/posts/") }}
+<link rel="stylesheet" href="/css/glightbox.min.css">
+{{ end }}
+
 <!-- Feather Icons (Local) -->
 <script src="/js/feather.min.js"></script>
 
