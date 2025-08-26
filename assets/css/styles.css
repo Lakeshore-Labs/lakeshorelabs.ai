@@ -455,51 +455,54 @@ body::before {
 
 /* Individual logo parts with independent fly-in and rotation animations */
 .logo-part-1 {
-    transform-origin: 187.5px 187.5px;
-    animation: slideFromTop 1.5s cubic-bezier(0.4, 0.0, 0.2, 1) 0.3s both,
-               rotatePart1 25s linear 2.5s infinite;
+    transform-origin: 165px 260px;
+    transform-style: preserve-3d;
+    animation: slideFromTopRotate 1.5s cubic-bezier(0.4, 0.0, 0.2, 1) 0.3s both,
+               rotateAroundAxis1 8s linear 2s infinite;
     opacity: 0.9;
 }
 
 .logo-part-2 {
-    transform-origin: 187.5px 187.5px;
-    animation: slideFromRight 1.5s cubic-bezier(0.4, 0.0, 0.2, 1) 0.6s both,
-               rotatePart2 30s linear 2.5s infinite reverse;
+    transform-origin: 277px 217px;
+    transform-style: preserve-3d;
+    animation: slideFromRightRotate 1.5s cubic-bezier(0.4, 0.0, 0.2, 1) 0.6s both,
+               rotateAroundAxis2 10s linear 2.5s infinite;
     opacity: 0.85;
 }
 
 .logo-part-3 {
-    transform-origin: 187.5px 187.5px;
-    animation: slideFromLeft 1.5s cubic-bezier(0.4, 0.0, 0.2, 1) 0.9s both,
-               rotatePart3 20s linear 2.5s infinite;
+    transform-origin: 137px 158px;
+    transform-style: preserve-3d;
+    animation: slideFromLeftRotate 1.5s cubic-bezier(0.4, 0.0, 0.2, 1) 0.9s both,
+               rotateAroundAxis3 12s linear 3s infinite;
     opacity: 0.95;
 }
 
-/* Rotation animations for each logo part */
-@keyframes rotatePart1 {
+/* Rotation animations around each part's axis */
+@keyframes rotateAroundAxis1 {
     0% {
-        transform: rotate(0deg);
+        transform: rotate3d(0, 1, 0, 0deg);
     }
     100% {
-        transform: rotate(360deg);
+        transform: rotate3d(0, 1, 0, 360deg);
     }
 }
 
-@keyframes rotatePart2 {
+@keyframes rotateAroundAxis2 {
     0% {
-        transform: rotate(0deg);
+        transform: rotate3d(1, 1, 0, 0deg);
     }
     100% {
-        transform: rotate(360deg);
+        transform: rotate3d(1, 1, 0, 360deg);
     }
 }
 
-@keyframes rotatePart3 {
+@keyframes rotateAroundAxis3 {
     0% {
-        transform: rotate(0deg);
+        transform: rotate3d(1, -1, 0, 0deg);
     }
     100% {
-        transform: rotate(360deg);
+        transform: rotate3d(1, -1, 0, 360deg);
     }
 }
 
@@ -526,8 +529,6 @@ body::before {
     }
 }
 
-
-
 @keyframes slideFromBottom {
     0% {
         transform: translateY(200vh) scale(0.5);
@@ -546,6 +547,40 @@ body::before {
     }
     100% {
         transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Slide animations with rotation preserved */
+@keyframes slideFromTopRotate {
+    0% {
+        transform: translateY(-200vh) scale(0.5) rotate3d(0, 1, 0, 0deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1) rotate3d(0, 1, 0, 0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes slideFromRightRotate {
+    0% {
+        transform: translateX(200vw) scale(0.5) rotate3d(1, 1, 0, 0deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0) scale(1) rotate3d(1, 1, 0, 0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes slideFromLeftRotate {
+    0% {
+        transform: translateX(-200vw) scale(0.5) rotate3d(1, -1, 0, 0deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0) scale(1) rotate3d(1, -1, 0, 0deg);
         opacity: 1;
     }
 }
@@ -1653,10 +1688,16 @@ body::before {
         transform: none;
     }
     
-    .logo-part-1,
-    .logo-part-2,
+    .logo-part-1 {
+        transform-origin: 165px 260px;
+    }
+    
+    .logo-part-2 {
+        transform-origin: 277px 217px;
+    }
+    
     .logo-part-3 {
-        transform-origin: 187.5px 187.5px;
+        transform-origin: 137px 158px;
     }
     
     /* Floating Shapes Mobile */
