@@ -1,0 +1,25 @@
+title: "Drive Real ROI With"
+subtitle: "Production-Ready"
+subtitle2: "Systems"
+description: "We identify your biggest opportunities, rapidly validate concepts, and seamlessly integrate scalable AI agents to deliver efficiency and measurable growth for your company."
+
+steps:
+  - id: "identification"
+    title: "Identification"
+    number: "01"
+    description: "We design AI agents tailored to your specific needs, eliminating bottlenecks and inefficiencies to accelerate business growth and productivity. No \"one-size-fits-all\" solutions."
+  
+  - id: "development"
+    title: "Concept Development"
+    number: "02"
+    description: "Rapid prototyping and proof-of-concept development to validate AI solutions before full-scale implementation. Test and iterate quickly with minimal risk."
+  
+  - id: "implementation"
+    title: "Implementation"
+    number: "03"
+    description: "Seamless integration of AI agents into your existing workflows and systems. We ensure smooth deployment with minimal disruption to your operations."
+  
+  - id: "validation"
+    title: "Validation"
+    number: "04"
+    description: "Continuous monitoring and optimization to ensure your AI solutions deliver measurable ROI. Track performance metrics and refine for maximum impact."

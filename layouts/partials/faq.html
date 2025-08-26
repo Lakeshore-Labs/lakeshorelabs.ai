@@ -1,0 +1,41 @@
+{{ with .Site.Data.faq }}
+<section id="faq" class="faq">
+    <div class="container">
+        <h2>{{ .title }}<br><span class="highlight">{{ .subtitle }}</span></h2>
+        
+        <div class="faq-grid">
+            <div class="faq-column">
+                {{ range .faqs.column1 }}
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>{{ .question }}</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>{{ .answer }}</p>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+            
+            <div class="faq-column">
+                {{ range .faqs.column2 }}
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>{{ .question }}</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>{{ .answer }}</p>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

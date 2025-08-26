@@ -1,0 +1,25 @@
+{{ with .Site.Data.process }}
+<section id="process" class="process">
+    <div class="container">
+        <div class="section-header">
+            <h2>{{ .title }}<br><span class="highlight">{{ .subtitle }}</span><br>{{ .subtitle2 }}</h2>
+            <p>{{ .description | markdownify }}</p>
+        </div>
+        
+        <div class="process-tabs">
+            {{ range $index, $step := .steps }}
+            <button class="process-tab{{ if eq $index 0 }} active{{ end }}" data-process="{{ .id }}">
+                <h3>{{ .title }}</h3>
+                <span class="process-num">{{ .number }}</span>
+            </button>
+            {{ end }}
+        </div>
+        
+        <div class="process-content">
+            {{ range $index, $step := .steps }}
+            <p id="{{ .id }}" class="process-panel{{ if eq $index 0 }} active{{ end }}">{{ .description }}</p>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

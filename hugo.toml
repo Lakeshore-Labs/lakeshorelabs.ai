@@ -1,0 +1,67 @@
+baseURL = 'https://lakeshorelabs.ai/'
+languageCode = 'en-us'
+title = 'Lakeshore Labs'
+
+# SEO and metadata
+[params]
+  description = "Stop Experimenting. Start Scaling with Custom AI. Proven Solutions. Guaranteed ROI."
+  author = "Lakeshore Labs"
+  email = "hello@lakeshorelabs.ai"
+
+# Enable features
+enableRobotsTXT = true
+enableGitInfo = false
+
+# Output settings
+[outputs]
+  home = ["HTML"]
+  page = ["HTML"]
+  section = ["HTML"]
+
+# Build settings
+[build]
+  writeStats = false
+
+# Minification
+[minify]
+  disableHTML = false
+  disableCSS = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+
+# Menu configuration
+[menus]
+  [[menus.main]]
+    identifier = "solutions"
+    name = "Solutions"
+    url = "#solutions"
+    weight = 10
+
+  [[menus.main]]
+    identifier = "process"
+    name = "Process"
+    url = "#process"
+    weight = 20
+
+  [[menus.main]]
+    identifier = "use-cases"
+    name = "Use Cases"
+    url = "#use-cases"
+    weight = 30
+
+  [[menus.main]]
+    identifier = "faq"
+    name = "FAQ"
+    url = "#faq"
+    weight = 40
+
+# Module configuration for assets
+[[module.mounts]]
+  source = "assets"
+  target = "assets"
+
+[[module.mounts]]
+  source = "static"
+  target = "static"

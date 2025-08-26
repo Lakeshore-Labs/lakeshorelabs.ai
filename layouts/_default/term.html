@@ -1,0 +1,82 @@
+{{ define "main" }}
+<div class="term-page">
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+        {{ .Content }}
+        
+        <ul class="term-list">
+        {{ range .Pages }}
+            <li>
+                <a href="{{ .Permalink }}">
+                    <h3>{{ .Title }}</h3>
+                    {{ if .Description }}
+                    <p>{{ .Description }}</p>
+                    {{ else if .Summary }}
+                    <p>{{ .Summary | truncate 150 }}</p>
+                    {{ end }}
+                    <time>{{ .Date.Format "January 2, 2006" }}</time>
+                </a>
+            </li>
+        {{ end }}
+        </ul>
+    </div>
+</div>
+
+<style>
+.term-page {
+    padding: 80px 20px;
+    min-height: 60vh;
+}
+
+.term-page h1 {
+    font-size: 48px;
+    margin-bottom: 40px;
+    background: var(--highlight-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.term-list {
+    list-style: none;
+    padding: 0;
+}
+
+.term-list li {
+    margin-bottom: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.term-list li:hover {
+    transform: translateY(-2px);
+}
+
+.term-list a {
+    display: block;
+    padding: 25px;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.term-list h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.term-list p {
+    opacity: 0.8;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.term-list time {
+    display: block;
+    opacity: 0.6;
+    font-size: 14px;
+}
+</style>
+{{ end }}
