@@ -1,0 +1,16 @@
+{
+  "name": "Lakeshore Labs",
+  "short_name": "Lakeshore",
+  "description": "Stop Experimenting. Start Scaling with Custom AI. Proven Solutions. Guaranteed ROI.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#8B7FF7",
+  "background_color": "#0A0A0A",
+  "display": "standalone",
+  "start_url": "/"
+}
