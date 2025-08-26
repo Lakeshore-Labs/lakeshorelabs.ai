@@ -7,6 +7,7 @@ title = 'Lakeshore Labs'
   description = "Stop Experimenting. Start Scaling with Custom AI. Proven Solutions. Guaranteed ROI."
   author = "Lakeshore Labs"
   email = "hello@lakeshorelabs.ai"
+  fingerprint = true  # Enable asset fingerprinting for better cache busting
 
 # Enable features
 enableRobotsTXT = true
@@ -57,6 +58,12 @@ enableGitInfo = false
     url = "#faq"
     weight = 40
 
+# Hugo version requirement
+[module]
+  [module.hugoVersion]
+    min = "0.147.0"
+    extended = true
+
 # Module configuration for assets
 [[module.mounts]]
   source = "assets"
@@ -65,3 +72,9 @@ enableGitInfo = false
 [[module.mounts]]
   source = "static"
   target = "static"
+
+# Image processing configuration
+[imaging]
+  quality = 85
+  resampleFilter = "lanczos"
+  anchor = "smart"
