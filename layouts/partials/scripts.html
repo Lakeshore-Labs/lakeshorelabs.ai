@@ -1,0 +1,5 @@
+{{ $script := resources.Get "js/script.js" }}
+{{ if hugo.IsProduction }}
+    {{ $script = $script | minify | fingerprint }}
+{{ end }}
+<script src="{{ $script.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $script.Data.Integrity }}"{{ end }}></script>

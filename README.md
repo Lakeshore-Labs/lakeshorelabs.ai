@@ -1,22 +1,41 @@
-# Lakeshore Labs Website
+# Lakeshore Labs
 
-This repository contains the website for Lakeshore Labs, deployed automatically to GitHub Pages.
+Modern Hugo-based website for Lakeshore Labs, featuring AI and automation solutions for enterprises.
+
+## Quick Start
+
+```bash
+# Install Hugo Extended v0.147.0+
+# Clone repository
+git clone [repository-url]
+cd hugo
+
+# Development
+hugo server
+
+# Production build
+hugo --minify
+```
+
+## Features
+
+- ✨ Hugo static site generator
+- 🎨 Responsive glassmorphic design
+- 🌓 Dark/Light theme switcher
+- ⚡ Optimized performance
+- 📱 Mobile-first approach
+
+## Content Management
+
+- **Homepage**: `content/_index.md`
+- **Data files**: `data/` (partners, solutions, process, FAQ, use cases)
+- **Templates**: `layouts/`
+- **Assets**: `assets/css/` and `assets/js/`
 
 ## Deployment
 
-The site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch using GitHub Actions.
+Automatically deployed to GitHub Pages via GitHub Actions when pushing to `main` branch.
 
-## Local Development
+## Contact
 
-Simply open `index.html` in your browser to view the site locally.
-
-## Repository Setup
-
-To deploy this as a separate repository:
-
-1. Create a new repository on GitHub
-2. Copy all files from this directory to the new repository
-3. Push to the `main` branch
-4. Go to repository Settings → Pages
-5. Set Source to "GitHub Actions"
-6. The site will be automatically deployed
+hello@lakeshorelabs.ai

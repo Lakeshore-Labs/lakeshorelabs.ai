@@ -1,0 +1,26 @@
+title: "Frequently Asked"
+subtitle: "Questions"
+
+faqs:
+  column1:
+    - question: "What types of companies do you typically work with?"
+      answer: "We work primarily with mid-market to enterprise companies across retail, logistics, healthcare, finance, and technology sectors. Our ideal clients have established operations looking to enhance efficiency through AI and automation rather than startups building from scratch."
+    
+    - question: "How long does it typically take to see results from your services?"
+      answer: "Most clients see initial results within 30 days through our POC program. Full implementation typically takes 3-6 months depending on complexity, with incremental improvements visible throughout the process."
+    
+    - question: "Do you work with companies that have limited technical expertise in-house?"
+      answer: "Absolutely. We specialize in working with companies at all technical maturity levels. Our solutions are designed to be user-friendly and we provide comprehensive training and support. We handle all technical complexity so your team can focus on business outcomes."
+    
+    - question: "What's the difference between your consulting services and implementation services?"
+      answer: "Consulting services focus on strategy, assessment, and planning - helping you identify opportunities and develop your AI roadmap. Implementation services involve actually building and deploying solutions. Most clients start with a POC that combines both."
+  
+  column2:
+    - question: "How do you ensure data security and compliance?"
+      answer: "Security is paramount in all our implementations. We follow enterprise security best practices, ensure compliance with industry regulations (GDPR, HIPAA, SOC 2), and can work within your existing security framework. All data remains within your infrastructure."
+    
+    - question: "Can you integrate with our existing systems?"
+      answer: "Yes, seamless integration is a core strength. We work with all major enterprise systems including SAP, Oracle, Salesforce, Microsoft, and custom solutions. Our integration-first approach ensures AI enhances rather than disrupts your existing workflows."
+    
+    - question: "What ROI can we expect from your AI solutions?"
+      answer: "While ROI varies by use case, our clients typically see 20-40% efficiency gains, 30-50% reduction in manual processing time, and 15-25% cost savings within the first year. We guarantee measurable ROI in our POC or you don't pay."

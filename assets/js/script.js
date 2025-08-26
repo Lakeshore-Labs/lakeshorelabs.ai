@@ -1,109 +1,3 @@
-// Initialize Particles.js
-if (typeof particlesJS !== 'undefined') {
-    const initParticles = () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'lavender';
-        const isDark = currentTheme === 'dark';
-        
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 60,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: isDark ? '#FF6B4A' : '#a891d1'
-                },
-                shape: {
-                    type: 'circle',
-                    stroke: {
-                        width: 0,
-                        color: '#000000'
-                    }
-                },
-                opacity: {
-                    value: 0.4,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 1,
-                        opacity_min: 0.2,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 4,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 2,
-                        size_min: 0.5,
-                        sync: false
-                    }
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: isDark ? '#FF6B4A' : '#a891d1',
-                    opacity: 0.25,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false,
-                    attract: {
-                        enable: false,
-                        rotateX: 600,
-                        rotateY: 1200
-                    }
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'grab'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                },
-                modes: {
-                    grab: {
-                        distance: 150,
-                        line_linked: {
-                            opacity: 0.5
-                        }
-                    },
-                    push: {
-                        particles_nb: 4
-                    },
-                    remove: {
-                        particles_nb: 2
-                    }
-                }
-            },
-            retina_detect: true
-        });
-    };
-    
-    // Initialize particles on page load
-    window.addEventListener('load', initParticles);
-    
-    // Store original initParticles function for theme switching
-    window.initParticles = initParticles;
-}
-
 // Theme Toggle
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.querySelector('.theme-toggle');
@@ -120,11 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             root.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            
-            // Reinitialize particles with new theme colors
-            if (window.initParticles) {
-                window.initParticles();
-            }
         });
     }
 });
@@ -237,9 +126,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar scroll effect - removed to maintain glassmorphic style
-// The navbar now maintains its glass effect consistently
-
 // Intersection Observer for animations
 const observerOptions = {
     threshold: 0.1,
@@ -283,69 +169,27 @@ if (carousel) {
     });
 }
 
-// Add hover effect to CTA cards
-const ctaCards = document.querySelectorAll('.cta-card');
-ctaCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
-
-// Typing effect for hero title (optional)
-const typewriterText = document.querySelector('.text-gradient');
-if (typewriterText && false) { // Disabled by default, set to true to enable
-    const text = typewriterText.textContent;
-    typewriterText.textContent = '';
-    let index = 0;
-    
-    const typeWriter = () => {
-        if (index < text.length) {
-            typewriterText.textContent += text.charAt(index);
-            index++;
-            setTimeout(typeWriter, 50);
-        }
-    };
-    
-    // Start typing effect after page load
-    window.addEventListener('load', () => {
+// Typing effect for hero highlight text
+window.addEventListener('load', () => {
+    const typewriterText = document.querySelector('.highlight');
+    if (typewriterText) {
+        const text = typewriterText.textContent;
+        typewriterText.textContent = '';
+        typewriterText.style.minHeight = '1.2em'; // Prevent layout shift
+        let index = 0;
+        
+        const typeWriter = () => {
+            if (index < text.length) {
+                typewriterText.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 100);
+            }
+        };
+        
+        // Start typing effect after a short delay
         setTimeout(typeWriter, 500);
-    });
-}
-
-// Mobile menu toggle (for future mobile menu implementation)
-const mobileMenuToggle = () => {
-    const navLinks = document.querySelector('.nav-links');
-    const navActions = document.querySelector('.nav-actions');
-    
-    if (window.innerWidth <= 768) {
-        // Mobile menu logic here
     }
-};
-
-// Performance optimization: Throttle scroll events
-let scrollTimeout;
-const throttledScroll = (callback, delay) => {
-    if (scrollTimeout) return;
-    
-    scrollTimeout = setTimeout(() => {
-        callback();
-        scrollTimeout = null;
-    }, delay);
-};
-
-// Console message
-console.log(
-    '%c⚡ Welcome to Lakeshore Labs',
-    'color: #FF5722; font-size: 20px; font-weight: bold;'
-);
-console.log(
-    '%cEnterprise AI Implementation Partner',
-    'color: #FFA726; font-size: 14px;'
-);
+});
 
 // Page load animation
 window.addEventListener('load', () => {

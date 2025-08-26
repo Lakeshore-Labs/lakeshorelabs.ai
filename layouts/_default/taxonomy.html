@@ -1,0 +1,64 @@
+{{ define "main" }}
+<div class="taxonomy-page">
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+        
+        <ul class="taxonomy-list">
+        {{ range .Data.Terms.Alphabetical }}
+            <li>
+                <a href="{{ .Page.Permalink }}">
+                    {{ .Page.Title }}
+                    <span class="count">({{ .Count }})</span>
+                </a>
+            </li>
+        {{ end }}
+        </ul>
+    </div>
+</div>
+
+<style>
+.taxonomy-page {
+    padding: 80px 20px;
+    min-height: 60vh;
+}
+
+.taxonomy-page h1 {
+    font-size: 48px;
+    margin-bottom: 40px;
+    background: var(--highlight-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.taxonomy-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.taxonomy-list li {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.taxonomy-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.taxonomy-list .count {
+    opacity: 0.7;
+    font-size: 14px;
+}
+</style>
+{{ end }}

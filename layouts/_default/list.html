@@ -1,0 +1,46 @@
+{{ define "main" }}
+<div class="container">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+    
+    <ul class="page-list">
+    {{ range .Pages }}
+        <li>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+            <time>{{ .Date.Format "January 2, 2006" }}</time>
+        </li>
+    {{ end }}
+    </ul>
+</div>
+
+<style>
+.page-list {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0;
+}
+
+.page-list li {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.page-list a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.page-list time {
+    display: block;
+    margin-top: 8px;
+    opacity: 0.7;
+    font-size: 14px;
+}
+</style>
+{{ end }}
