@@ -6,18 +6,94 @@
             <p>{{ .description | markdownify }}</p>
         </div>
         
-        <div class="process-tabs">
+        <!-- Timeline Navigation -->
+        <div class="process-timeline">
+            <div class="timeline-progress">
+                <div class="timeline-line"></div>
+                <div class="timeline-fill"></div>
+            </div>
             {{ range $index, $step := .steps }}
-            <button class="process-tab{{ if eq $index 0 }} active{{ end }}" data-process="{{ .id }}">
-                <h3>{{ .title }}</h3>
-                <span class="process-num">{{ .number }}</span>
-            </button>
+            <div class="timeline-step{{ if eq $index 0 }} active{{ end }}" data-step="{{ $index }}">
+                <button class="timeline-marker" data-process="{{ .id }}">
+                    <span class="step-number">{{ .number }}</span>
+                </button>
+                <div class="step-info">
+                    <h4>{{ .title }}</h4>
+                    <span class="step-timeline">{{ .timeline }}</span>
+                </div>
+            </div>
             {{ end }}
         </div>
         
-        <div class="process-content">
+        <!-- Process Content -->
+        <div class="process-details">
             {{ range $index, $step := .steps }}
-            <p id="{{ .id }}" class="process-panel{{ if eq $index 0 }} active{{ end }}">{{ .description }}</p>
+            <div id="{{ .id }}" class="process-card{{ if eq $index 0 }} active{{ end }}">
+                <div class="card-header">
+                    <div class="header-row">
+                        <h3><span class="step-num-inline">{{ .number }}</span> {{ .title }}</h3>
+                        <div class="header-badges">
+                            <span class="badge-timing">{{ .timeline }}</span>
+                            <span class="badge-duration">{{ .duration }}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-body">
+                    <p class="step-summary">{{ .description }}</p>
+                    
+                    <div class="detail-grid">
+                        <!-- What Happens -->
+                        <div class="detail-section">
+                            <h5>What Happens</h5>
+                            <ul class="detail-list">
+                                {{ range .what_happens }}
+                                <li>{{ . }}</li>
+                                {{ end }}
+                            </ul>
+                        </div>
+                        
+                        <!-- Deliverables -->
+                        <div class="detail-section">
+                            <h5>What You Get</h5>
+                            <ul class="detail-list deliverables">
+                                {{ range .deliverables }}
+                                <li>{{ . }}</li>
+                                {{ end }}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="requirements-grid">
+                        <!-- What You Need -->
+                        <div class="requirement-card">
+                            <div class="req-header">
+                                <span class="req-label">You Need</span>
+                            </div>
+                            <p>{{ .you_need }}</p>
+                        </div>
+                        
+                        <!-- Our Commitment -->
+                        <div class="requirement-card commitment">
+                            <div class="req-header">
+                                <span class="req-label">Our Promise</span>
+                            </div>
+                            <p>{{ .our_commitment }}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Results/Savings -->
+                    <div class="results-bar">
+                        <span class="results-text">
+                            {{ if .typical_savings }}
+                                <strong>Typical outcome:</strong> {{ .typical_savings }}
+                            {{ else if .typical_result }}
+                                <strong>Results:</strong> {{ .typical_result }}
+                            {{ end }}
+                        </span>
+                    </div>
+                </div>
+            </div>
             {{ end }}
         </div>
     </div>
