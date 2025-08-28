@@ -1,4 +1,5 @@
-{{ with .Site.Data.integrations }}
+{{ $data := index .Site.Data .Site.Language.Lang "integrations" | default (index .Site.Data "en" "integrations") }}
+{{ with $data }}
 <section class="integrations" id="integrations-section">
     <h2>{{ .title }}</h2>
     <div class="integrations-list">

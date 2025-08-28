@@ -1,6 +1,7 @@
+{{ $data := index .Site.Data .Site.Language.Lang "usecases" | default (index .Site.Data "en" "usecases") }}
 <section id="use-cases" class="use-cases">
     <div class="container">
-        {{ with .Site.Data.usecases }}
+        {{ with $data }}
         <div class="section-header">
             <h2>{{ .title }}<br><span class="highlight">{{ .subtitle }}</span></h2>
             <p>{{ .description }}</p>

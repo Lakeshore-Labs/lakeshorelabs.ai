@@ -1,0 +1,25 @@
+title: "Nhận Kết Quả Thực Nhanh Chóng"
+subtitle: "Không Phức Tạp"
+subtitle2: ""
+description: "Chúng tôi giữ đơn giản. Xác định những việc tốn thời gian nhất. Xây dựng giải pháp hiệu quả. Thấy kết quả trong vài ngày. Mở rộng khi bạn sẵn sàng."
+
+steps:
+  - id: "identification"
+    title: "Kiểm Tra Nhanh"
+    number: "01"
+    description: "Cuộc gọi 15 phút để xác định những việc tốn thời gian nhất và chiến thắng nhanh. Chúng tôi sẽ chỉ cho bạn chính xác những gì có thể tự động hóa và tiết kiệm bao nhiêu. Không cố vấn, không lông bong."
+  
+  - id: "development"
+    title: "Xây Dựng & Kiểm Tra"
+    number: "02"
+    description: "Xem demo hoạt động trong 48 giờ. Kiểm tra với dữ liệu thực của bạn. Điều chỉnh ngay tại chỗ. Không trả gì cho đến khi bạn thấy nó hoạt động."
+  
+  - id: "implementation"
+    title: "Go Live"
+    number: "03"
+    description: "Launch in days, not months. We handle the setup, train your team, and ensure everything runs smoothly. No IT department required."
+  
+  - id: "validation"
+    title: "Measure & Optimize"
+    number: "04"
+    description: "Track time saved, costs cut, revenue gained. See your ROI in real numbers. Expand what works, adjust what doesn't. Simple monthly reports."

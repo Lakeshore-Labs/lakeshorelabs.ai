@@ -1,16 +1,16 @@
-title: "Straight Answers to"
-subtitle: "Real Questions"
+title: "Câu Trả Lời Thẳng Thắn Cho"
+subtitle: "Câu Hỏi Thực Tế"
 
 faqs:
   column1:
-    - question: "How much does this actually cost?"
-      answer: "Projects start at $2,500/month. Most SMBs spend $3,500-7,500/month for full automation. You'll know exact costs after our free 15-minute audit. No hidden fees, no surprise charges."
+    - question: "Chi phí thực tế là bao nhiêu?"
+      answer: "Dự án bắt đầu từ $2.500/tháng. Hầu hết SMB chi $3.500-7.500/tháng cho tự động hóa đầy đủ. Bạn sẽ biết chi phí chính xác sau buổi kiểm tra miễn phí 15 phút. Không phí ẩn, không phí bất ngờ."
     
-    - question: "How fast can I see results?"
-      answer: "48 hours for a working demo. 7 days to go live with your first automation. Most clients save 20+ hours in the first week. If you don't see value in 7 days, you pay nothing."
+    - question: "Tôi có thể thấy kết quả nhanh như thế nào?"
+      answer: "48 giờ cho demo hoạt động. 7 ngày để khởi động tự động hóa đầu tiên. Hầu hết khách hàng tiết kiệm 20+ giờ trong tuần đầu. Nếu không thấy giá trị trong 7 ngày, bạn không phải trả gì."
     
-    - question: "Do I need technical staff to use this?"
-      answer: "No. We build it, set it up, and train your team. Everything works through simple interfaces your team already knows - email, spreadsheets, chat. If you can use Gmail, you can use our automations."
+    - question: "Tôi có cần nhân viên kỹ thuật để sử dụng không?"
+      answer: "Không. Chúng tôi xây dựng, cài đặt và đào tạo đội ngũ của bạn. Mọi thứ hoạt động qua giao diện đơn giản mà đội bạn đã biết - email, bảng tính, chat. Nếu bạn dùng được Gmail, bạn dùng được tự động hóa của chúng tôi."
     
     - question: "What if I'm too small for AI?"
       answer: "If you have repetitive tasks that take more than 5 hours per week, you're ready. We work with businesses as small as 3 people. Start with one simple automation, prove the value, then expand."
