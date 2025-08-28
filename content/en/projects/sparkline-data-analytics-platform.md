@@ -5,78 +5,7 @@ draft: false
 description: "Revolutionary Apache Spark enhancement platform that transforms complex analytical queries from hours to seconds through intelligent caching and advanced query optimization."
 featured_image: ""
 # Custom inline SVG illustration
-svg_illustration: |
-  <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="spark-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
-        <stop offset="50%" style="stop-color:#f7931e;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#ffd23f;stop-opacity:1" />
-      </linearGradient>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="2"/>
-      </filter>
-    </defs>
-    
-    <!-- Data cubes representing OLAP -->
-    <g opacity="0.8">
-      <rect x="50" y="80" width="30" height="30" fill="none" stroke="url(#spark-gradient)" stroke-width="2" opacity="0.7"/>
-      <rect x="45" y="75" width="30" height="30" fill="url(#spark-gradient)" opacity="0.3"/>
-      <rect x="40" y="70" width="30" height="30" fill="none" stroke="url(#spark-gradient)" stroke-width="1" opacity="0.5"/>
-    </g>
-    
-    <!-- Spark logo representation -->
-    <g transform="translate(120,70)">
-      <polygon points="20,10 40,30 20,50 0,30" fill="url(#spark-gradient)" opacity="0.7"/>
-      <polygon points="25,15 35,25 25,35 15,25" fill="#fff" opacity="0.9"/>
-      <circle cx="25" cy="25" r="3" fill="url(#spark-gradient)"/>
-    </g>
-    
-    <!-- Speed indicators -->
-    <g stroke="url(#spark-gradient)" stroke-width="2" opacity="0.6">
-      <line x1="180" y1="60" x2="220" y2="40">
-        <animate attributeName="opacity" values="0.6;1;0.6" dur="1s" repeatCount="indefinite" />
-      </line>
-      <line x1="180" y1="70" x2="230" y2="50">
-        <animate attributeName="opacity" values="0.6;1;0.6" dur="1s" begin="0.2s" repeatCount="indefinite" />
-      </line>
-      <line x1="180" y1="80" x2="225" y2="60">
-        <animate attributeName="opacity" values="0.6;1;0.6" dur="1s" begin="0.4s" repeatCount="indefinite" />
-      </line>
-    </g>
-    
-    <!-- Performance meter -->
-    <g transform="translate(200,90)">
-      <circle cx="30" cy="30" r="25" fill="none" stroke="url(#spark-gradient)" stroke-width="3" opacity="0.5"/>
-      <circle cx="30" cy="30" r="20" fill="url(#spark-gradient)" opacity="0.2"/>
-      <text x="30" y="35" text-anchor="middle" font-size="12" fill="url(#spark-gradient)" font-weight="bold">100x</text>
-    </g>
-    
-    <!-- Data flow visualization -->
-    <g fill="url(#spark-gradient)" opacity="0.7">
-      <circle cx="90" cy="95" r="3">
-        <animate attributeName="cx" values="90;170" dur="2s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="0.7;0;0.7" dur="2s" repeatCount="indefinite" />
-      </circle>
-      <circle cx="95" cy="105" r="2">
-        <animate attributeName="cx" values="95;175" dur="2s" begin="0.5s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="0.7;0;0.7" dur="2s" begin="0.5s" repeatCount="indefinite" />
-      </circle>
-      <circle cx="85" cy="85" r="2">
-        <animate attributeName="cx" values="85;165" dur="2s" begin="1s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="0.7;0;0.7" dur="2s" begin="1s" repeatCount="indefinite" />
-      </circle>
-    </g>
-    
-    <!-- Query optimization visualization -->
-    <g>
-      <rect x="20" y="140" width="80" height="15" fill="url(#spark-gradient)" opacity="0.3" rx="7"/>
-      <rect x="20" y="140" width="60" height="15" fill="url(#spark-gradient)" opacity="0.6" rx="7">
-        <animate attributeName="width" values="60;80;60" dur="3s" repeatCount="indefinite" />
-      </rect>
-      <text x="25" y="151" font-size="10" fill="#333" font-weight="bold">Query Optimization</text>
-    </g>
-  </svg>
+svg_illustration: ""
 
 # Project Details
 client: "Enterprise Analytics Teams"
@@ -150,16 +79,79 @@ Traditional Spark deployments lacked the sophisticated optimization needed for O
 
 ## Our Solution
 
-We built SNAP as a comprehensive enhancement layer that supercharges Apache Spark through three core innovations:
+<div class="solution-overview">
+<p>We built SNAP as a comprehensive enhancement layer that supercharges Apache Spark through three core innovations:</p>
+</div>
 
-### ⚡ High-Speed In-Memory Architecture
-Our proprietary in-memory data format combined with intelligent caching algorithms dramatically reduces data access times. The system automatically identifies frequently-accessed data patterns and optimizes storage layouts for maximum performance.
+<div class="solution-cards">
 
-### 🧠 Smart Query Optimization
-SNAP features an advanced query optimizer specifically designed for multidimensional and hierarchical data structures. The platform understands OLAP-style queries and automatically rewrites them for optimal execution paths.
+<div class="solution-card expandable" data-solution="memory">
+  <div class="solution-header">
+    <div class="solution-icon">
+⚡
+    </div>
+    <h3>High-Speed In-Memory Architecture</h3>
+    <span class="expand-indicator">+</span>
+  </div>
+  <div class="solution-content">
+    <p>Our proprietary in-memory data format combined with intelligent caching algorithms dramatically reduces data access times. The system automatically identifies frequently-accessed data patterns and optimizes storage layouts for maximum performance.</p>
+    <div class="solution-details">
+      <h4>Key Features:</h4>
+      <ul>
+        <li>Proprietary columnar storage format</li>
+        <li>Intelligent data prefetching</li>
+        <li>Adaptive compression algorithms</li>
+        <li>Memory-aware query planning</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-### 📊 Intelligent Metadata Integration
-The platform allows users to define dimensions, metrics, and hierarchies that create semantic understanding of data structures, enabling the optimizer to make intelligent decisions about query execution strategies.
+<div class="solution-card expandable" data-solution="optimization">
+  <div class="solution-header">
+    <div class="solution-icon">
+🧠
+    </div>
+    <h3>Smart Query Optimization</h3>
+    <span class="expand-indicator">+</span>
+  </div>
+  <div class="solution-content">
+    <p>SNAP features an advanced query optimizer specifically designed for multidimensional and hierarchical data structures. The platform understands OLAP-style queries and automatically rewrites them for optimal execution paths.</p>
+    <div class="solution-details">
+      <h4>Optimization Techniques:</h4>
+      <ul>
+        <li>Cost-based query planning</li>
+        <li>Predicate pushdown optimization</li>
+        <li>Join order optimization</li>
+        <li>Aggregation pushdown</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="solution-card expandable" data-solution="metadata">
+  <div class="solution-header">
+    <div class="solution-icon">
+📊
+    </div>
+    <h3>Intelligent Metadata Integration</h3>
+    <span class="expand-indicator">+</span>
+  </div>
+  <div class="solution-content">
+    <p>The platform allows users to define dimensions, metrics, and hierarchies that create semantic understanding of data structures, enabling the optimizer to make intelligent decisions about query execution strategies.</p>
+    <div class="solution-details">
+      <h4>Metadata Capabilities:</h4>
+      <ul>
+        <li>Semantic layer definition</li>
+        <li>Hierarchical data modeling</li>
+        <li>Automatic relationship discovery</li>
+        <li>Query context optimization</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
 
 ## Implementation Journey
 
@@ -180,13 +172,23 @@ The final phase focused on real-world performance validation, fine-tuning optimi
 ## Platform Capabilities
 
 ### Core Performance Features
-**Intelligent Caching** automatically identifies and optimizes frequently-accessed data patterns, while **Advanced Query Optimization** rewrites complex analytical queries for optimal execution. The platform's **In-Memory Processing** dramatically reduces data access latency for interactive analytics.
 
+- **Intelligent Caching** - Automatically identifies and optimizes frequently-accessed data patterns
+- **Advanced Query Optimization** - Rewrites complex analytical queries for optimal execution  
+- **In-Memory Processing** - Dramatically reduces data access latency for interactive analytics
+  
 ### Semantic Data Understanding
-**Dimension Definition** allows users to specify search parameters and hierarchical relationships, while **Metric Calculations** provide predefined analytical functions. **Hierarchy Management** creates structured data relationships that enable intuitive drill-down analytics.
 
+- **Dimension Definition** - Specify search parameters and hierarchical relationships
+- **Metric Calculations** - Provide predefined analytical functions
+- **Hierarchy Management** - Create structured data relationships for intuitive drill-down analytics
+  
 ### Enterprise Integration
-**Seamless Spark Integration** works with existing Spark deployments without migration, while **Hadoop Ecosystem Support** ensures compatibility with established big data infrastructure. **API-First Architecture** enables integration with existing data pipelines and BI tools.
+
+- **Seamless Spark Integration** - Works with existing Spark deployments without migration
+- **Hadoop Ecosystem Support** - Ensures compatibility with established big data infrastructure  
+- **API-First Architecture** - Enables integration with existing data pipelines and BI tools
+</div>
 
 ## Transformative Impact
 
