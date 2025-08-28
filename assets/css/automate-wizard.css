@@ -5,6 +5,158 @@
     background: var(--bg-gradient);
     position: relative;
     overflow-x: hidden;
+    /* Start hidden to prevent FOUC */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Show container when loaded */
+.automation-wizard.loaded {
+    opacity: 1;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animation Classes - removed unused classes */
+
+/* Initial state for ALL animated elements - must be hidden until animated */
+.wizard-hero h1,
+.wizard-hero p,
+.wizard-progress-compact {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Hide ALL step content initially - they will be shown by animations */
+.wizard-step .industry-card,
+.wizard-step .apps-search,
+.wizard-step .app-card,
+.wizard-step .goal-category,
+.wizard-step #summaryPreview,
+.wizard-step .contact-form-container {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* When animation is triggered on the container (initial load only) */
+.automation-wizard.animate-in .wizard-hero h1 {
+    animation: fadeInUp 0.8s ease-out both;
+    animation-delay: 0.1s;
+}
+
+.automation-wizard.animate-in .wizard-hero p {
+    animation: fadeInUp 0.8s ease-out both;
+    animation-delay: 0.2s;
+}
+
+.automation-wizard.animate-in .wizard-progress-compact {
+    animation: fadeInUp 0.8s ease-out both;
+    animation-delay: 0.3s;
+}
+
+/* Industry cards - only animate on initial load via container */
+.automation-wizard.animate-in #step1 .industry-card {
+    animation: fadeInUp 0.6s ease-out both;
+    animation-delay: 0.4s; /* Default delay for all cards */
+}
+
+/* Use the parent grid for proper nth-child selection */
+.automation-wizard.animate-in #industryGrid .industry-card:nth-child(1) { animation-delay: 0.4s; }
+.automation-wizard.animate-in #industryGrid .industry-card:nth-child(2) { animation-delay: 0.5s; }
+.automation-wizard.animate-in #industryGrid .industry-card:nth-child(3) { animation-delay: 0.6s; }
+.automation-wizard.animate-in #industryGrid .industry-card:nth-child(4) { animation-delay: 0.7s; }
+.automation-wizard.animate-in #industryGrid .industry-card:nth-child(5) { animation-delay: 0.8s; }
+.automation-wizard.animate-in #industryGrid .industry-card:nth-child(6) { animation-delay: 0.9s; }
+/* Add more for safety */
+.automation-wizard.animate-in #industryGrid .industry-card:nth-child(7) { animation-delay: 1.0s; }
+.automation-wizard.animate-in #industryGrid .industry-card:nth-child(8) { animation-delay: 1.1s; }
+.automation-wizard.animate-in #industryGrid .industry-card:nth-child(9) { animation-delay: 1.2s; }
+.automation-wizard.animate-in #industryGrid .industry-card:nth-child(10) { animation-delay: 1.3s; }
+/* Catch-all for any items beyond 10 */
+.automation-wizard.animate-in #industryGrid .industry-card:nth-child(n+11) { animation-delay: 1.4s; }
+
+/* Apps animation - step 2 */
+#step2.animate-in .apps-search {
+    animation: fadeInUp 0.6s ease-out both;
+    animation-delay: 0.1s;
+}
+
+#step2.animate-in #appsGrid .app-card {
+    animation: fadeInUp 0.4s ease-out both;
+    animation-delay: 0.8s; /* Default delay for all cards */
+}
+
+/* Staggered delays for app cards - using parent grid for proper selection */
+#step2.animate-in #appsGrid .app-card:nth-child(1) { animation-delay: 0.2s; }
+#step2.animate-in #appsGrid .app-card:nth-child(2) { animation-delay: 0.25s; }
+#step2.animate-in #appsGrid .app-card:nth-child(3) { animation-delay: 0.3s; }
+#step2.animate-in #appsGrid .app-card:nth-child(4) { animation-delay: 0.35s; }
+#step2.animate-in #appsGrid .app-card:nth-child(5) { animation-delay: 0.4s; }
+#step2.animate-in #appsGrid .app-card:nth-child(6) { animation-delay: 0.45s; }
+#step2.animate-in #appsGrid .app-card:nth-child(7) { animation-delay: 0.5s; }
+#step2.animate-in #appsGrid .app-card:nth-child(8) { animation-delay: 0.55s; }
+#step2.animate-in #appsGrid .app-card:nth-child(9) { animation-delay: 0.6s; }
+#step2.animate-in #appsGrid .app-card:nth-child(10) { animation-delay: 0.65s; }
+/* Continue for more apps */
+#step2.animate-in #appsGrid .app-card:nth-child(11) { animation-delay: 0.7s; }
+#step2.animate-in #appsGrid .app-card:nth-child(12) { animation-delay: 0.75s; }
+#step2.animate-in #appsGrid .app-card:nth-child(13) { animation-delay: 0.8s; }
+#step2.animate-in #appsGrid .app-card:nth-child(14) { animation-delay: 0.85s; }
+#step2.animate-in #appsGrid .app-card:nth-child(15) { animation-delay: 0.9s; }
+#step2.animate-in #appsGrid .app-card:nth-child(16) { animation-delay: 0.95s; }
+#step2.animate-in #appsGrid .app-card:nth-child(17) { animation-delay: 1.0s; }
+#step2.animate-in #appsGrid .app-card:nth-child(18) { animation-delay: 1.05s; }
+#step2.animate-in #appsGrid .app-card:nth-child(19) { animation-delay: 1.1s; }
+#step2.animate-in #appsGrid .app-card:nth-child(20) { animation-delay: 1.15s; }
+/* Catch-all for any beyond 20 */
+#step2.animate-in #appsGrid .app-card:nth-child(n+21) { animation-delay: 1.2s; }
+
+/* Goals animation - step 3 */
+#step3.animate-in #goalsGrid .goal-category {
+    animation: fadeInUp 0.6s ease-out both;
+    animation-delay: 0.5s; /* Default delay for all categories */
+}
+
+#step3.animate-in #goalsGrid .goal-category:nth-child(1) { animation-delay: 0.1s; }
+#step3.animate-in #goalsGrid .goal-category:nth-child(2) { animation-delay: 0.2s; }
+#step3.animate-in #goalsGrid .goal-category:nth-child(3) { animation-delay: 0.3s; }
+#step3.animate-in #goalsGrid .goal-category:nth-child(4) { animation-delay: 0.4s; }
+/* Add more for safety */
+#step3.animate-in #goalsGrid .goal-category:nth-child(5) { animation-delay: 0.5s; }
+#step3.animate-in #goalsGrid .goal-category:nth-child(6) { animation-delay: 0.6s; }
+#step3.animate-in #goalsGrid .goal-category:nth-child(7) { animation-delay: 0.7s; }
+#step3.animate-in #goalsGrid .goal-category:nth-child(8) { animation-delay: 0.8s; }
+/* Catch-all for any beyond 8 */
+#step3.animate-in #goalsGrid .goal-category:nth-child(n+9) { animation-delay: 0.9s; }
+
+/* Step 4 animations */
+#step4.animate-in #summaryPreview {
+    animation: fadeInUp 0.6s ease-out both;
+    animation-delay: 0.1s;
+}
+
+#step4.animate-in .contact-form-container {
+    animation: fadeInUp 0.6s ease-out both;
+    animation-delay: 0.2s;
 }
 
 .automation-wizard::before {
@@ -140,12 +292,10 @@
 
 .wizard-step {
     display: none;
-    opacity: 0;
 }
 
 .wizard-step.active {
     display: block;
-    opacity: 1;
 }
 
 
@@ -157,17 +307,7 @@
     margin-bottom: 2rem;
 }
 
-/* Initial state for animated elements - hide them initially */
-.industry-card,
-.app-card,
-.goal-category,
-.apps-search,
-.contact-form-container,
-#summaryPreview {
-    opacity: 0;
-}
-
-/* Keep them hidden when step is not active */
+/* Keep elements hidden when step is not active */
 .wizard-step:not(.active) .industry-card,
 .wizard-step:not(.active) .app-card,
 .wizard-step:not(.active) .goal-category,
@@ -304,7 +444,8 @@
     color: rgba(241, 241, 241, 0.5);
 }
 
-.apps-search i {
+.apps-search i,
+.apps-search svg {
     position: absolute;
     left: 1rem;
     top: 50%;
@@ -312,6 +453,7 @@
     width: 18px;
     height: 18px;
     color: rgba(241, 241, 241, 0.5);
+    pointer-events: none;
 }
 
 .apps-grid {
@@ -389,6 +531,12 @@
     color: white;
 }
 
+/* Search filtering - smooth transitions for hiding */
+.app-card {
+    transition: opacity 0.15s ease-out, 
+                transform 0.15s ease-out;
+}
+
 /* Goals Section */
 .goals-grid {
     display: grid;
@@ -459,7 +607,8 @@
     border-color: var(--accent-color);
 }
 
-.goal-checkbox i {
+.goal-checkbox i,
+.goal-checkbox svg {
     width: 12px;
     height: 12px;
     color: white;
@@ -468,7 +617,8 @@
     transition: all 0.3s ease;
 }
 
-.goal-item.selected .goal-checkbox i {
+.goal-item.selected .goal-checkbox i,
+.goal-item.selected .goal-checkbox svg {
     opacity: 1;
     transform: scale(1);
 }

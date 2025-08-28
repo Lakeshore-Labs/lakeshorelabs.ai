@@ -1,7 +1,6 @@
 // Automation Wizard JavaScript
 class AutomationWizard {
     constructor() {
-        console.log('🚀 AutomationWizard constructor called!');
         this.currentStep = 1;
         this.totalSteps = 4;
         this.formData = {
@@ -17,7 +16,15 @@ class AutomationWizard {
     }
     
     init() {
-        console.log('📦 Init called!');
+        // Add loaded class to show content
+        const wizardContainer = document.querySelector('.automation-wizard');
+        if (wizardContainer) {
+            // Small delay to ensure CSS is fully loaded
+            requestAnimationFrame(() => {
+                wizardContainer.classList.add('loaded');
+            });
+        }
+        
         this.bindEvents();
         this.loadSavedData();
         this.animateInitialLoad();
@@ -84,46 +91,14 @@ class AutomationWizard {
     }
     
     animateInitialLoad() {
-        console.log('✨ animateInitialLoad called! anime exists?', typeof anime !== 'undefined');
-        
-        // Animate hero section
-        anime({
-            targets: '.wizard-hero h1',
-            opacity: [0, 1],
-            translateY: [30, 0],
-            duration: 800,
-            easing: 'easeOutQuart',
-            delay: 200
-        });
-        
-        anime({
-            targets: '.wizard-hero p',
-            opacity: [0, 1],
-            translateY: [20, 0],
-            duration: 600,
-            easing: 'easeOutQuart',
-            delay: 400
-        });
-        
-        // Animate progress indicator
-        anime({
-            targets: '.wizard-progress-compact',
-            opacity: [0, 1],
-            translateY: [20, 0],
-            duration: 600,
-            easing: 'easeOutQuart',
-            delay: 600
-        });
-        
-        // Animate first step cards (they start with opacity: 0 from CSS)
-        anime({
-            targets: '#step1 .industry-card',
-            opacity: [0, 1],
-            translateY: [30, 0],
-            duration: 600,
-            easing: 'easeOutQuart',
-            delay: anime.stagger(100, {start: 800})
-        });
+        // Simply add the animate-in class to trigger CSS animations
+        const wizardContainer = document.querySelector('.automation-wizard');
+        if (wizardContainer) {
+            // Small delay to ensure the loaded class has been applied
+            setTimeout(() => {
+                wizardContainer.classList.add('animate-in');
+            }, 50);
+        }
     }
     
     nextStep() {
@@ -153,6 +128,9 @@ class AutomationWizard {
         
         const isForward = targetStep > this.currentStep;
         
+        // Remove animate-in class from current step to clean up
+        currentStepEl.classList.remove('animate-in');
+        
         // Animate out current step
         anime({
             targets: currentStepEl,
@@ -163,6 +141,9 @@ class AutomationWizard {
             complete: () => {
                 currentStepEl.classList.remove('active');
                 currentStepEl.style.display = 'none';
+                
+                // Clean up any existing animate-in class on target
+                targetStepEl.classList.remove('animate-in');
                 
                 // Prepare target step
                 targetStepEl.style.display = 'block';
@@ -177,8 +158,14 @@ class AutomationWizard {
                     duration: 600,
                     easing: 'easeOutQuart',
                     complete: () => {
-                        // Animate step content
-                        this.animateStepContent(targetStep);
+                        // Only animate step content if moving forward or if step hasn't been animated yet
+                        if (isForward || !targetStepEl.dataset.animated) {
+                            this.animateStepContent(targetStep);
+                            targetStepEl.dataset.animated = 'true';
+                        } else {
+                            // Just add the class without re-triggering animations
+                            targetStepEl.classList.add('animate-in');
+                        }
                         // Replace feather icons in new content
                         requestAnimationFrame(() => {
                             this.replaceFeatherIcons();
@@ -201,64 +188,22 @@ class AutomationWizard {
     }
     
     animateStepContent(step) {
-        let targets = [];
-        let delay = 0;
+        // Add animate-in class to the step to trigger CSS animations
+        const stepElement = document.getElementById(`step${step}`);
+        if (!stepElement) return;
         
-        switch(step) {
-            case 1:
-                targets = '.industry-card';
-                delay = 100;
-                break;
-            case 2:
-                // Animate search bar first, then app cards
-                anime({
-                    targets: '.apps-search',
-                    opacity: [0, 1],
-                    translateY: [20, 0],
-                    duration: 400,
-                    easing: 'easeOutQuart'
-                });
-                targets = '.app-card';
-                delay = 300;
-                break;
-            case 3:
-                targets = '.goal-category';
-                delay = 100;
-                break;
-            case 4:
-                // Animate form elements
-                anime({
-                    targets: '#summaryPreview',
-                    opacity: [0, 1],
-                    translateY: [20, 0],
-                    duration: 600,
-                    easing: 'easeOutQuart'
-                });
-                anime({
-                    targets: '.contact-form-container',
-                    opacity: [0, 1],
-                    translateY: [30, 0],
-                    duration: 600,
-                    easing: 'easeOutQuart',
-                    delay: 200,
-                    complete: () => {
-                        // Ensure all icons in step 4 are replaced
-                        this.replaceFeatherIcons();
-                    }
-                });
-                return;
-        }
+        // Remove class first to ensure clean state
+        stepElement.classList.remove('animate-in');
         
-        if (targets) {
-            anime({
-                targets: targets,
-                opacity: [0, 1],
-                translateY: [20, 0],
-                duration: 400,
-                easing: 'easeOutQuart',
-                delay: anime.stagger(50, {start: delay})
-            });
-        }
+        // Use a proper timeout to ensure the browser resets the animation state
+        setTimeout(() => {
+            stepElement.classList.add('animate-in');
+            
+            // Ensure feather icons are replaced after animations
+            setTimeout(() => {
+                this.replaceFeatherIcons();
+            }, 300);
+        }, 50); // Small delay to allow CSS to reset
     }
     
     updateProgress() {
@@ -410,36 +355,63 @@ class AutomationWizard {
         const searchInput = document.getElementById('appsSearch');
         if (!searchInput) return;
         
+        let searchTimeout;
+        
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase();
             const appCards = document.querySelectorAll('.app-card');
             
+            // Clear any pending search timeout
+            if (searchTimeout) clearTimeout(searchTimeout);
+            
+            // First, quickly hide non-matching cards
+            const visibleCards = [];
             appCards.forEach(card => {
                 const appName = card.querySelector('span').textContent.toLowerCase();
-                const matches = appName.includes(query);
+                const matches = query === '' || appName.includes(query);
                 
-                if (matches) {
-                    card.style.display = 'flex';
-                    anime({
-                        targets: card,
-                        opacity: [0.5, 1],
-                        scale: [0.95, 1],
-                        duration: 200,
-                        easing: 'easeOutQuart'
-                    });
+                // Remove any existing anime.js animations
+                if (typeof anime !== 'undefined') {
+                    anime.remove(card);
+                }
+                
+                if (!matches) {
+                    // Quickly fade out non-matching cards
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.8)';
+                    card.style.pointerEvents = 'none';
                 } else {
-                    anime({
-                        targets: card,
-                        opacity: 0,
-                        scale: 0.95,
-                        duration: 200,
-                        easing: 'easeOutQuart',
-                        complete: () => {
-                            card.style.display = 'none';
-                        }
-                    });
+                    visibleCards.push(card);
+                    card.style.pointerEvents = 'auto';
                 }
             });
+            
+            // After a brief delay, hide non-matching cards and animate visible ones
+            searchTimeout = setTimeout(() => {
+                appCards.forEach(card => {
+                    const appName = card.querySelector('span').textContent.toLowerCase();
+                    const matches = query === '' || appName.includes(query);
+                    
+                    if (!matches) {
+                        card.style.display = 'none';
+                    } else {
+                        card.style.display = 'flex';
+                    }
+                });
+                
+                // Animate visible cards into position with stagger
+                if (visibleCards.length > 0) {
+                    anime({
+                        targets: visibleCards,
+                        opacity: [0, 1],
+                        scale: [0.8, 1],
+                        translateY: [20, 0],
+                        duration: 400,
+                        delay: anime.stagger(30, {start: 0}),
+                        easing: 'easeOutQuart'
+                    });
+                }
+            }, 150); // Small delay to allow fade out before reflow
         });
     }
     
@@ -598,8 +570,7 @@ class AutomationWizard {
             referrer: document.referrer
         };
         
-        // Log form data for development (remove in production)
-        console.log('Form submission data:', formData);
+        // Form data ready for submission
         
         // Simulate API call
         return new Promise((resolve) => {
@@ -798,15 +769,11 @@ class AutomationWizard {
 
 // Initialize wizard when both DOM and anime.js are ready
 function initializeWizard() {
-    console.log('🔍 Checking initialization... anime?', typeof anime, 'wizard element?', !!document.querySelector('.automation-wizard'));
-    
     if (typeof anime === 'undefined') {
-        console.log('⏳ anime.js not loaded yet, waiting...');
         return false;
     }
     
     if (document.querySelector('.automation-wizard')) {
-        console.log('✅ Creating AutomationWizard!');
         window.wizard = new AutomationWizard();
         return true;
     }
@@ -815,9 +782,7 @@ function initializeWizard() {
 
 // Wait for both DOM and anime.js to be ready
 function waitForDependencies() {
-    console.log('⏰ waitForDependencies called');
     if (initializeWizard()) {
-        console.log('🎉 Successfully initialized!');
         return;
     }
     
@@ -826,7 +791,6 @@ function waitForDependencies() {
 }
 
 // Start checking for dependencies
-console.log('📄 Script loaded, document.readyState:', document.readyState);
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', waitForDependencies);
 } else {

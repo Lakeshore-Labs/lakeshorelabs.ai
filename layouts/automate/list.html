@@ -1,4 +1,10 @@
 {{ define "main" }}
+<!-- Wizard-specific CSS - Load early to prevent FOUC -->
+{{ $wizardCSS := resources.Get "css/automate-wizard.css" }}
+{{ if hugo.IsProduction }}
+    {{ $wizardCSS = $wizardCSS | minify | fingerprint }}
+{{ end }}
+<link rel="stylesheet" href="{{ $wizardCSS.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $wizardCSS.Data.Integrity }}"{{ end }}>
 <section class="automation-wizard">
     <div class="container">
         <!-- Hero Section -->
@@ -231,12 +237,5 @@
     {{ $wizardScript = $wizardScript | minify | fingerprint }}
 {{ end }}
 <script src="{{ $wizardScript.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $wizardScript.Data.Integrity }}"{{ end }}></script>
-
-<!-- Wizard-specific CSS -->
-{{ $wizardCSS := resources.Get "css/automate-wizard.css" }}
-{{ if hugo.IsProduction }}
-    {{ $wizardCSS = $wizardCSS | minify | fingerprint }}
-{{ end }}
-<link rel="stylesheet" href="{{ $wizardCSS.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $wizardCSS.Data.Integrity }}"{{ end }}>
 
 {{ end }}
