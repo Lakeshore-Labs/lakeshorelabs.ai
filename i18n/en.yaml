@@ -66,3 +66,35 @@ tools_description: "We use the best AI tools to build solutions that actually wo
 # Integrations Section
 integrations_title: "Connects With Everything You Use"
 integrations_description: "Our AI works with the tools you already have. No need to replace your systems."
+
+# Automation Wizard
+wizard_title: "Get Your Personalized AI Automation Strategy"
+wizard_subtitle: "Answer a few questions and we'll send you a custom PDF with automation opportunities for your business."
+
+# Wizard Steps
+step1_title: "What type of business do you run?"
+step1_description: "Select your industry to get tailored automation recommendations."
+step2_title: "What apps does your business currently use?"
+step2_description: "Select all the apps and platforms you're currently using. We'll show you how to connect them."
+step3_title: "What are your main business goals?"
+step3_description: "Select the areas where you want to improve efficiency and reduce manual work."
+step4_title: "Get Your Custom Automation Strategy"
+step4_description: "Based on your selections, we'll create a personalized PDF with:"
+
+# Form Labels
+email_label: "Email Address"
+name_label: "Full Name"
+company_label: "Company Name"
+optional: "Optional"
+privacy_notice: "We'll send you a personalized automation strategy PDF. No spam, unsubscribe anytime."
+get_strategy: "Get My Strategy PDF"
+
+# Success Page
+success_title: "Strategy On Its Way!"
+success_message: "We've received your information and are preparing your personalized automation strategy. You'll receive it in your inbox within 24 hours."
+what_next: "What happens next?"
+next_step_1: "Our AI analyzes your industry and app usage"
+next_step_2: "We identify the best automation opportunities"
+next_step_3: "You receive a custom PDF strategy guide"
+next_step_4: "Optional: Book a free consultation call"
+back_home: "Back to Home"
