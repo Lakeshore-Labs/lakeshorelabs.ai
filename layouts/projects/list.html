@@ -1,0 +1,627 @@
+{{ define "main" }}
+<div class="projects-wrapper">
+    <!-- Clean Hero -->
+    <section class="projects-hero">
+        <div class="container">
+            <h1>{{ .Title }}</h1>
+            {{ if .Content }}
+            <p class="hero-description">{{ .Content }}</p>
+            {{ end }}
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="projects-section">
+        <div class="container">
+            <div class="projects-grid">
+            {{ range .Pages }}
+                <article class="project-card">
+                    <a href="{{ .Permalink }}" class="card-link">
+                        <div class="card-header">
+                            {{ with .Params.category }}
+                            <span class="project-category">{{ . }}</span>
+                            {{ end }}
+                            {{ if .Params.svg_illustration }}
+                            <div class="project-icon custom-svg">
+                                {{ .Params.svg_illustration | safeHTML }}
+                            </div>
+                            {{ else if not .Params.featured_image }}
+                            <div class="project-icon">
+                                {{ if eq .Params.category "AI Solutions" }}
+                                <!-- AI Brain Network -->
+                                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="ai-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#a891d1;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#7877c6;stop-opacity:1" />
+                                        </linearGradient>
+                                        <filter id="glow">
+                                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                            <feMerge>
+                                                <feMergeNode in="coloredBlur"/>
+                                                <feMergeNode in="SourceGraphic"/>
+                                            </feMerge>
+                                        </filter>
+                                    </defs>
+                                    
+                                    <!-- Brain outline -->
+                                    <path d="M100 40 C70 40, 40 65, 40 100 C40 135, 70 160, 100 160 C130 160, 160 135, 160 100 C160 65, 130 40, 100 40" 
+                                          fill="none" stroke="url(#ai-gradient)" stroke-width="2" opacity="0.3"/>
+                                    
+                                    <!-- Neural network connections -->
+                                    <g stroke="url(#ai-gradient)" stroke-width="1" opacity="0.5">
+                                        <line x1="60" y1="80" x2="100" y2="100" />
+                                        <line x1="140" y1="80" x2="100" y2="100" />
+                                        <line x1="100" y1="100" x2="80" y2="130" />
+                                        <line x1="100" y1="100" x2="120" y2="130" />
+                                        <line x1="60" y1="80" x2="80" y2="60" />
+                                        <line x1="140" y1="80" x2="120" y2="60" />
+                                        <line x1="80" y1="130" x2="60" y2="120" />
+                                        <line x1="120" y1="130" x2="140" y2="120" />
+                                    </g>
+                                    
+                                    <!-- Neural nodes -->
+                                    <g fill="url(#ai-gradient)" filter="url(#glow)">
+                                        <circle cx="100" cy="100" r="8" />
+                                        <circle cx="60" cy="80" r="5" />
+                                        <circle cx="140" cy="80" r="5" />
+                                        <circle cx="80" cy="130" r="5" />
+                                        <circle cx="120" cy="130" r="5" />
+                                        <circle cx="80" cy="60" r="4" />
+                                        <circle cx="120" cy="60" r="4" />
+                                        <circle cx="60" cy="120" r="4" />
+                                        <circle cx="140" cy="120" r="4" />
+                                    </g>
+                                    
+                                    <!-- Pulse animations -->
+                                    <circle cx="100" cy="100" r="8" fill="none" stroke="url(#ai-gradient)" stroke-width="1" opacity="0.5">
+                                        <animate attributeName="r" values="8;15;8" dur="2s" repeatCount="indefinite" />
+                                        <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite" />
+                                    </circle>
+                                </svg>
+                                {{ else if eq .Params.category "Automation" }}
+                                <!-- Automation Gears -->
+                                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="auto-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#FF6B4A;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#FF8E53;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    
+                                    <!-- Large gear -->
+                                    <g transform="translate(80, 80)">
+                                        <path d="M 0,-25 L 5,-20 L 5,-10 L 10,-10 L 10,-5 L 20,-5 L 25,0 L 20,5 L 10,5 L 10,10 L 5,10 L 5,20 L 0,25 L -5,20 L -5,10 L -10,10 L -10,5 L -20,5 L -25,0 L -20,-5 L -10,-5 L -10,-10 L -5,-10 L -5,-20 Z" 
+                                              fill="none" stroke="url(#auto-gradient)" stroke-width="2" opacity="0.8">
+                                            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite"/>
+                                        </path>
+                                        <circle cx="0" cy="0" r="8" fill="none" stroke="url(#auto-gradient)" stroke-width="2" opacity="0.6"/>
+                                    </g>
+                                    
+                                    <!-- Small gear -->
+                                    <g transform="translate(120, 100)">
+                                        <path d="M 0,-15 L 3,-12 L 3,-6 L 6,-6 L 6,-3 L 12,-3 L 15,0 L 12,3 L 6,3 L 6,6 L 3,6 L 3,12 L 0,15 L -3,12 L -3,6 L -6,6 L -6,3 L -12,3 L -15,0 L -12,-3 L -6,-3 L -6,-6 L -3,-6 L -3,-12 Z" 
+                                              fill="none" stroke="url(#auto-gradient)" stroke-width="2" opacity="0.6">
+                                            <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="7s" repeatCount="indefinite"/>
+                                        </path>
+                                        <circle cx="0" cy="0" r="5" fill="none" stroke="url(#auto-gradient)" stroke-width="2" opacity="0.4"/>
+                                    </g>
+                                    
+                                    <!-- Connecting elements -->
+                                    <g stroke="url(#auto-gradient)" stroke-width="1" opacity="0.3" fill="none">
+                                        <path d="M 60,100 Q 100,90 140,100" stroke-dasharray="5,5">
+                                            <animate attributeName="stroke-dashoffset" values="0;10" dur="1s" repeatCount="indefinite" />
+                                        </path>
+                                    </g>
+                                </svg>
+                                {{ else }}
+                                <!-- Web Applications -->
+                                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="web-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#22c55e;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    
+                                    <!-- Browser window -->
+                                    <rect x="40" y="50" width="120" height="100" rx="8" fill="none" stroke="url(#web-gradient)" stroke-width="2" opacity="0.8"/>
+                                    
+                                    <!-- Browser bar -->
+                                    <rect x="40" y="50" width="120" height="20" rx="8" fill="url(#web-gradient)" opacity="0.2"/>
+                                    <circle cx="52" cy="60" r="3" fill="url(#web-gradient)" opacity="0.6"/>
+                                    <circle cx="65" cy="60" r="3" fill="url(#web-gradient)" opacity="0.6"/>
+                                    <circle cx="78" cy="60" r="3" fill="url(#web-gradient)" opacity="0.6"/>
+                                    
+                                    <!-- Code lines -->
+                                    <g stroke="url(#web-gradient)" stroke-width="2" opacity="0.5" stroke-linecap="round">
+                                        <line x1="50" y1="85" x2="90" y2="85"/>
+                                        <line x1="50" y1="95" x2="110" y2="95"/>
+                                        <line x1="50" y1="105" x2="80" y2="105"/>
+                                        <line x1="50" y1="115" x2="100" y2="115"/>
+                                        <line x1="50" y1="125" x2="70" y2="125"/>
+                                        <line x1="50" y1="135" x2="95" y2="135"/>
+                                    </g>
+                                    
+                                    <!-- Floating elements -->
+                                    <rect x="120" y="90" width="30" height="30" rx="4" fill="none" stroke="url(#web-gradient)" stroke-width="1.5" opacity="0.6">
+                                        <animate attributeName="y" values="90;85;90" dur="3s" repeatCount="indefinite" />
+                                    </rect>
+                                    
+                                    <!-- Connection dots -->
+                                    <g fill="url(#web-gradient)" opacity="0.4">
+                                        <circle cx="30" cy="100" r="2">
+                                            <animate attributeName="r" values="2;4;2" dur="2s" repeatCount="indefinite" />
+                                        </circle>
+                                        <circle cx="170" cy="80" r="2">
+                                            <animate attributeName="r" values="2;4;2" dur="2s" begin="0.5s" repeatCount="indefinite" />
+                                        </circle>
+                                        <circle cx="170" cy="120" r="2">
+                                            <animate attributeName="r" values="2;4;2" dur="2s" begin="1s" repeatCount="indefinite" />
+                                        </circle>
+                                    </g>
+                                </svg>
+                                {{ end }}
+                            </div>
+                            {{ else }}
+                            <div class="project-image">
+                                <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" onerror="this.style.display='none'"/>
+                            </div>
+                            {{ end }}
+                        </div>
+                        
+                        <div class="card-body">
+                            <div class="card-content">
+                                <h3>{{ .Title }}</h3>
+                                
+                                {{ with .Params.client }}
+                                <p class="project-client">{{ . }}</p>
+                                {{ end }}
+                                
+                                {{ with .Description }}
+                                <p class="project-description">{{ . }}</p>
+                                {{ end }}
+                                
+                                <div class="project-details">
+                                    {{ with .Params.duration }}
+                                    <div class="detail-item">
+                                        <span class="detail-label">Duration:</span>
+                                        <span class="detail-value">{{ . }}</span>
+                                    </div>
+                                    {{ end }}
+                                    {{ with .Params.team_size }}
+                                    <div class="detail-item">
+                                        <span class="detail-label">Team:</span>
+                                        <span class="detail-value">{{ . }} members</span>
+                                    </div>
+                                    {{ end }}
+                                </div>
+                                
+                                {{ with .Params.technologies }}
+                                <div class="tech-stack">
+                                    {{ range first 5 . }}
+                                    <span class="tech-tag">{{ . }}</span>
+                                    {{ end }}
+                                    {{ if gt (len .) 5 }}
+                                    <span class="tech-more">+{{ sub (len .) 5 }}</span>
+                                    {{ end }}
+                                </div>
+                                {{ end }}
+                                
+                                <div class="card-action">
+                                    <span class="view-project">
+                                        View Project Details
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            {{ end }}
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+/* Clean, Elegant Design */
+.projects-wrapper {
+    min-height: 100vh;
+    position: relative;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(168, 145, 209, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 80% 50%, rgba(120, 119, 198, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 40% 80%, rgba(147, 129, 190, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(16, 16, 27, 0) 0%, rgba(16, 16, 27, 0.02) 50%, rgba(16, 16, 27, 0.05) 100%);
+}
+
+/* Hero Section */
+.projects-hero {
+    padding: 160px 0 60px;
+    text-align: center;
+}
+
+.projects-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #a891d1 0%, #7877c6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-description {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(241, 241, 241, 0.8);
+}
+
+/* Projects Section */
+.projects-section {
+    padding: 40px 0 100px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Projects Grid - Single Column */
+.projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Project Card - Horizontal Layout with Enhanced Glass Effect */
+.project-card {
+    position: relative;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    min-height: 220px;
+    cursor: pointer;
+}
+
+/* Card overlay for hover effect */
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 60px rgba(168, 145, 209, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+.project-card:hover::before {
+    opacity: 0.05;
+}
+
+.card-link {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    min-height: 220px;
+}
+
+/* Card Header - Left Side */
+.card-header {
+    position: relative;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(168, 145, 209, 0.08) 0%, rgba(120, 119, 198, 0.05) 100%);
+    border-right: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.project-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 180px;
+    margin: 0 auto;
+    position: relative;
+    overflow: visible;
+}
+
+.project-icon svg {
+    width: 100%;
+    height: 100%;
+    max-width: 280px;
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-icon svg {
+    transform: scale(1.06) rotateY(3deg);
+}
+
+.project-icon.custom-svg {
+    width: 100%;
+    height: 160px;
+}
+
+.project-icon.custom-svg svg {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+}
+
+.project-image {
+    height: 120px;
+    margin: -2.5rem -2rem 1rem;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-category {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 0.375rem 0.875rem;
+    background: rgba(168, 145, 209, 0.15);
+    border: 1px solid rgba(168, 145, 209, 0.25);
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #a891d1;
+    z-index: 2;
+}
+
+/* Card Body - Right Side */
+.card-body {
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.card-content {
+    width: 100%;
+}
+
+.card-body h3 {
+    font-size: 1.625rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    color: rgba(241, 241, 241, 0.95);
+}
+
+.project-client {
+    font-size: 0.9375rem;
+    color: rgba(241, 241, 241, 0.6);
+    margin-bottom: 1rem;
+}
+
+.project-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(241, 241, 241, 0.8);
+    margin-bottom: 1.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Project Details */
+.project-details {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.25rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detail-label {
+    font-size: 0.875rem;
+    color: rgba(241, 241, 241, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    font-size: 0.9375rem;
+    color: rgba(241, 241, 241, 0.9);
+    font-weight: 500;
+}
+
+/* Tech Stack */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    margin-bottom: 2rem;
+}
+
+.tech-tag {
+    padding: 0.375rem 0.875rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: rgba(241, 241, 241, 0.7);
+    transition: all 0.2s ease;
+}
+
+.project-card:hover .tech-tag {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.tech-more {
+    padding: 0.375rem 0.875rem;
+    background: rgba(168, 145, 209, 0.15);
+    border: 1px solid rgba(168, 145, 209, 0.25);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #a891d1;
+}
+
+/* Card Action */
+.card-action {
+    margin-top: auto;
+}
+
+.view-project {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.75rem;
+    background: linear-gradient(135deg, rgba(168, 145, 209, 0.1) 0%, rgba(120, 119, 198, 0.1) 100%);
+    border: 1px solid rgba(168, 145, 209, 0.3);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #a891d1;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .view-project {
+    background: linear-gradient(135deg, rgba(168, 145, 209, 0.2) 0%, rgba(120, 119, 198, 0.2) 100%);
+    border-color: rgba(168, 145, 209, 0.5);
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(168, 145, 209, 0.2);
+}
+
+.view-project svg {
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .view-project svg {
+    transform: translateX(4px);
+}
+
+/* Animations */
+.project-card {
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tablet Responsiveness */
+@media (max-width: 1024px) {
+    .card-link {
+        grid-template-columns: 320px 1fr;
+    }
+    
+    .card-body {
+        padding: 2.5rem;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .projects-hero {
+        padding: 120px 0 40px;
+    }
+    
+    .projects-grid {
+        gap: 2rem;
+    }
+    
+    .card-link {
+        grid-template-columns: 1fr;
+        grid-template-rows: 250px auto;
+    }
+    
+    .card-header {
+        padding: 2rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    
+    .card-body {
+        padding: 2rem;
+    }
+    
+    .card-body h3 {
+        font-size: 1.5rem;
+    }
+    
+    .project-details {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .project-icon {
+        height: 180px;
+    }
+    
+    .project-icon.custom-svg {
+        height: 160px;
+    }
+    
+    .project-icon svg {
+        max-width: 240px;
+    }
+    
+    .view-project {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>
+{{ end }}
