@@ -1,0 +1,168 @@
+{{ define "main" }}
+<div class="team-wrapper">
+    <!-- Team Header -->
+    <section class="team-header">
+        <div class="container">
+            <div class="header-content">
+                <h1>{{ .Title }}</h1>
+                {{ with .Description }}
+                <p class="tagline">{{ . }}</p>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Grid -->
+    <section class="team-grid-section">
+        <div class="container">
+            <div class="team-grid">
+                {{ range .Pages }}
+                <a href="{{ .RelPermalink }}" class="team-member-card">
+                    <div class="member-content">
+                        <h2 class="member-name">{{ .Title }}</h2>
+                        <p class="member-role">{{ .Params.role }}</p>
+                        {{ with .Params.description }}
+                        <p class="member-description">{{ . }}</p>
+                        {{ end }}
+                    </div>
+                    <div class="card-arrow">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+/* Team List Styles */
+.team-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(180deg, rgba(16, 16, 27, 0) 0%, rgba(16, 16, 27, 0.02) 100%);
+}
+
+.team-header {
+    padding: 160px 0 60px;
+}
+
+.team-header .header-content {
+    max-width: 800px;
+}
+
+.team-header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #a891d1 0%, #7877c6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.team-header .tagline {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: rgba(241, 241, 241, 0.8);
+}
+
+.team-grid-section {
+    padding: 60px 0 120px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.team-member-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(168, 145, 209, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.team-member-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(168, 145, 209, 0.3);
+    transform: translateY(-2px);
+}
+
+.team-member-card:hover::before {
+    left: 100%;
+}
+
+.team-member-card:hover .card-arrow {
+    transform: translateX(4px);
+}
+
+.member-content {
+    flex: 1;
+}
+
+.member-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(241, 241, 241, 0.95);
+    margin-bottom: 0.5rem;
+}
+
+.member-role {
+    font-size: 1rem;
+    color: #a891d1;
+    margin-bottom: 0.75rem;
+}
+
+.member-description {
+    font-size: 0.9rem;
+    color: rgba(241, 241, 241, 0.7);
+    line-height: 1.6;
+}
+
+.card-arrow {
+    color: rgba(241, 241, 241, 0.5);
+    transition: all 0.3s ease;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .team-header {
+        padding: 120px 0 40px;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .team-grid-section {
+        padding: 40px 0 80px;
+    }
+}
+</style>
+{{ end }}

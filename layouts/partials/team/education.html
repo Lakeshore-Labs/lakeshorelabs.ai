@@ -1,0 +1,412 @@
+<!-- Education & Credentials Section -->
+{{ $memberSlug := .File.ContentBaseName }}
+{{ $memberData := index .Site.Data.en.team $memberSlug }}
+{{ with $memberData.education }}
+<section id="education" class="team-education">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Education & Credentials</h2>
+            <p class="section-description">
+                Academic excellence from UC Berkeley combined with recognized achievements and continuous learning
+            </p>
+        </div>
+        
+        <!-- Education Cards -->
+        <div class="education-cards-container">
+            <h3 class="subsection-title">Academic Journey</h3>
+            <div class="education-cards">
+                {{ range $index, $edu := .institutions }}
+                <div class="education-card">
+                    <div class="card-header">
+                        <div class="institution-logo">
+                            <span class="logo-text">{{ .logo }}</span>
+                        </div>
+                        <div class="card-badge">{{ .duration }}</div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="institution-name">{{ .institution }}</h4>
+                        <p class="degree-name">{{ .degree }}</p>
+                        {{ with .activities }}
+                        <div class="activities-section">
+                            <span class="activities-label">Activities & Honors:</span>
+                            <ul class="activities-list">
+                                {{ range . }}
+                                <li class="activity-item">{{ . }}</li>
+                                {{ end }}
+                            </ul>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        
+        <!-- Honors & Awards Cards -->
+        <div class="honors-container">
+            <h3 class="subsection-title">Honors & Awards</h3>
+            <div class="honors-cards">
+                {{ range $index, $honor := .honors }}
+                <div class="honor-card">
+                    <div class="honor-icon"></div>
+                    <div class="honor-content">
+                        <h4 class="honor-title">{{ .title }}</h4>
+                        <p class="honor-institution">{{ .institution }}</p>
+                        {{ with .description }}
+                        <p class="honor-description">{{ . }}</p>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        
+        <!-- Professional Organizations -->
+        <div class="organizations-container">
+            <h3 class="subsection-title">Professional Organizations</h3>
+            <div class="org-cards-grid">
+                {{ range $index, $org := .organizations }}
+                <div class="org-card">
+                    <div class="org-icon"></div>
+                    <h4 class="org-name">{{ .name }}</h4>
+                    {{ with .role }}
+                    <p class="org-role">{{ . }}</p>
+                    {{ end }}
+                    {{ with .description }}
+                    <p class="org-description">{{ . }}</p>
+                    {{ end }}
+                    {{ with .duration }}
+                    <p class="org-duration">{{ . }}</p>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        
+        <!-- Volunteering Experience -->
+        <div class="volunteering-container">
+            <h3 class="subsection-title">Community Impact</h3>
+            <div class="volunteer-cards">
+                {{ range $index, $vol := .volunteering }}
+                <div class="volunteer-card">
+                    <div class="volunteer-card-header">
+                        <div class="volunteer-icon-wrapper">
+                            <span class="volunteer-icon"></span>
+                        </div>
+                        <div class="volunteer-meta">
+                            <h4 class="volunteer-org">{{ .organization }}</h4>
+                            <p class="volunteer-role">{{ .role }}</p>
+                        </div>
+                    </div>
+                    <div class="volunteer-card-body">
+                        <div class="volunteer-tags">
+                            <span class="volunteer-cause">{{ .cause }}</span>
+                            {{ with .duration }}
+                            <span class="volunteer-duration">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        <p class="volunteer-description">{{ .description }}</p>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Education Section Styles */
+.team-education {
+    padding: 80px 0;
+    background: linear-gradient(135deg, rgba(168, 145, 209, 0.02) 0%, rgba(120, 119, 198, 0.02) 100%);
+}
+
+.team-education .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.team-education .section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: rgba(241, 241, 241, 0.95);
+    margin-bottom: 1rem;
+}
+
+.team-education .section-description {
+    font-size: 1.25rem;
+    color: rgba(241, 241, 241, 0.7);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.team-education .subsection-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(241, 241, 241, 0.9);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Education Cards */
+.team-education .education-cards-container {
+    margin-bottom: 4rem;
+}
+
+.team-education .education-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.team-education .education-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.team-education .education-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(168, 145, 209, 0.3);
+}
+
+.team-education .education-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.team-education .institution-logo {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(168, 145, 209, 0.1);
+    border-radius: 12px;
+    font-weight: 600;
+    color: #a891d1;
+}
+
+.team-education .card-badge {
+    padding: 0.375rem 0.75rem;
+    background: rgba(168, 145, 209, 0.1);
+    border: 1px solid rgba(168, 145, 209, 0.2);
+    border-radius: 20px;
+    font-size: 0.8125rem;
+    color: #a891d1;
+}
+
+.team-education .institution-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgba(241, 241, 241, 0.95);
+    margin-bottom: 0.5rem;
+}
+
+.team-education .degree-name {
+    color: rgba(241, 241, 241, 0.7);
+    margin-bottom: 1rem;
+}
+
+.team-education .activities-label {
+    font-size: 0.875rem;
+    color: rgba(241, 241, 241, 0.6);
+    font-weight: 500;
+}
+
+.team-education .activities-list {
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+}
+
+.team-education .activity-item {
+    color: rgba(241, 241, 241, 0.8);
+    margin-bottom: 0.25rem;
+}
+
+/* Honors Cards */
+.team-education .honors-container {
+    margin-bottom: 4rem;
+}
+
+.team-education .honors-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.team-education .honor-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.team-education .honor-card:hover {
+    border-color: rgba(168, 145, 209, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.team-education .honor-icon {
+    font-size: 2rem;
+}
+
+.team-education .honor-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: rgba(241, 241, 241, 0.95);
+    margin-bottom: 0.25rem;
+}
+
+.team-education .honor-institution {
+    font-size: 0.9rem;
+    color: #a891d1;
+    margin-bottom: 0.5rem;
+}
+
+.team-education .honor-description {
+    font-size: 0.875rem;
+    color: rgba(241, 241, 241, 0.7);
+}
+
+/* Organizations Grid */
+.team-education .organizations-container {
+    margin-bottom: 4rem;
+}
+
+.team-education .org-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.team-education .org-card {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.team-education .org-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(168, 145, 209, 0.3);
+}
+
+.team-education .org-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.team-education .org-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: rgba(241, 241, 241, 0.95);
+    margin-bottom: 0.5rem;
+}
+
+.team-education .org-role {
+    color: #a891d1;
+    margin-bottom: 0.5rem;
+}
+
+.team-education .org-description {
+    font-size: 0.875rem;
+    color: rgba(241, 241, 241, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+.team-education .org-duration {
+    font-size: 0.8125rem;
+    color: rgba(241, 241, 241, 0.6);
+}
+
+/* Volunteering Cards */
+.team-education .volunteer-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.team-education .volunteer-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.team-education .volunteer-card:hover {
+    border-color: rgba(168, 145, 209, 0.3);
+    transform: translateY(-2px);
+}
+
+.team-education .volunteer-card-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.team-education .volunteer-icon-wrapper {
+    font-size: 1.5rem;
+}
+
+.team-education .volunteer-org {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: rgba(241, 241, 241, 0.95);
+    margin-bottom: 0.25rem;
+}
+
+.team-education .volunteer-role {
+    color: #a891d1;
+}
+
+.team-education .volunteer-tags {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.team-education .volunteer-cause,
+.team-education .volunteer-duration {
+    padding: 0.25rem 0.75rem;
+    background: rgba(168, 145, 209, 0.1);
+    border: 1px solid rgba(168, 145, 209, 0.2);
+    border-radius: 20px;
+    font-size: 0.8125rem;
+    color: #a891d1;
+}
+
+.team-education .volunteer-description {
+    color: rgba(241, 241, 241, 0.8);
+    line-height: 1.6;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .team-education {
+        padding: 60px 0;
+    }
+    
+    .team-education .section-title {
+        font-size: 2rem;
+    }
+    
+    .team-education .education-cards,
+    .team-education .honors-cards,
+    .team-education .org-cards-grid,
+    .team-education .volunteer-cards {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{{ end }}

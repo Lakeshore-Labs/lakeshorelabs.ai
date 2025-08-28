@@ -1,0 +1,109 @@
+{{ define "main" }}
+<div class="team-member-wrapper">
+    <!-- Member Header -->
+    <section class="member-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/team/" class="back-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    Back to Team
+                </a>
+                <h1>{{ .Title }}</h1>
+                <p class="member-role">{{ .Params.role }}</p>
+                {{ with .Params.description }}
+                <p class="member-tagline">{{ . }}</p>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+
+    <!-- Include all sections -->
+    {{- partial "team/hero.html" . -}}
+    {{- partial "team/about.html" . -}}
+    {{- partial "team/expertise.html" . -}}
+    {{- partial "team/experience.html" . -}}
+    {{- partial "team/education.html" . -}}
+    {{- partial "team/contact.html" . -}}
+</div>
+
+<style>
+/* Team Member Single Page Styles */
+.team-member-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(180deg, rgba(16, 16, 27, 0) 0%, rgba(16, 16, 27, 0.02) 100%);
+}
+
+.member-header {
+    padding: 140px 0 60px;
+    background: linear-gradient(135deg, rgba(168, 145, 209, 0.03) 0%, rgba(120, 119, 198, 0.02) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.member-header .header-content {
+    max-width: 800px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(241, 241, 241, 0.6);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    transition: all 0.2s ease;
+}
+
+.back-link:hover {
+    color: #a891d1;
+    transform: translateX(-2px);
+}
+
+.member-header h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #a891d1 0%, #7877c6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.member-role {
+    font-size: 1.5rem;
+    color: rgba(241, 241, 241, 0.8);
+    margin-bottom: 1rem;
+}
+
+.member-tagline {
+    font-size: 1.125rem;
+    color: rgba(241, 241, 241, 0.7);
+    line-height: 1.6;
+}
+
+/* Container Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .member-header {
+        padding: 120px 0 40px;
+    }
+    
+    .member-header h1 {
+        font-size: 2rem;
+    }
+    
+    .member-role {
+        font-size: 1.25rem;
+    }
+}
+</style>
+{{ end }}

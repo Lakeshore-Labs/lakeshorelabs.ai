@@ -99,17 +99,23 @@ enableGitInfo = false
   url = "#faq"
   weight = 40
 
-[[languages.en.menus.main]]
-  identifier = "projects"
-  name = "Projects"
-  url = "/projects/"
-  weight = 50
+# [[languages.en.menus.main]]
+#   identifier = "projects"
+#   name = "Projects"
+#   url = "/projects/"
+#   weight = 50
 
-[[languages.en.menus.main]]
-  identifier = "blog"
-  name = "Blog"
-  url = "/posts/"
-  weight = 60
+# [[languages.en.menus.main]]
+#   identifier = "blog"
+#   name = "Blog"
+#   url = "/posts/"
+#   weight = 60
+
+# [[languages.en.menus.main]]
+#   identifier = "team"
+#   name = "Team"
+#   url = "/team/"
+#   weight = 70
 
 # Menu configuration for Vietnamese
 [[languages.vi.menus.main]]
@@ -136,17 +142,17 @@ enableGitInfo = false
   url = "#faq"
   weight = 40
 
-[[languages.vi.menus.main]]
-  identifier = "projects"
-  name = "Dự Án"
-  url = "/projects/"
-  weight = 50
+# [[languages.vi.menus.main]]
+#   identifier = "projects"
+#   name = "Dự Án"
+#   url = "/projects/"
+#   weight = 50
 
-[[languages.vi.menus.main]]
-  identifier = "blog"
-  name = "Blog"
-  url = "/posts/"
-  weight = 60
+# [[languages.vi.menus.main]]
+#   identifier = "blog"
+#   name = "Blog"
+#   url = "/posts/"
+#   weight = 60
 
 # Menu configuration for Omani-Arabic
 [[languages.ar-OM.menus.main]]
@@ -173,17 +179,17 @@ enableGitInfo = false
   url = "#faq"
   weight = 40
 
-[[languages.ar-OM.menus.main]]
-  identifier = "projects"
-  name = "المشاريع"
-  url = "/projects/"
-  weight = 50
+# [[languages.ar-OM.menus.main]]
+#   identifier = "projects"
+#   name = "المشاريع"
+#   url = "/projects/"
+#   weight = 50
 
-[[languages.ar-OM.menus.main]]
-  identifier = "blog"
-  name = "المدونة"
-  url = "/posts/"
-  weight = 60
+# [[languages.ar-OM.menus.main]]
+#   identifier = "blog"
+#   name = "المدونة"
+#   url = "/posts/"
+#   weight = 60
 
 # Hugo version requirement
 [module]

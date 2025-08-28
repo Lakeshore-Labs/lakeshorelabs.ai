@@ -1,0 +1,243 @@
+<!-- About Section -->
+{{ $memberSlug := .File.ContentBaseName }}
+{{ $memberData := index .Site.Data.en.team $memberSlug }}
+{{ with $memberData.about }}
+<section id="about" class="team-about">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">{{ .title }}</h2>
+            <p class="section-description">{{ .headline }}</p>
+        </div>
+        <div class="about-content">
+            <div class="about-bio">
+                {{ .bio | markdownify }}
+                
+                <div class="about-services">
+                    {{ range .services }}
+                    <div class="service-item">
+                        <span class="service-icon">{{ .icon }}</span>
+                        <div class="service-content">
+                            <strong>{{ .title }}:</strong> {{ .description }}
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+                
+                <p class="about-focus">{{ .focus }}</p>
+                <p class="about-cta"><strong>{{ .cta }}</strong></p>
+            </div>
+            
+            <div class="about-sidebar">
+                <div class="credentials-card">
+                    <h3>Credentials & Achievements</h3>
+                    <ul class="credentials-list">
+                        {{ range .credentials }}
+                        <li>{{ . }}</li>
+                        {{ end }}
+                    </ul>
+                </div>
+                
+                <div class="social-proof">
+                    <h3>Professional Network</h3>
+                    <div class="network-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">{{ .social.followers }}</span>
+                            <span class="stat-label">Followers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">{{ .social.connections }}</span>
+                            <span class="stat-label">Connections</span>
+                        </div>
+                    </div>
+                    <a href="{{ .social.linkedin }}" target="_blank" class="btn btn-secondary">
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* About Section Styles */
+.team-about {
+    padding: 80px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.team-about .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.team-about .section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: rgba(241, 241, 241, 0.95);
+    margin-bottom: 1rem;
+}
+
+.team-about .section-description {
+    font-size: 1.25rem;
+    color: rgba(241, 241, 241, 0.7);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.team-about .about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.team-about .about-bio {
+    color: rgba(241, 241, 241, 0.8);
+    line-height: 1.8;
+}
+
+.team-about .about-bio p {
+    margin-bottom: 1.5rem;
+}
+
+.team-about .about-services {
+    margin: 2rem 0;
+}
+
+.team-about .service-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.team-about .service-item:last-child {
+    border-bottom: none;
+}
+
+.team-about .service-icon {
+    font-size: 1.5rem;
+    color: #a891d1;
+}
+
+.team-about .service-content {
+    flex: 1;
+    color: rgba(241, 241, 241, 0.8);
+}
+
+.team-about .about-focus {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(168, 145, 209, 0.05);
+    border-left: 3px solid #a891d1;
+    border-radius: 8px;
+    color: rgba(241, 241, 241, 0.85);
+}
+
+.team-about .about-cta {
+    margin-top: 2rem;
+    font-size: 1.125rem;
+    color: rgba(241, 241, 241, 0.9);
+}
+
+.team-about .about-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.team-about .credentials-card,
+.team-about .social-proof {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+}
+
+.team-about .credentials-card h3,
+.team-about .social-proof h3 {
+    font-size: 1.25rem;
+    color: #a891d1;
+    margin-bottom: 1.5rem;
+}
+
+.team-about .credentials-list {
+    list-style: none;
+    padding: 0;
+}
+
+.team-about .credentials-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: rgba(241, 241, 241, 0.8);
+}
+
+.team-about .credentials-list li:last-child {
+    border-bottom: none;
+}
+
+.team-about .network-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.team-about .stat-item {
+    text-align: center;
+}
+
+.team-about .stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #a891d1;
+}
+
+.team-about .stat-label {
+    display: block;
+    font-size: 0.875rem;
+    color: rgba(241, 241, 241, 0.6);
+    margin-top: 0.25rem;
+}
+
+.team-about .btn-secondary {
+    display: block;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    background: rgba(168, 145, 209, 0.1);
+    border: 1px solid rgba(168, 145, 209, 0.3);
+    color: #a891d1;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.team-about .btn-secondary:hover {
+    background: rgba(168, 145, 209, 0.2);
+    border-color: #a891d1;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 968px) {
+    .team-about .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-about {
+        padding: 60px 0;
+    }
+    
+    .team-about .section-title {
+        font-size: 2rem;
+    }
+    
+    .team-about .section-description {
+        font-size: 1.125rem;
+    }
+}
+</style>
+{{ end }}

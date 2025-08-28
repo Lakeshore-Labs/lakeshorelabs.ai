@@ -1,0 +1,217 @@
+# Hero Section
+title:
+  main: "Transform Your Business with"
+  emphasis: "AI Agents & Automation"
+
+subtitle: "UC Berkeley EECS | Founder @ Lakeshore Labs"
+
+description: "I architect AI systems that ship to production, not PowerPoint. From autonomous agents managing 700+ vehicles to RAG systems processing millions of documents, I build what works—and teach your team how to build it too."
+
+stats:
+  - number: "22+"
+    label: "Years Experience"
+  - number: "50+"
+    label: "AI Projects"
+  - number: "700+"
+    label: "Systems Automated"
+  - number: "328+"
+    label: "LinkedIn Followers"
+
+actions:
+  primary:
+    text: "Schedule AI Strategy Call"
+    link: "#contact"
+  secondary:
+    text: "View Case Studies"
+    link: "#portfolio"
+
+terminal:
+  title: "AI Agent Development"
+
+# About Section
+about:
+  title: "About Ali Rathore"
+  headline: "Founder & CTO Building AI-Native Solutions"
+  
+  bio: |
+    After two decades architecting systems that scale from startups to Fortune 500s, I founded Lakeshore Labs to solve a critical gap: most companies know AI will transform their industry, but they don't know where to start or how to execute.
+    
+    We're not another consultancy selling PowerPoints. We build production AI systems that actually ship. From autonomous agents managing 700+ vehicle fleets across Southeast Asia to RAG systems processing millions of enterprise documents, our implementations drive real revenue and cut real costs.
+    
+    My journey from UC Berkeley EECS through Silicon Valley engineering leadership taught me that the best technology means nothing if it doesn't solve business problems. That's why we focus on pragmatic AI—systems that work today, scale tomorrow, and deliver ROI from day one.
+
+services:
+  - icon: "Strategy"
+    title: "Consulting"
+    description: "Creating actionable AI and automation strategies tailored to your business"
+  - icon: "Build"
+    title: "Implementation"
+    description: "Building and deploying AI agents, workflow automations, and bespoke apps"
+  - icon: "Learn"
+    title: "Training"
+    description: "Helping teams build the skills and mindset required to adopt AI effectively"
+
+focus: "With a deep focus on making AI practical, approachable, and valuable, we partner with enterprise and SME clients across SE Asia and the GCC — guiding them from ideation to deployment, and ensuring long-term success."
+
+cta: "If you're exploring how AI can transform your business, I'm happy to connect and discuss!"
+
+credentials:
+  - "UC Berkeley - B.S. Electrical Engineering & Computer Science"
+  - "Haas Scholar | Sigma Xi Research Award"
+  - "Eta Kappa Nu (EECS Honors Society)"
+  - "Tau Beta Pi (Engineering Honors Society)"
+
+social:
+  linkedin: "https://www.linkedin.com/in/a8e"
+  followers: "328+"
+  connections: "319"
+
+# Expertise Section
+expertise:
+  - icon: "AI"
+    title: "AI Agents & Multi-Agent Systems"
+    description: "Custom intelligent agents for complex business processes, multi-agent orchestration, and autonomous decision-making systems."
+    techStack:
+      - LangChain
+      - CrewAI
+      - AutoGen
+      - Semantic Kernel
+
+  - icon: "AUTO"
+    title: "Intelligent Automation"
+    description: "End-to-end workflow automation with AI-powered decision making, document processing, and seamless system integration."
+    techStack:
+      - Python
+      - Golang
+      - Docker
+      - Kubernetes
+
+  - icon: "RAG"
+    title: "RAG & Knowledge Systems"
+    description: "Retrieval-Augmented Generation implementations, vector databases, and enterprise knowledge management systems."
+    techStack:
+      - OpenAI
+      - Pinecone
+      - Weaviate
+      - ChromaDB
+
+  - icon: "CLOUD"
+    title: "AI-Native Cloud Solutions"
+    description: "Scalable AI infrastructure, microservices architecture, and cloud-native deployment strategies for production AI systems."
+    techStack:
+      - AWS
+      - Azure
+      - GCP
+      - Terraform
+
+# Experience Section
+experience:
+  - company: "Lakeshore Labs"
+    logo: "LL"
+    role: "Founder | AI Agents & Strategy"
+    type: "Full-time"
+    duration: "Nov 2024 - Present"
+    location: "San Francisco CA, Dallas TX, Vietnam, Oman · Remote"
+    current: true
+    description: |
+      We specialize in AI agents, practical automation, and custom applications that help companies across SEA and the GCC to solve real-world business problems.
+    highlights: |
+      Built an AI research agent for a major F&B group that synthesizes trends from 100+ data sources, cutting their time-to-insight by 70%. Deployed autonomous content agents for restaurant chains across multiple regions, increasing engagement 3.5× while saving 15 hours of manual work weekly. 
+      
+      Implemented an AI sales co-pilot for a distributor that surfaces opportunities directly in CRM, driving 12% larger orders and 15% faster sales cycles. Created conversational AI for health insurance providers achieving 90% self-service rates and slashing call center volume by 80%. Developed natural language interfaces for distributed IoT systems that reduced on-site support needs by 75%.
+
+  - company: "Magnitudeminds"
+    logo: "MM"
+    role: "Chief Technical Advisor"
+    type: "Full-time"
+    duration: "Aug 2025 - Present"
+    location: "Ho Chi Minh City, Vietnam · Hybrid"
+    current: true
+    description: |
+      Magnitudeminds creates agentic AI solutions designed to help SMBs in Southeast Asia boost profitability by streamlining operations, automating workflows, and enabling smarter business decisions.
+    highlights: |
+      Leading technical strategy for agentic AI solutions targeting Southeast Asia's SMB market. Partnering with Google Cloud for Startups, NVIDIA Inception, and Microsoft for Startups to build scalable AI products that transform how small businesses operate. Currently mentoring a team of engineers while co-developing core AI implementations that power our platform.
+
+  - company: "Soda Health"
+    logo: "SH"
+    role: "Senior Engineering Manager | Growth & Engagement"
+    type: "Full-time"
+    duration: "Oct 2022 - Nov 2024"
+    location: "Remote"
+    description: |
+      Oversaw the technology behind Member Experience, AndMore mobile app, web portal, engagement, e2e testing, customer segmentation, image recognition, recommendation engine, and LLM integration.
+    skills:
+      - "Data Engineering"
+      - "Orchestration"
+      - "Team Leadership"
+      - "LLM Integration"
+
+  - company: "eVisit"
+    logo: "EV"
+    role: "Engineering Manager | SaaS & Cloud"
+    type: "Full-time"
+    duration: "Sep 2021 - Aug 2022"
+    location: "Remote"
+    description: |
+      Managed the Enterprise Health Care Organizations team to deliver enterprise-ready features including SSO, Self-Service Portal, Billing, Permissions, and NLP for sentiment analysis.
+
+  - company: "Metaprise Systems"
+    logo: "MS"
+    role: "Founder | AI - Cloud - SaaS - IoT Apps"
+    type: "Full-time"
+    duration: "Jan 2019 - Sep 2021"
+    location: "USA, Netherlands, Pakistan, Vietnam · Hybrid"
+    description: |
+      Led the creation of transformative AI/ML solutions driving substantial cost savings and operational improvements.
+    highlights: |
+      Developed predictive analytics for fleet management that dramatically reduced fuel consumption and theft. Created a serverless computer vision application achieving 95% precision in dental color matching while cutting operational costs. Implemented anomaly detection systems that flagged 98% of fraudulent transactions, saving clients over $500K annually.
+
+# Education Section
+education:
+  institutions:
+    - institution: "University of California, Berkeley"
+      degree: "B.S. Electrical Engineering and Computer Science"
+      duration: "2008 - 2010"
+      logo: "UCB"
+      activities:
+        - "Eta Kappa Nu (EECS Honors Society)"
+        - "Tau Beta Pi (Engineering Honors Society)"
+        - "Haas Research Scholar"
+
+    - institution: "Diablo Valley College"
+      degree: "Computer Science"
+      duration: "2007 - 2008"
+      logo: "DVC"
+
+  honors:
+    - title: "Haas Scholar"
+      institution: "UC Berkeley"
+      description: "Prestigious undergraduate research scholarship"
+      
+    - title: "Sigma Xi Research Award"
+      institution: "Scientific Research Honor Society"
+      description: "Recognition for excellence in scientific research"
+
+  organizations:
+    - name: "Engineers Without Borders"
+      role: "Project Manager"
+      duration: "Jan 2008 - Jun 2008"
+      description: "Managed team to build second-story classrooms for elementary school in remote Guatemala village"
+      
+    - name: "Eta Kappa Nu"
+      description: "Electrical Engineering Honors Society"
+      
+    - name: "Tau Beta Pi"
+      description: "Engineering Honors Society"
+
+  volunteering:
+    - organization: "Engineers Without Borders USA"
+      role: "Project Manager"
+      duration: "Jan 2008 - Jun 2008"
+      cause: "Education"
+      description: "Managed a team to travel to Guatemala and build second-story classrooms for overflowing elementary school in remote village"
+      
+    - organization: "CoderSchool"
+      role: "Teacher"
+      cause: "Education"
+      description: "Teaching software development for the Blockchain"

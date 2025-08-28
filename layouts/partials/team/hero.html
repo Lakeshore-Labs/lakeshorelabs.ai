@@ -1,0 +1,377 @@
+<!-- Hero Section -->
+{{ $memberSlug := .File.ContentBaseName }}
+{{ $memberData := index .Site.Data.en.team $memberSlug }}
+{{ with $memberData }}
+<section class="team-hero">
+    <div class="hero-background">
+        <div class="neural-network" id="neural-network"></div>
+        <div class="floating-shapes" id="floating-shapes"></div>
+        <div class="particle-system" id="particle-system"></div>
+    </div>
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-main">{{ .title.main }}</span>
+                    <span class="title-emphasis gradient-text">{{ .title.emphasis }}</span>
+                </h1>
+                {{ with .subtitle }}
+                <p class="hero-subtitle">{{ . }}</p>
+                {{ end }}
+                <p class="hero-description">{{ .description }}</p>
+                <div class="hero-stats">
+                    {{ range .stats }}
+                    <div class="stat">
+                        <div class="stat-number">{{ .number }}</div>
+                        <div class="stat-label">{{ .label }}</div>
+                    </div>
+                    {{ end }}
+                </div>
+                <div class="hero-actions">
+                    <a href="{{ .actions.primary.link }}" class="btn btn-primary btn-large">
+                        {{ .actions.primary.text }}
+                    </a>
+                    <a href="{{ .actions.secondary.link }}" class="btn btn-secondary btn-large">
+                        {{ .actions.secondary.text }}
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="terminal-container">
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="terminal-title">{{ .terminal.title }}</div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="code-line">
+                                <span class="prompt">$</span>
+                                <span class="typed-text" id="typed-text"></span>
+                                <span class="cursor" id="cursor">|</span>
+                            </div>
+                            <div class="terminal-output" id="terminal-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Hero Section Styles */
+.team-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 80px;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.neural-network,
+.floating-shapes,
+.particle-system {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.title-main {
+    display: block;
+    font-weight: 600;
+    color: rgba(241, 241, 241, 0.95);
+}
+
+.title-emphasis {
+    display: block;
+    font-weight: 700;
+    background: linear-gradient(135deg, #a891d1 0%, #7877c6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #a891d1;
+    margin-bottom: 1rem;
+}
+
+.hero-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(241, 241, 241, 0.8);
+    margin-bottom: 2rem;
+}
+
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.stat:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(168, 145, 209, 0.3);
+    transform: translateY(-2px);
+}
+
+.stat-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #a891d1;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: rgba(241, 241, 241, 0.6);
+    margin-top: 0.25rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #a891d1 0%, #7877c6 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(168, 145, 209, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #a891d1;
+    border: 1px solid rgba(168, 145, 209, 0.3);
+}
+
+.btn-secondary:hover {
+    background: rgba(168, 145, 209, 0.1);
+    border-color: #a891d1;
+}
+
+.btn-large {
+    padding: 1rem 2.5rem;
+    font-size: 1.0625rem;
+}
+
+/* Terminal Styles */
+.terminal-container {
+    max-width: 100%;
+}
+
+.terminal {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot.red {
+    background: #ff5f56;
+}
+
+.dot.yellow {
+    background: #ffbd2e;
+}
+
+.dot.green {
+    background: #27c93f;
+}
+
+.terminal-title {
+    margin-left: auto;
+    font-size: 0.875rem;
+    color: rgba(241, 241, 241, 0.5);
+}
+
+.terminal-body {
+    padding: 1.5rem;
+    font-family: 'Courier New', monospace;
+    min-height: 300px;
+}
+
+.code-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.prompt {
+    color: #27c93f;
+    margin-right: 0.5rem;
+}
+
+.typed-text {
+    color: rgba(241, 241, 241, 0.9);
+}
+
+.cursor {
+    color: rgba(241, 241, 241, 0.9);
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.terminal-output {
+    color: rgba(241, 241, 241, 0.7);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 968px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero-visual {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-hero {
+        padding: 100px 0 60px;
+        min-height: auto;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .terminal-body {
+        min-height: 200px;
+    }
+}
+</style>
+
+<script>
+// Terminal typing animation
+document.addEventListener('DOMContentLoaded', function() {
+    const typedText = document.getElementById('typed-text');
+    const terminal = document.getElementById('terminal-output');
+    
+    if (!typedText || !terminal) return;
+    
+    const commands = [
+        { cmd: 'python ai_agent.py --mode autonomous', output: '✓ Agent initialized\n✓ Knowledge base loaded\n✓ Ready for deployment' },
+        { cmd: 'docker run -d lakeshore/ai-engine', output: '✓ Container started\n✓ API endpoints active\n✓ Monitoring enabled' },
+        { cmd: './deploy.sh --env production', output: '✓ Tests passed: 247/247\n✓ Deployment successful\n✓ ROI tracking enabled' }
+    ];
+    
+    let currentCommand = 0;
+    
+    function typeCommand() {
+        const command = commands[currentCommand];
+        typedText.textContent = '';
+        terminal.textContent = '';
+        
+        let charIndex = 0;
+        const typeInterval = setInterval(() => {
+            if (charIndex < command.cmd.length) {
+                typedText.textContent += command.cmd[charIndex];
+                charIndex++;
+            } else {
+                clearInterval(typeInterval);
+                setTimeout(() => {
+                    terminal.textContent = command.output;
+                    currentCommand = (currentCommand + 1) % commands.length;
+                    setTimeout(typeCommand, 3000);
+                }, 500);
+            }
+        }, 50);
+    }
+    
+    typeCommand();
+});
+</script>
+{{ end }}

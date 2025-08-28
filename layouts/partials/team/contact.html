@@ -1,0 +1,305 @@
+<!-- Contact Section -->
+<section id="contact" class="team-contact">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2 class="section-title">Ready to Transform Your Business with AI?</h2>
+                <p class="contact-description">
+                    Get a free AI readiness assessment and strategic consultation. 
+                    Let's discuss how AI agents and automation can drive your business forward.
+                </p>
+                <div class="contact-benefits">
+                    <div class="benefit">
+                        <div class="benefit-icon"></div>
+                        <div class="benefit-text">Free 30-minute AI strategy call</div>
+                    </div>
+                    <div class="benefit">
+                        <div class="benefit-icon"></div>
+                        <div class="benefit-text">Custom AI opportunity assessment</div>
+                    </div>
+                    <div class="benefit">
+                        <div class="benefit-icon"></div>
+                        <div class="benefit-text">Technology recommendations</div>
+                    </div>
+                    <div class="benefit">
+                        <div class="benefit-icon"></div>
+                        <div class="benefit-text">Implementation roadmap outline</div>
+                    </div>
+                </div>
+                <div class="contact-direct">
+                    <p class="direct-label">Connect with me:</p>
+                    <div class="contact-links">
+                        <a href="mailto:ali@alir.me" class="contact-link email">
+                            <span>ali@alir.me</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/a8e" target="_blank" class="contact-link linkedin">
+                            <span>LinkedIn Profile</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-container">
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="project-type">Project Interest</label>
+                        <select id="project-type" name="project-type">
+                            <option value="">Select an option</option>
+                            <option value="strategy">AI Strategy & Consulting</option>
+                            <option value="agents">Custom AI Agents</option>
+                            <option value="automation">Process Automation</option>
+                            <option value="implementation">Enterprise Implementation</option>
+                            <option value="training">Training & Workshops</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell me about your AI goals and current challenges..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">
+                        Schedule Free AI Assessment
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Contact Section Styles */
+.team-contact {
+    padding: 80px 0;
+    background: linear-gradient(135deg, rgba(168, 145, 209, 0.03) 0%, rgba(120, 119, 198, 0.02) 100%);
+}
+
+.team-contact .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.team-contact .section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #a891d1 0%, #7877c6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.team-contact .contact-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(241, 241, 241, 0.8);
+    margin-bottom: 2rem;
+}
+
+.team-contact .contact-benefits {
+    margin-bottom: 2rem;
+}
+
+.team-contact .benefit {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.team-contact .benefit:last-child {
+    border-bottom: none;
+}
+
+.team-contact .benefit-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(74, 222, 128, 0.1);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    border-radius: 50%;
+    color: #4ade80;
+    position: relative;
+}
+
+.team-contact .benefit-icon::after {
+    content: '✓';
+    position: absolute;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.team-contact .benefit-text {
+    font-size: 1rem;
+    color: rgba(241, 241, 241, 0.8);
+}
+
+.team-contact .contact-direct {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.team-contact .direct-label {
+    font-size: 1rem;
+    color: rgba(241, 241, 241, 0.7);
+    margin-bottom: 1rem;
+}
+
+.team-contact .contact-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.team-contact .contact-link {
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    text-decoration: none;
+    color: #a891d1;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.team-contact .contact-link:hover {
+    background: rgba(168, 145, 209, 0.1);
+    border-color: rgba(168, 145, 209, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Form Styles */
+.team-contact .contact-form-container {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.team-contact .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.team-contact .form-group label {
+    display: block;
+    font-size: 0.9375rem;
+    color: rgba(241, 241, 241, 0.8);
+    margin-bottom: 0.5rem;
+}
+
+.team-contact .form-group input,
+.team-contact .form-group select,
+.team-contact .form-group textarea {
+    width: 100%;
+    padding: 0.875rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    color: rgba(241, 241, 241, 0.9);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.team-contact .form-group input:focus,
+.team-contact .form-group select:focus,
+.team-contact .form-group textarea:focus {
+    outline: none;
+    border-color: rgba(168, 145, 209, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.team-contact .form-group input::placeholder,
+.team-contact .form-group textarea::placeholder {
+    color: rgba(241, 241, 241, 0.4);
+}
+
+.team-contact .form-group select option {
+    background: #10101b;
+    color: rgba(241, 241, 241, 0.9);
+}
+
+.team-contact .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.team-contact .btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #a891d1 0%, #7877c6 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.team-contact .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(168, 145, 209, 0.3);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 968px) {
+    .team-contact .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-contact {
+        padding: 60px 0;
+    }
+    
+    .team-contact .section-title {
+        font-size: 2rem;
+    }
+    
+    .team-contact .contact-description {
+        font-size: 1rem;
+    }
+}
+</style>
+
+<script>
+// Contact form handler
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Here you would normally send the data to your server
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            alert('Thank you for your interest! We will contact you soon.');
+            form.reset();
+        });
+    }
+});
+</script>
