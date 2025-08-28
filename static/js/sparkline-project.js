@@ -14,7 +14,6 @@ class SparklineProjectEnhancer {
         this.setupInteractiveMetrics();
         this.setupTimelineInteractions();
         this.setupSVGInteractions();
-        this.setupPerformanceDashboard();
         this.setupProgressNavigation();
         this.setupCodeSnippets();
         this.setupParticleEffects();
@@ -89,10 +88,6 @@ class SparklineProjectEnhancer {
                 });
             });
 
-            // Add click interactions for detailed info
-            card.addEventListener('click', () => {
-                this.showMetricDetails(card, index);
-            });
         });
     }
 
@@ -283,252 +278,7 @@ class SparklineProjectEnhancer {
         this.showFlowInfo(index);
     }
 
-    setupPerformanceDashboard() {
-        this.createPerformanceDashboard();
-    }
 
-    createPerformanceDashboard() {
-        const resultsSection = document.querySelector('.results-section');
-        if (!resultsSection) return;
-
-        const dashboardHTML = `
-            <div class="performance-dashboard">
-                <div class="dashboard-container">
-                    <h3>Performance Visualization</h3>
-                    
-                    <!-- Query Performance Chart -->
-                    <div class="chart-section">
-                        <h4>Query Execution Time Comparison</h4>
-                        <div class="chart-container">
-                            <canvas id="performanceChart" width="800" height="300"></canvas>
-                        </div>
-                    </div>
-                    
-                    <!-- Throughput Visualization -->
-                    <div class="chart-section">
-                        <h4>Data Processing Throughput</h4>
-                        <div class="throughput-chart">
-                            <div class="throughput-bars">
-                                <div class="throughput-bar" data-value="15" data-label="Traditional Spark">
-                                    <div class="bar-fill" data-color="#ef4444"></div>
-                                    <span class="bar-label">Traditional</span>
-                                    <span class="bar-value">15 GB/s</span>
-                                </div>
-                                <div class="throughput-bar" data-value="150" data-label="SNAP Enhanced">
-                                    <div class="bar-fill" data-color="#10b981"></div>
-                                    <span class="bar-label">SNAP Enhanced</span>
-                                    <span class="bar-value">150 GB/s</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Resource Utilization -->
-                    <div class="chart-section">
-                        <h4>Resource Utilization Metrics</h4>
-                        <div class="metrics-grid">
-                            <div class="metric-gauge" data-metric="cpu" data-value="85">
-                                <svg class="gauge-svg" viewBox="0 0 200 120">
-                                    <path class="gauge-bg" d="M20,100 A80,80 0 0,1 180,100" stroke="#374151" stroke-width="10" fill="none"/>
-                                    <path class="gauge-fill" d="M20,100 A80,80 0 0,1 180,100" stroke="#10b981" stroke-width="10" fill="none" stroke-dasharray="0 251.2" />
-                                </svg>
-                                <div class="gauge-value">85%</div>
-                                <div class="gauge-label">CPU Efficiency</div>
-                            </div>
-                            <div class="metric-gauge" data-metric="memory" data-value="92">
-                                <svg class="gauge-svg" viewBox="0 0 200 120">
-                                    <path class="gauge-bg" d="M20,100 A80,80 0 0,1 180,100" stroke="#374151" stroke-width="10" fill="none"/>
-                                    <path class="gauge-fill" d="M20,100 A80,80 0 0,1 180,100" stroke="#06b6d4" stroke-width="10" fill="none" stroke-dasharray="0 251.2" />
-                                </svg>
-                                <div class="gauge-value">92%</div>
-                                <div class="gauge-label">Memory Optimization</div>
-                            </div>
-                            <div class="metric-gauge" data-metric="cache" data-value="96">
-                                <svg class="gauge-svg" viewBox="0 0 200 120">
-                                    <path class="gauge-bg" d="M20,100 A80,80 0 0,1 180,100" stroke="#374151" stroke-width="10" fill="none"/>
-                                    <path class="gauge-fill" d="M20,100 A80,80 0 0,1 180,100" stroke="#8b5cf6" stroke-width="10" fill="none" stroke-dasharray="0 251.2" />
-                                </svg>
-                                <div class="gauge-value">96%</div>
-                                <div class="gauge-label">Cache Hit Rate</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        resultsSection.insertAdjacentHTML('afterbegin', dashboardHTML);
-        this.setupDashboardAnimations();
-        this.createPerformanceChart();
-        this.animateThroughputBars();
-        this.animateGauges();
-    }
-
-    setupDashboardAnimations() {
-        const dashboard = document.querySelector('.performance-dashboard');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.animateDashboardMetrics();
-                    observer.unobserve(dashboard);
-                }
-            });
-        });
-
-        observer.observe(dashboard);
-    }
-
-    animateDashboardMetrics() {
-        // Dashboard animations are now handled by specific methods
-        this.createPerformanceChart();
-        this.animateThroughputBars();
-        this.animateGauges();
-        this.createDetailedPerformanceComparison();
-    }
-    
-    createPerformanceChart() {
-        const canvas = document.getElementById('performanceChart');
-        if (!canvas) return;
-        
-        const ctx = canvas.getContext('2d');
-        const width = canvas.width;
-        const height = canvas.height;
-        
-        // Performance data points
-        const data = {
-            traditional: [3600, 2400, 1800, 3000, 3600], // seconds
-            snap: [36, 24, 18, 30, 36] // seconds
-        };
-        
-        const labels = ['Query 1', 'Query 2', 'Query 3', 'Query 4', 'Query 5'];
-        const maxValue = Math.max(...data.traditional) * 1.1;
-        
-        // Clear canvas
-        ctx.clearRect(0, 0, width, height);
-        
-        // Set colors
-        const traditionalColor = '#ef4444';
-        const snapColor = '#10b981';
-        const gridColor = '#374151';
-        
-        // Draw grid
-        ctx.strokeStyle = gridColor;
-        ctx.lineWidth = 1;
-        for (let i = 0; i <= 5; i++) {
-            const y = (height - 60) * (i / 5) + 30;
-            ctx.beginPath();
-            ctx.moveTo(60, y);
-            ctx.lineTo(width - 30, y);
-            ctx.stroke();
-        }
-        
-        // Animate bars
-        const barWidth = (width - 120) / (labels.length * 2 + 1);
-        let animationProgress = 0;
-        
-        const animate = () => {
-            animationProgress += 0.02;
-            if (animationProgress > 1) animationProgress = 1;
-            
-            ctx.clearRect(0, 0, width, height);
-            
-            // Redraw grid
-            ctx.strokeStyle = gridColor;
-            for (let i = 0; i <= 5; i++) {
-                const y = (height - 60) * (i / 5) + 30;
-                ctx.beginPath();
-                ctx.moveTo(60, y);
-                ctx.lineTo(width - 30, y);
-                ctx.stroke();
-            }
-            
-            // Draw bars
-            labels.forEach((label, i) => {
-                const x = 80 + i * barWidth * 2;
-                
-                // Traditional bar
-                const tradHeight = ((height - 60) * (data.traditional[i] / maxValue)) * animationProgress;
-                ctx.fillStyle = traditionalColor;
-                ctx.fillRect(x, height - 30 - tradHeight, barWidth * 0.8, tradHeight);
-                
-                // SNAP bar
-                const snapHeight = ((height - 60) * (data.snap[i] / maxValue)) * animationProgress;
-                ctx.fillStyle = snapColor;
-                ctx.fillRect(x + barWidth, height - 30 - snapHeight, barWidth * 0.8, snapHeight);
-                
-                // Label
-                ctx.fillStyle = '#ffffff';
-                ctx.font = '12px monospace';
-                ctx.textAlign = 'center';
-                ctx.fillText(label, x + barWidth, height - 10);
-            });
-            
-            if (animationProgress < 1) {
-                requestAnimationFrame(animate);
-            }
-        };
-        
-        setTimeout(animate, 500);
-    }
-    
-    animateThroughputBars() {
-        const bars = document.querySelectorAll('.throughput-bar');
-        
-        bars.forEach((bar, index) => {
-            const fill = bar.querySelector('.bar-fill');
-            const value = parseInt(bar.getAttribute('data-value'));
-            const color = fill.getAttribute('data-color');
-            const maxValue = 150;
-            
-            // Set color
-            fill.style.background = `linear-gradient(90deg, ${color}, ${color}88)`;
-            
-            // Animate width
-            anime({
-                targets: fill,
-                width: `${(value / maxValue) * 100}%`,
-                duration: 1500,
-                delay: index * 200,
-                easing: 'easeOutExpo'
-            });
-        });
-    }
-    
-    animateGauges() {
-        const gauges = document.querySelectorAll('.metric-gauge');
-        
-        gauges.forEach((gauge, index) => {
-            const value = parseInt(gauge.getAttribute('data-value'));
-            const fill = gauge.querySelector('.gauge-fill');
-            const valueDisplay = gauge.querySelector('.gauge-value');
-            
-            // Calculate dash array for percentage
-            const circumference = 251.2;
-            const dashArray = (value / 100) * circumference;
-            
-            // Animate gauge fill
-            anime({
-                targets: fill,
-                'stroke-dasharray': `${dashArray} ${circumference}`,
-                duration: 2000,
-                delay: index * 300,
-                easing: 'easeOutExpo'
-            });
-            
-            // Animate value counter
-            const counter = { value: 0 };
-            anime({
-                targets: counter,
-                value: value,
-                duration: 2000,
-                delay: index * 300,
-                easing: 'easeOutExpo',
-                update: () => {
-                    valueDisplay.textContent = Math.round(counter.value) + '%';
-                }
-            });
-        });
-    }
 
     setupProgressNavigation() {
         this.createProgressNavigation();
@@ -588,26 +338,6 @@ class SparklineProjectEnhancer {
         });
     }
 
-    showMetricDetails(card, index) {
-        const details = [
-            {
-                title: "100x Performance Gain",
-                description: "Query execution time reduced from hours to seconds through intelligent caching and optimization algorithms."
-            },
-            {
-                title: "Real-time Analytics", 
-                description: "Interactive data exploration enabling immediate business insights and decision-making."
-            },
-            {
-                title: "OLAP Optimization",
-                description: "Specialized cube-based processing for multidimensional analytical queries."
-            }
-        ];
-
-        if (details[index]) {
-            this.showTooltip(card, details[index]);
-        }
-    }
 
     showTooltip(element, content) {
         const tooltip = document.createElement('div');
@@ -682,12 +412,12 @@ class SparklineProjectEnhancer {
                             <div class="code-block before">
                                 <h5>Traditional Spark Query</h5>
                                 <pre><code id="traditional-code"></code></pre>
-                                <div class="execution-time">⏱ Execution: 3.2 minutes</div>
+                                <div class="execution-time">Before optimization</div>
                             </div>
                             <div class="code-block after">
                                 <h5>SNAP Optimized Query</h5>
                                 <pre><code id="optimized-code"></code></pre>
-                                <div class="execution-time">⚡ Execution: 1.8 seconds</div>
+                                <div class="execution-time">After optimization</div>
                             </div>
                         </div>
                     </div>
@@ -750,7 +480,7 @@ class SparklineProjectEnhancer {
                                     </svg>
                                 </div>
                                 <div class="node-label">Query Engine</div>
-                                <div class="node-throughput">100x Faster</div>
+                                <div class="node-throughput">Optimized</div>
                             </div>
                         </div>
                     </div>
@@ -1089,151 +819,6 @@ df.filterOptimized($"timestamp" > "2024-01-01")
         }
     }
     
-    createDetailedPerformanceComparison() {
-        // Find the performance dashboard to add detailed comparison
-        const dashboard = document.querySelector('.performance-dashboard .dashboard-container');
-        if (!dashboard || document.querySelector('.detailed-comparison')) return;
-        
-        const detailedComparisonHTML = `
-            <div class="detailed-comparison">
-                <h4>Real-World Benchmarks</h4>
-                
-                <div class="benchmark-grid">
-                    <div class="benchmark-category">
-                        <h5>Query Processing</h5>
-                        <div class="benchmark-items">
-                            <div class="benchmark-item">
-                                <div class="benchmark-label">Complex Aggregations</div>
-                                <div class="benchmark-comparison">
-                                    <div class="benchmark-bar traditional" data-value="180" data-label="Traditional: 3 min">
-                                        <div class="bar-fill"></div>
-                                        <span class="bar-text">3 min</span>
-                                    </div>
-                                    <div class="benchmark-bar snap" data-value="3" data-label="SNAP: 3 sec">
-                                        <div class="bar-fill"></div>
-                                        <span class="bar-text">3 sec</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="benchmark-item">
-                                <div class="benchmark-label">Join Operations</div>
-                                <div class="benchmark-comparison">
-                                    <div class="benchmark-bar traditional" data-value="240" data-label="Traditional: 4 min">
-                                        <div class="bar-fill"></div>
-                                        <span class="bar-text">4 min</span>
-                                    </div>
-                                    <div class="benchmark-bar snap" data-value="5" data-label="SNAP: 5 sec">
-                                        <div class="bar-fill"></div>
-                                        <span class="bar-text">5 sec</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="benchmark-category">
-                        <h5>Resource Efficiency</h5>
-                        <div class="benchmark-items">
-                            <div class="benchmark-item">
-                                <div class="benchmark-label">Memory Usage</div>
-                                <div class="benchmark-comparison">
-                                    <div class="benchmark-bar traditional memory" data-value="80" data-label="Traditional: 80%">
-                                        <div class="bar-fill"></div>
-                                        <span class="bar-text">80%</span>
-                                    </div>
-                                    <div class="benchmark-bar snap memory" data-value="35" data-label="SNAP: 35%">
-                                        <div class="bar-fill"></div>
-                                        <span class="bar-text">35%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="benchmark-item">
-                                <div class="benchmark-label">CPU Utilization</div>
-                                <div class="benchmark-comparison">
-                                    <div class="benchmark-bar traditional cpu" data-value="90" data-label="Traditional: 90%">
-                                        <div class="bar-fill"></div>
-                                        <span class="bar-text">90%</span>
-                                    </div>
-                                    <div class="benchmark-bar snap cpu" data-value="45" data-label="SNAP: 45%">
-                                        <div class="bar-fill"></div>
-                                        <span class="bar-text">45%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="benchmark-insights">
-                    <div class="insight-item">
-                        <div class="insight-metric">100x</div>
-                        <div class="insight-label">Faster Query Execution</div>
-                    </div>
-                    <div class="insight-item">
-                        <div class="insight-metric">65%</div>
-                        <div class="insight-label">Reduced Resource Usage</div>
-                    </div>
-                    <div class="insight-item">
-                        <div class="insight-metric">95%</div>
-                        <div class="insight-label">Improvement in Throughput</div>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        dashboard.insertAdjacentHTML('beforeend', detailedComparisonHTML);
-        this.animateDetailedComparison();
-    }
-    
-    animateDetailedComparison() {
-        const benchmarkBars = document.querySelectorAll('.benchmark-bar .bar-fill');
-        const insightMetrics = document.querySelectorAll('.insight-metric');
-        
-        // Animate benchmark bars
-        benchmarkBars.forEach((bar, index) => {
-            const parentBar = bar.closest('.benchmark-bar');
-            const value = parseInt(parentBar.getAttribute('data-value'));
-            const maxValue = parentBar.classList.contains('memory') || parentBar.classList.contains('cpu') ? 100 : 240;
-            const percentage = (value / maxValue) * 100;
-            
-            // Set colors
-            if (parentBar.classList.contains('traditional')) {
-                bar.style.background = 'linear-gradient(90deg, #ef4444, #dc2626)';
-            } else if (parentBar.classList.contains('snap')) {
-                bar.style.background = 'linear-gradient(90deg, #10b981, #059669)';
-            }
-            
-            // Animate width
-            anime({
-                targets: bar,
-                width: percentage + '%',
-                duration: 1500,
-                delay: index * 100,
-                easing: 'easeOutExpo'
-            });
-        });
-        
-        // Animate insight metrics
-        insightMetrics.forEach((metric, index) => {
-            const text = metric.textContent;
-            const numValue = parseInt(text);
-            const suffix = text.replace(numValue.toString(), '');
-            
-            const counter = { value: 0 };
-            anime({
-                targets: counter,
-                value: numValue,
-                duration: 2000,
-                delay: index * 300,
-                easing: 'easeOutExpo',
-                update: () => {
-                    metric.textContent = Math.round(counter.value) + suffix;
-                }
-            });
-        });
-    }
     
     setupArchitectureExplorer() {
         this.createArchitectureExplorer();
@@ -1432,7 +1017,7 @@ df.filterOptimized($"timestamp" > "2024-01-01")
             },
             'query-optimizer': {
                 title: 'Query Optimizer',
-                description: 'AI-powered query optimization engine that rewrites SQL queries, selects optimal execution plans, and leverages cached results for 100x performance improvements.'
+                description: 'AI-powered query optimization engine that rewrites SQL queries, selects optimal execution plans, and leverages cached results for significant performance improvements.'
             },
             'cache-manager': {
                 title: 'Intelligent Cache Manager',
@@ -1503,8 +1088,16 @@ df.filterOptimized($"timestamp" > "2024-01-01")
             
             // Add hover effects
             group.addEventListener('mouseenter', () => {
+                const component = group.querySelector('.component');
+                const bbox = component.getBBox();
+                const centerX = bbox.x + bbox.width / 2;
+                const centerY = bbox.y + bbox.height / 2;
+                
+                // Set transform origin to center of the element
+                component.style.transformOrigin = `${centerX}px ${centerY}px`;
+                
                 anime({
-                    targets: group.querySelector('.component'),
+                    targets: component,
                     scale: [1, 1.1],
                     duration: 200,
                     easing: 'easeOutQuad'
@@ -1512,8 +1105,9 @@ df.filterOptimized($"timestamp" > "2024-01-01")
             });
             
             group.addEventListener('mouseleave', () => {
+                const component = group.querySelector('.component');
                 anime({
-                    targets: group.querySelector('.component'),
+                    targets: component,
                     scale: [1.1, 1],
                     duration: 200,
                     easing: 'easeOutQuad'
