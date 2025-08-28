@@ -1,0 +1,242 @@
+{{ define "main" }}
+<section class="automation-wizard">
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="wizard-hero">
+            <h1>{{ T "wizard_title" | default "Get Your Personalized AI Automation Strategy" }}</h1>
+            <p>{{ T "wizard_subtitle" | default "Answer a few questions and we'll send you a custom PDF with automation opportunities for your business." }}</p>
+        </div>
+
+        <!-- Wizard Steps -->
+        <div class="wizard-container" id="wizardContainer">
+            
+            <!-- Step 1: Industry Selection -->
+            <div class="wizard-step active" id="step1">
+                <h2>{{ T "step1_title" | default "What type of business do you run?" }}</h2>
+                <p>{{ T "step1_description" | default "Select your industry to get tailored automation recommendations." }}</p>
+                
+                <div class="industry-grid" id="industryGrid">
+                    {{ range .Site.Data.en.usecases.cases }}
+                    <div class="industry-card" data-industry="{{ .business_type | urlize }}">
+                        <div class="card-icon">
+                            <i data-feather="{{ .icon }}"></i>
+                        </div>
+                        <h3>{{ .business_type }}</h3>
+                        <p>{{ .solution }}</p>
+                        <div class="card-stats">
+                            <span class="stat">{{ .money_saved | default .money_gained }} saved</span>
+                            <span class="badge">{{ .badge }}</span>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+
+                <div class="wizard-footer">
+                    <button class="button secondary" disabled>Previous</button>
+                    <div class="wizard-progress-compact">
+                        <div class="progress-dots">
+                            <span class="progress-dot active" data-step="1"></span>
+                            <span class="progress-dot" data-step="2"></span>
+                            <span class="progress-dot" data-step="3"></span>
+                            <span class="progress-dot" data-step="4"></span>
+                        </div>
+                        <div class="progress-label">
+                            <span>Step 1 of 4</span>
+                        </div>
+                    </div>
+                    <button class="button primary" id="step1Next" disabled>Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Apps Selection -->
+            <div class="wizard-step" id="step2">
+                <h2>{{ T "step2_title" | default "What apps does your business currently use?" }}</h2>
+                <p>{{ T "step2_description" | default "Select all the apps and platforms you're currently using. We'll show you how to connect them." }}</p>
+                
+                <div class="apps-search">
+                    <input type="text" placeholder="Search apps..." id="appsSearch">
+                    <i data-feather="search"></i>
+                </div>
+
+                <div class="apps-grid" id="appsGrid">
+                    {{ range .Site.Data.en.integrations.integrations }}
+                    <div class="app-card" data-app="{{ .name | lower | replaceRE "[^a-z0-9]+" "-" }}">
+                        <div class="app-icon">
+                            <img src="{{ .logo }}" alt="{{ .name }}">
+                        </div>
+                        <span>{{ .name }}</span>
+                        <div class="app-checkbox">
+                            <i data-feather="check"></i>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+
+                <div class="selection-summary" id="appsSummary">
+                    <span>0 apps selected</span>
+                </div>
+
+                <div class="wizard-footer">
+                    <button class="button secondary" id="step2Prev">Previous</button>
+                    <div class="wizard-progress-compact">
+                        <div class="progress-dots">
+                            <span class="progress-dot completed" data-step="1"></span>
+                            <span class="progress-dot active" data-step="2"></span>
+                            <span class="progress-dot" data-step="3"></span>
+                            <span class="progress-dot" data-step="4"></span>
+                        </div>
+                        <div class="progress-label">
+                            <span>Step 2 of 4</span>
+                        </div>
+                    </div>
+                    <button class="button primary" id="step2Next">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Business Goals -->
+            <div class="wizard-step" id="step3">
+                <h2>{{ T "step3_title" | default "What are your main business goals?" }}</h2>
+                <p>{{ T "step3_description" | default "Select the areas where you want to improve efficiency and reduce manual work." }}</p>
+                
+                <div class="goals-grid" id="goalsGrid">
+                    {{ range .Site.Data.en.solutions.tabs }}
+                    <div class="goal-category" data-category="{{ .id }}">
+                        <h3>{{ .name }}</h3>
+                        <div class="goal-features">
+                            {{ range first 2 .features }}
+                            <div class="goal-item">
+                                <div class="goal-checkbox">
+                                    <i data-feather="check"></i>
+                                </div>
+                                <div class="goal-content">
+                                    <h4>{{ .title }}</h4>
+                                    <p>{{ .description }}</p>
+                                </div>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+
+                <div class="selection-summary" id="goalsSummary">
+                    <span>0 goals selected</span>
+                </div>
+
+                <div class="wizard-footer">
+                    <button class="button secondary" id="step3Prev">Previous</button>
+                    <div class="wizard-progress-compact">
+                        <div class="progress-dots">
+                            <span class="progress-dot completed" data-step="1"></span>
+                            <span class="progress-dot completed" data-step="2"></span>
+                            <span class="progress-dot active" data-step="3"></span>
+                            <span class="progress-dot" data-step="4"></span>
+                        </div>
+                        <div class="progress-label">
+                            <span>Step 3 of 4</span>
+                        </div>
+                    </div>
+                    <button class="button primary" id="step3Next">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Contact Information -->
+            <div class="wizard-step" id="step4">
+                <h2>{{ T "step4_title" | default "Get Your Custom Automation Strategy" }}</h2>
+                <p>{{ T "step4_description" | default "Based on your selections, we'll create a personalized PDF with automation opportunities for your business." }}</p>
+                
+                <div class="step4-container">
+                    <div class="summary-preview" id="summaryPreview">
+                        <!-- Summary will be populated by JavaScript -->
+                    </div>
+
+                    <div class="contact-form-container">
+                        <form id="wizardForm" class="wizard-contact-form">
+                            <div class="form-row">
+                                <label for="email" class="form-label">{{ T "email_label" | default "Email Address" }} *</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                                <div class="form-error" id="emailError"></div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <label for="name" class="form-label">{{ T "name_label" | default "Full Name" }} ({{ T "optional" | default "Optional" }})</label>
+                                <input type="text" id="name" name="name" class="form-input">
+                            </div>
+                            
+                            <div class="form-row">
+                                <label for="company" class="form-label">{{ T "company_label" | default "Company Name" }} ({{ T "optional" | default "Optional" }})</label>
+                                <input type="text" id="company" name="company" class="form-input">
+                            </div>
+
+                            <div class="privacy-notice">
+                                <p>{{ T "privacy_notice" | default "We'll send you a personalized automation strategy PDF. No spam, unsubscribe anytime." }}</p>
+                            </div>
+
+                            <div class="wizard-footer">
+                                <button type="button" class="button secondary" id="step4Prev">Previous</button>
+                                <div class="wizard-progress-compact">
+                                    <div class="progress-dots">
+                                        <span class="progress-dot completed" data-step="1"></span>
+                                        <span class="progress-dot completed" data-step="2"></span>
+                                        <span class="progress-dot completed" data-step="3"></span>
+                                        <span class="progress-dot active" data-step="4"></span>
+                                    </div>
+                                    <div class="progress-label">
+                                        <span>Step 4 of 4</span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="button primary" id="submitWizard">
+                                    <span>{{ T "get_strategy" | default "Get My Strategy PDF" }}</span>
+                                    <i data-feather="download"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Step -->
+            <div class="wizard-step" id="stepSuccess" style="display: none;">
+                <div class="success-content">
+                    <div class="success-icon">
+                        <i data-feather="check-circle"></i>
+                    </div>
+                    <h2>{{ T "success_title" | default "Strategy On Its Way!" }}</h2>
+                    <p>{{ T "success_message" | default "We've received your information and are preparing your personalized automation strategy. You'll receive it in your inbox within 24 hours." }}</p>
+                    
+                    <div class="next-steps">
+                        <h3>{{ T "what_next" | default "What happens next?" }}</h3>
+                        <ul>
+                            <li>{{ T "next_step_1" | default "Our AI analyzes your industry and app usage" }}</li>
+                            <li>{{ T "next_step_2" | default "We identify the best automation opportunities" }}</li>
+                            <li>{{ T "next_step_3" | default "You receive a custom PDF strategy guide" }}</li>
+                            <li>{{ T "next_step_4" | default "Optional: Book a free consultation call" }}</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="wizard-actions">
+                        <a href="/" class="button primary">{{ T "back_home" | default "Back to Home" }}</a>
+                        <a href="mailto:{{ .Site.Params.email }}" class="button secondary">{{ T "contact_us" | default "Contact Us" }}</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Wizard-specific JavaScript -->
+{{ $wizardScript := resources.Get "js/automate-wizard.js" }}
+{{ if hugo.IsProduction }}
+    {{ $wizardScript = $wizardScript | minify | fingerprint }}
+{{ end }}
+<script src="{{ $wizardScript.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $wizardScript.Data.Integrity }}"{{ end }}></script>
+
+<!-- Wizard-specific CSS -->
+{{ $wizardCSS := resources.Get "css/automate-wizard.css" }}
+{{ if hugo.IsProduction }}
+    {{ $wizardCSS = $wizardCSS | minify | fingerprint }}
+{{ end }}
+<link rel="stylesheet" href="{{ $wizardCSS.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $wizardCSS.Data.Integrity }}"{{ end }}>
+
+{{ end }}

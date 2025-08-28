@@ -6,7 +6,7 @@ cta_link: "mailto:hello@lakeshorelabs.ai"
 
 cases:
   - business_type: "Local Restaurant Chain"
-    icon: "restaurant"
+    icon: "coffee"
     color: "#FF6B35"
     problem: "Drowning in supplier invoices"
     time_before: "3 hrs/day"
@@ -29,7 +29,7 @@ cases:
     badge: "Customer Favorite"
     
   - business_type: "Marketing Agency"
-    icon: "megaphone"
+    icon: "trending-up"
     color: "#7B68EE"
     problem: "Slow proposal creation"
     time_before: "2 days"
@@ -41,7 +41,7 @@ cases:
     badge: "Revenue Booster"
     
   - business_type: "Dental Practice"
-    icon: "tooth"
+    icon: "heart"
     color: "#00BFA5"
     problem: "Appointment no-shows"
     noshow_before: "60%"
@@ -64,7 +64,7 @@ cases:
     badge: "Speed Winner"
     
   - business_type: "Retail Store"
-    icon: "store"
+    icon: "shopping-bag"
     color: "#9C27B0"
     problem: "Inventory stockouts"
     stockouts_before: "Weekly"
@@ -76,7 +76,7 @@ cases:
     badge: "Stock Master"
     
   - business_type: "Law Firm"
-    icon: "scale"
+    icon: "briefcase"
     color: "#3F51B5"
     problem: "Document processing"
     time_before: "8 hrs/week"
@@ -88,7 +88,7 @@ cases:
     badge: "Time Multiplier"
     
   - business_type: "Construction Company"
-    icon: "hard-hat"
+    icon: "tool"
     color: "#FF9800"
     problem: "Slow quoting process"
     time_before: "3 days"
@@ -100,7 +100,7 @@ cases:
     badge: "Deal Closer"
     
   - business_type: "Accounting Firm"
-    icon: "calculator"
+    icon: "percent"
     color: "#607D8B"
     problem: "Manual data entry"
     entries_per_day: "500"
@@ -112,7 +112,7 @@ cases:
     badge: "Accuracy Hero"
     
   - business_type: "Fitness Studio"
-    icon: "dumbbell"
+    icon: "activity"
     color: "#E91E63"
     problem: "Member retention"
     churn_before: "25%/mo"

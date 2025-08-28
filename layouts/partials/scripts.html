@@ -18,6 +18,11 @@
 <script src="/js/glightbox.min.js"></script>
 {{ end }}
 
+<!-- Anime.js for automate page -->
+{{ if in .RelPermalink "/automate/" }}
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+{{ end }}
+
 <!-- Mermaid initialization if needed -->
 {{ if .Store.Get "hasMermaid" }}
   <script type="module">
@@ -134,6 +139,14 @@
 <!-- Initialize Feather Icons -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        feather.replace();
+        setTimeout(function() {
+            try {
+                if (typeof feather !== 'undefined' && feather.replace) {
+                    feather.replace();
+                }
+            } catch(e) {
+                console.log('Feather icons not ready yet');
+            }
+        }, 100);
     });
 </script>
