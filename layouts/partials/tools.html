@@ -1,14 +1,16 @@
 {{ $data := index .Site.Data .Site.Language.Lang "tools" | default (index .Site.Data "en" "tools") }}
 {{ with $data }}
 <section class="tools" id="tools-section">
-    <h2>{{ .title }}</h2>
-    <div class="tools-list">
+    <div class="container">
+        <h2>{{ .title }}</h2>
+        <div class="tools-list">
         {{ range .tools }}
         <div class="tool-logo" data-name="{{ .name }}">
             <img src="{{ .logo }}" alt="{{ .name }}" />
             <span class="tool-name">{{ .name }}</span>
         </div>
         {{ end }}
+        </div>
     </div>
 </section>
 {{ end }}

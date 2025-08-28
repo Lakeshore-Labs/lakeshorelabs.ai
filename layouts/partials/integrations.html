@@ -1,14 +1,16 @@
 {{ $data := index .Site.Data .Site.Language.Lang "integrations" | default (index .Site.Data "en" "integrations") }}
 {{ with $data }}
 <section class="integrations" id="integrations-section">
-    <h2>{{ .title }}</h2>
-    <div class="integrations-list">
+    <div class="container">
+        <h2>{{ .title }}</h2>
+        <div class="integrations-list">
         {{ range .integrations }}
         <div class="integration-logo" data-name="{{ .name }}">
             <img src="{{ .logo }}" alt="{{ .name }}" />
             <span class="integration-name">{{ .name }}</span>
         </div>
         {{ end }}
+        </div>
     </div>
 </section>
 {{ end }}

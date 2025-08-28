@@ -85,9 +85,9 @@ body::before {
 
 
 .container {
-    max-width: 1800px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 36px;
+    padding: 0 24px;
 }
 
 /* Navigation */
@@ -1035,7 +1035,6 @@ body::before {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 40px;
-    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -1130,7 +1129,6 @@ body::before {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 40px;
-    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
 }
