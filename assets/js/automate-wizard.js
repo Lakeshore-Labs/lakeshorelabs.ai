@@ -562,37 +562,44 @@ class AutomationWizard {
     }
     
     async sendFormData() {
-        // This would be replaced with your actual form submission endpoint
+        // Submit form data to social-ops API endpoint
         const formData = {
-            ...this.formData,
+            email: this.formData.email,
+            name: this.formData.name || '',
+            company: this.formData.company || '',
+            industry: this.formData.industry,
+            apps: this.formData.apps,
+            goals: this.formData.goals,
             timestamp: new Date().toISOString(),
             userAgent: navigator.userAgent,
             referrer: document.referrer
         };
         
-        // Form data ready for submission
+        // Determine the API endpoint based on environment
+        const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const apiEndpoint = isDev 
+            ? 'http://localhost:8080/api/forms/automation-wizard'
+            : 'https://app.vlogical.ai/api/forms/automation-wizard';
         
-        // Simulate API call
-        return new Promise((resolve) => {
-            setTimeout(resolve, 2000);
-        });
-        
-        // Example of real form submission:
-        /*
-        const response = await fetch('/api/automation-wizard', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-        });
-        
-        if (!response.ok) {
-            throw new Error('Failed to submit form');
+        try {
+            const response = await fetch(apiEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            if (!response.ok) {
+                const errorData = await response.text();
+                throw new Error(`HTTP ${response.status}: ${errorData}`);
+            }
+            
+            return await response.json();
+        } catch (error) {
+            console.error('Form submission error:', error);
+            throw error;
         }
-        
-        return response.json();
-        */
     }
     
     showSuccessStep() {
@@ -610,7 +617,7 @@ class AutomationWizard {
                 currentStepEl.classList.remove('active');
                 
                 // Show success step
-                successStepEl.style.display = 'block';
+                successStepEl.style.display = 'flex';
                 successStepEl.classList.add('active');
                 
                 // Animate success step
