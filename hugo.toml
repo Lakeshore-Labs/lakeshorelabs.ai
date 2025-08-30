@@ -88,12 +88,6 @@ enableGitInfo = false
   weight = 20
 
 [[languages.en.menus.main]]
-  identifier = "use-cases"
-  name = "Use Cases"
-  url = "#use-cases"
-  weight = 30
-
-[[languages.en.menus.main]]
   identifier = "faq"
   name = "FAQ"
   url = "#faq"
@@ -131,12 +125,6 @@ enableGitInfo = false
   weight = 20
 
 [[languages.vi.menus.main]]
-  identifier = "use-cases"
-  name = "Ứng Dụng"
-  url = "#use-cases"
-  weight = 30
-
-[[languages.vi.menus.main]]
   identifier = "faq"
   name = "Câu Hỏi"
   url = "#faq"
@@ -166,12 +154,6 @@ enableGitInfo = false
   name = "العملية"
   url = "#process"
   weight = 20
-
-[[languages.ar-OM.menus.main]]
-  identifier = "use-cases"
-  name = "حالات الاستخدام"
-  url = "#use-cases"
-  weight = 30
 
 [[languages.ar-OM.menus.main]]
   identifier = "faq"
